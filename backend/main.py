@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from backend.database import init_db
-from backend.api import chat, agents, approvals, analytics, documents, settings, memory
+from backend.api import chat, agents, approvals, analytics, documents, settings, memory, voice
 
 app = FastAPI(
     title="NEXUS AI - Autonomous Multi-Agent Intelligence Platform",
@@ -32,6 +32,7 @@ app.include_router(analytics.router)
 app.include_router(documents.router)
 app.include_router(settings.router)
 app.include_router(memory.router)
+app.include_router(voice.router)
 
 # Static file serving
 static_dir = os.path.join(os.path.dirname(__file__), "static")

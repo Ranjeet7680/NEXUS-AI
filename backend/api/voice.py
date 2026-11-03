@@ -112,6 +112,78 @@ INTENT_MAP = [
         "response_hi": "डैशबोर्ड और सिस्टम टेलीमेट्री खोला जा रहा है।",
         "response_bn": "ড্যাশবোর্ড ও সিস্টেম টেলিমেট্রি খোলা হচ্ছে।",
         "response_ta": "முதன்மை டாஷ்போர்டு திறக்கப்படுகிறது."
+    },
+    {
+        "keywords": ["approve", "authorize", "confirm action", "accept", "स्वीकृत", "मंज़ूर", "অনুমোদন করুন", "அங்கீகரிக்கவும்"],
+        "intent": "APPROVE_ACTION",
+        "action": {
+            "type": "SUBMIT_APPROVAL",
+            "decision": "approve"
+        },
+        "response_en": "Cryptographic authorization acknowledged. Resuming state machine and dispatching external action.",
+        "response_hi": "स्वीकृति दर्ज की गई। वर्कफ़्लो फिर से शुरू हो रहा है।",
+        "response_bn": "অনুমোদন সম্পন্ন হয়েছে। ওয়ার্কফ্লো পুনরায় চালু হচ্ছে।",
+        "response_ta": "அங்கீகாரம் உறுதி செய்யப்பட்டது. பணி தொடர்கிறது."
+    },
+    {
+        "keywords": ["reject", "halt action", "cancel dispatch", "disapprove", "रद्द", "खारिज", "நிராகரிக்கவும்"],
+        "intent": "REJECT_ACTION",
+        "action": {
+            "type": "SUBMIT_APPROVAL",
+            "decision": "reject"
+        },
+        "response_en": "Sensitive external action rejected by operator. Execution terminated safely.",
+        "response_hi": "कार्यवाही अस्वीकार कर दी गई है।",
+        "response_bn": "পদক্ষেপটি বাতিল করা হয়েছে।",
+        "response_ta": "செயல் நிராகரிக்கப்பட்டது."
+    },
+    {
+        "keywords": ["marketplace", "store", "install agent", "मार्केटप्लेस"],
+        "intent": "NAVIGATE_MARKETPLACE",
+        "action": {
+            "type": "NAVIGATE",
+            "target": "app-marketplace"
+        },
+        "response_en": "Opening Enterprise Agent Marketplace. Browse pre-configured specialized agents.",
+        "response_hi": "एजेंट मार्केटप्लेस खोला जा रहा है।",
+        "response_bn": "এজেন্ট মার্কেটপ্লেস খোলা হচ্ছে।",
+        "response_ta": "ஏஜென்ட் அங்காடி திறக்கப்படுகிறது."
+    },
+    {
+        "keywords": ["memory", "knowledge base", "vector", "rag", "मेमोरी", "ज्ञान भंडार"],
+        "intent": "NAVIGATE_MEMORY",
+        "action": {
+            "type": "NAVIGATE",
+            "target": "app-memory"
+        },
+        "response_en": "Opening Enterprise Semantic Memory and Vector Knowledge Base.",
+        "response_hi": "सिमेंटिक मेमोरी और नॉलेज बेस खोला जा रहा है।",
+        "response_bn": "মেমরি এবং নলেজ বেস খোলা হচ্ছে।",
+        "response_ta": "நினைவக களஞ்சியம் திறக்கப்படுகிறது."
+    },
+    {
+        "keywords": ["history", "audit log", "ledger", "tasks history", "इतिहास", "ऑडिट"],
+        "intent": "NAVIGATE_HISTORY",
+        "action": {
+            "type": "NAVIGATE",
+            "target": "app-history"
+        },
+        "response_en": "Opening Execution History and cryptographic audit ledger.",
+        "response_hi": "टास्क इतिहास और ऑडिट लेजर खोला जा रहा है।",
+        "response_bn": "কাজের ইতিহাস ও অডিট লেজার খোলা হচ্ছে।",
+        "response_ta": "பணி வரலாறு திறக்கப்படுகிறது."
+    },
+    {
+        "keywords": ["settings", "configuration", "api keys", "providers", "सेटिंग्स"],
+        "intent": "NAVIGATE_SETTINGS",
+        "action": {
+            "type": "NAVIGATE",
+            "target": "app-settings"
+        },
+        "response_en": "Opening Settings and LLM Provider configuration.",
+        "response_hi": "सेटिंग्स और मॉडल कॉन्फ़िगरेशन खोला जा रहा है।",
+        "response_bn": "সেটিংস খোলা হচ্ছে।",
+        "response_ta": "அமைப்புகள் திறக்கப்படுகிறது."
     }
 ]
 

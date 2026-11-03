@@ -92,26 +92,31 @@ async def stream_task_events(task_id: str):
     """
     Server-Sent Events (SSE) stream for real-time live agent updates.
     """
-    queue = orchestrator.get_or_create_queue(task_id)
+    sub_q = asyncio.Queue()
+
+    # Preload past events already emitted for this task
+    if task_id in orchestrator.active_tasks:
+        for past_evt in list(orchestrator.active_tasks[task_id].get("events", [])):
+            sub_q.put_nowait(past_evt)
+
+    orchestrator.register_subscriber(task_id, sub_q)
 
     async def event_generator():
-        # Yield already accumulated historical events if connecting after start
-        if task_id in orchestrator.active_tasks:
-            for past_evt in orchestrator.active_tasks[task_id].get("events", []):
-                yield f"data: {json.dumps(past_evt)}\n\n"
+        try:
+            while True:
+                try:
+                    event = await asyncio.wait_for(sub_q.get(), timeout=20.0)
+                    yield f"data: {json.dumps(event)}\n\n"
 
-        while True:
-            try:
-                # Wait for next event
-                event = await asyncio.wait_for(queue.get(), timeout=25.0)
-                yield f"data: {json.dumps(event)}\n\n"
-
-                # If task has completed or failed, we can terminate after small pause
-                if event.get("phase") in ["completed", "rejected"]:
-                    break
-            except asyncio.TimeoutError:
-                # Keep-alive heartbeat
-                yield f": keep-alive\n\n"
+                    # If task has completed or rejected, terminate stream after yielding final event
+                    if event.get("phase") in ["completed", "rejected"]:
+                        await asyncio.sleep(0.1)
+                        break
+                except asyncio.TimeoutError:
+                    # Keep-alive heartbeat
+                    yield f": keep-alive\n\n"
+        finally:
+            orchestrator.unregister_subscriber(task_id, sub_q)
 
     return StreamingResponse(
         event_generator(),

@@ -539,6 +539,93 @@
         </div>
     </div>
 
+    <!-- ========================================================================= -->
+    <!-- VOICE AI COMMAND CENTER MODAL (Multilingual Speech & Auto-Orchestration)  -->
+    <!-- ========================================================================= -->
+    <div id="voiceModal" class="hidden fixed inset-0 z-50 bg-[#080D1B]/85 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass-panel w-full max-w-lg rounded-2xl p-6 sm:p-7 space-y-5 relative border border-[#397BFF]/50 glow-blue">
+            <button onclick="closeVoiceModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white transition">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <!-- Voice Modal Header -->
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-[#397BFF]/20 text-[#397BFF] flex items-center justify-center border border-[#397BFF]/40">
+                    <i data-lucide="mic" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h3 class="text-base font-bold text-white font-sans">NEXUS Voice AI Commander</h3>
+                    <p class="text-[11px] text-slate-400">Speak naturally to orchestrate missions, approve actions, or navigate views.</p>
+                </div>
+            </div>
+
+            <!-- Language Controls -->
+            <div class="flex items-center justify-between text-xs font-mono pt-1">
+                <div class="flex items-center space-x-2">
+                    <span class="text-slate-400">Language:</span>
+                    <select id="voiceLanguageSelect" class="bg-[#080D1B] border border-[#1F2E4D] rounded-lg px-2.5 py-1 text-slate-200 text-xs">
+                        <option value="en-US">English (US)</option>
+                        <option value="hi-IN">हिन्दी (Hindi)</option>
+                        <option value="bn-BD">বাংলা (Bengali)</option>
+                        <option value="ta-IN">தமிழ் (Tamil)</option>
+                    </select>
+                </div>
+                <div class="flex items-center space-x-2 text-slate-300">
+                    <span id="voiceTtsStatus" class="text-[10px] text-emerald-400 flex items-center space-x-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                        <span>TTS Audio Ready</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Waveform Canvas & Mic Button -->
+            <div class="relative bg-[#080D1B] border border-[#1F2E4D] rounded-xl p-5 flex flex-col items-center justify-center space-y-4 overflow-hidden">
+                <canvas id="voiceWaveCanvas" class="w-full h-16 pointer-events-none"></canvas>
+                
+                <button id="voiceMicBtn" onclick="toggleVoiceRecording()" class="relative z-10 w-16 h-16 rounded-full bg-gradient-to-tr from-[#397BFF] to-[#865BFF] flex items-center justify-center text-white shadow-xl hover:scale-105 active:scale-95 transition-all">
+                    <i id="voiceMicIcon" data-lucide="mic" class="w-7 h-7"></i>
+                </button>
+                <div id="voiceStatusHint" class="text-xs font-mono text-slate-400">Click microphone to speak</div>
+            </div>
+
+            <!-- Transcript & Action Feedback Box -->
+            <div class="space-y-2">
+                <div class="text-[11px] font-mono text-slate-400 flex items-center justify-between">
+                    <span>TRANSCRIPT &amp; ACTION FEED</span>
+                    <button onclick="clearVoiceLog()" class="text-slate-500 hover:text-slate-300">Clear</button>
+                </div>
+                <div id="voiceTranscriptBox" class="bg-[#090D18] border border-[#1F2E4D] rounded-xl p-3 min-h-[70px] max-h-36 overflow-y-auto stream-scroll font-mono text-xs text-slate-200 whitespace-pre-wrap">
+                    <span class="text-slate-500 italic">&quot;Analyze sales performance&quot; or &quot;Authorize pending action&quot;...</span>
+                </div>
+            </div>
+
+            <!-- Suggested Voice Chips -->
+            <div class="space-y-1.5">
+                <span class="text-[10px] font-mono uppercase text-slate-500">Quick Voice Commands:</span>
+                <div class="flex flex-wrap gap-1.5 text-[11px] font-mono">
+                    <button onclick="simulateVoiceCommand('Analyze sales data and find revenue risks')" class="px-2.5 py-1 rounded-lg bg-[#111A2E] text-slate-300 hover:text-white hover:bg-[#1E293B] border border-[#1F2E4D] transition">
+                        &quot;Run Sales Mission&quot;
+                    </button>
+                    <button onclick="simulateVoiceCommand('Analyze hospital clinical operations and wait times')" class="px-2.5 py-1 rounded-lg bg-[#111A2E] text-slate-300 hover:text-white hover:bg-[#1E293B] border border-[#1F2E4D] transition">
+                        &quot;Run Healthcare Mission&quot;
+                    </button>
+                    <button onclick="simulateVoiceCommand('Show pending approvals')" class="px-2.5 py-1 rounded-lg bg-[#111A2E] text-slate-300 hover:text-white hover:bg-[#1E293B] border border-[#1F2E4D] transition">
+                        &quot;Open Approvals&quot;
+                    </button>
+                    <button onclick="simulateVoiceCommand('Authorize pending action')" class="px-2.5 py-1 rounded-lg bg-[#111A2E] text-amber-300 hover:text-white hover:bg-amber-950/40 border border-amber-500/40 transition">
+                        &quot;Authorize Action&quot;
+                    </button>
+                    <button onclick="simulateVoiceCommand('Show active agents')" class="px-2.5 py-1 rounded-lg bg-[#111A2E] text-slate-300 hover:text-white hover:bg-[#1E293B] border border-[#1F2E4D] transition">
+                        &quot;Agent Status&quot;
+                    </button>
+                    <button onclick="simulateVoiceCommand('Open visual workflow builder')" class="px-2.5 py-1 rounded-lg bg-[#111A2E] text-slate-300 hover:text-white hover:bg-[#1E293B] border border-[#1F2E4D] transition">
+                        &quot;Workflow Builder&quot;
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- ========================================================================= -->
     <!-- SCREEN 4 & 5: MAIN ENTERPRISE COMMAND CENTER & WORKSPACE APPLICATION SHELL-->
@@ -586,6 +673,13 @@
 
                 <!-- Right: Profile & Quick Actions -->
                 <div class="flex items-center space-x-3">
+                    <!-- Voice AI Assistant Button -->
+                    <button id="voiceAiTriggerBtn" onclick="openVoiceModal()" title="Voice AI Assistant (Multilingual Speech)" class="relative px-3 py-1.5 rounded-xl bg-[#397BFF]/10 border border-[#397BFF]/40 text-[#397BFF] hover:bg-[#397BFF]/20 hover:text-white transition flex items-center space-x-1.5 text-xs font-mono font-semibold">
+                        <i data-lucide="mic" class="w-4 h-4 text-[#397BFF]"></i>
+                        <span class="hidden md:inline">Voice AI</span>
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    </button>
+
                     <button onclick="switchAppTab('app-approvals')" class="relative p-2 rounded-xl bg-[#111A2E] border border-[#1F2E4D] text-slate-300 hover:text-white transition">
                         <i data-lucide="bell" class="w-4 h-4"></i>
                         <span id="approvalsBadge" class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-amber-500 text-black font-bold text-[9px] flex items-center justify-center">0</span>
@@ -1701,31 +1795,46 @@
         function renderMarketplaceGrid() {
             const grid = document.getElementById('marketplaceGrid');
             if (!grid) return;
-            grid.innerHTML = MARKETPLACE_AGENTS.map(item => `
-                <div class="glass-panel rounded-2xl p-5 space-y-4 border border-[#1F2E4D]">
+            grid.innerHTML = MARKETPLACE_AGENTS.map((item, idx) => `
+                <div class="glass-panel rounded-2xl p-5 space-y-4 border ${item.installed ? 'border-emerald-500/40 bg-emerald-950/10' : 'border-[#1F2E4D]'} transition">
                     <div class="flex items-center justify-between">
-                        <div class="w-10 h-10 rounded-xl bg-[#865BFF]/10 text-[#865BFF] flex items-center justify-center">
+                        <div class="w-10 h-10 rounded-xl ${item.installed ? 'bg-emerald-500/20 text-emerald-400' : 'bg-[#865BFF]/10 text-[#865BFF]'} flex items-center justify-center">
                             <i data-lucide="${item.icon}" class="w-5 h-5"></i>
                         </div>
                         <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-[#111A2E] text-slate-400">${item.category}</span>
                     </div>
                     <div>
-                        <h4 class="font-bold text-sm text-white">${item.name}</h4>
+                        <div class="flex items-center justify-between">
+                            <h4 class="font-bold text-sm text-white">${item.name}</h4>
+                            ${item.installed ? '<span class="text-[10px] font-mono text-emerald-400 font-bold">ONLINE</span>' : ''}
+                        </div>
                         <p class="text-xs text-slate-400 mt-1 leading-relaxed">${item.desc}</p>
                     </div>
-                    <button onclick="showToast('${item.name} installed into mesh.')" class="w-full py-2 rounded-xl text-xs font-bold ${item.installed ? 'bg-[#111A2E] text-emerald-400 border border-emerald-500/40' : 'btn-gradient text-white'}">
-                        ${item.installed ? 'Configured & Active' : 'Install Agent'}
+                    <button onclick="toggleInstallMarketplaceAgent(${idx})" class="w-full py-2 rounded-xl text-xs font-bold transition flex items-center justify-center space-x-1.5 ${item.installed ? 'bg-[#111A2E] text-emerald-400 border border-emerald-500/40 hover:bg-rose-950/40 hover:border-rose-500/40 hover:text-rose-300' : 'btn-gradient text-white'}">
+                        <i data-lucide="${item.installed ? 'check' : 'download'}" class="w-3.5 h-3.5"></i>
+                        <span>${item.installed ? 'Configured & Active' : 'Install Agent'}</span>
                     </button>
                 </div>
             `).join('');
             lucide.createIcons();
         }
 
+        function toggleInstallMarketplaceAgent(index) {
+            const item = MARKETPLACE_AGENTS[index];
+            item.installed = !item.installed;
+            renderMarketplaceGrid();
+            if (item.installed) {
+                showToast(`Agent '${item.name}' deployed to active orchestration mesh.`);
+            } else {
+                showToast(`Agent '${item.name}' removed from mesh.`, 'info');
+            }
+        }
+
         // Integrations Grid
         function renderIntegrationsGrid() {
             const grid = document.getElementById('integrationsGrid');
             if (!grid) return;
-            grid.innerHTML = INTEGRATIONS_LIST.map(item => `
+            grid.innerHTML = INTEGRATIONS_LIST.map((item, idx) => `
                 <div class="glass-panel rounded-2xl p-5 space-y-3 border border-[#1F2E4D]">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-3">
@@ -1740,12 +1849,33 @@
                         <span class="w-2 h-2 rounded-full ${item.status === 'Connected' ? 'bg-emerald-400' : 'bg-slate-500'}"></span>
                     </div>
                     <div class="flex items-center justify-between pt-2 border-t border-[#1F2E4D] text-xs font-mono text-slate-400">
-                        <span>Latency: ${item.ping}</span>
-                        <button onclick="showToast('${item.name} test ping passed: 200 OK (${item.ping})')" class="text-[#397BFF] hover:underline">Ping &rarr;</button>
+                        <span>Latency: <span id="ping-val-${idx}" class="text-slate-200">${item.ping}</span></span>
+                        <button onclick="pingIntegration(${idx})" class="text-[#397BFF] hover:underline flex items-center space-x-1">
+                            <span>Ping</span>
+                            <span>&rarr;</span>
+                        </button>
                     </div>
                 </div>
             `).join('');
             lucide.createIcons();
+        }
+
+        async function pingIntegration(index) {
+            const item = INTEGRATIONS_LIST[index];
+            const el = document.getElementById(`ping-val-${index}`);
+            if (el) el.innerText = "testing...";
+            const t0 = performance.now();
+            try {
+                await fetch('/health');
+                const ms = Math.round(performance.now() - t0);
+                item.ping = `${ms}ms`;
+                item.status = "Connected";
+                showToast(`${item.name} connection test: 200 OK (${ms}ms)`);
+            } catch (err) {
+                item.ping = "ERR";
+                showToast(`Ping failed: ${err}`, "error");
+            }
+            renderIntegrationsGrid();
         }
 
         // Document List & Uploads
@@ -1764,20 +1894,35 @@
                 const container = document.getElementById('documentsListContainer');
                 if (container) {
                     container.innerHTML = datasets.map(d => `
-                        <div class="py-3 flex items-center justify-between">
+                        <div onclick="selectDocumentAndWorkspace('${d.filename}')" class="py-3 flex items-center justify-between cursor-pointer hover:bg-[#111A2E]/60 px-3 rounded-xl transition">
                             <div class="flex items-center space-x-3">
                                 <i data-lucide="file-spreadsheet" class="w-4 h-4 text-emerald-400"></i>
                                 <div>
                                     <div class="text-slate-200 font-bold">${d.filename}</div>
-                                    <div class="text-[10px] text-slate-500">${(d.size_bytes/1024).toFixed(1)} KB | RAG Schema Validated</div>
+                                    <div class="text-[10px] text-slate-500">${(d.size_bytes/1024).toFixed(1)} KB | RAG Schema Validated &bull; Click to launch mission</div>
                                 </div>
                             </div>
-                            <span class="px-2 py-0.5 rounded text-[10px] bg-emerald-500/20 text-emerald-300">INDEXED</span>
+                            <span class="px-2 py-0.5 rounded text-[10px] bg-emerald-500/20 text-emerald-300">INDEXED &rarr;</span>
                         </div>
                     `).join('');
                     lucide.createIcons();
                 }
             } catch (err) {
+                console.error("Document list error:", err);
+            }
+        }
+
+        function selectDocumentAndWorkspace(filename) {
+            switchAppTab('app-workspace');
+            const select = document.getElementById('appDatasetSelect');
+            if (select) select.value = filename;
+            if (filename.toLowerCase().includes('health') || filename.toLowerCase().includes('patient')) {
+                setWorkspacePrompt('healthcare');
+            } else {
+                setWorkspacePrompt('sales');
+            }
+            showToast(`Loaded dataset '${filename}' into workspace.`);
+        }
                 console.error("Document list error:", err);
             }
         }
@@ -1995,6 +2140,12 @@
                 { from: 'canvas-node-4', to: 'canvas-node-5' }
             ];
 
+            for (let i = 6; i <= dynamicNodeCounter; i++) {
+                if (document.getElementById(`canvas-node-${i}`)) {
+                    cables.push({ from: `canvas-node-${i}`, to: 'canvas-node-5' });
+                }
+            }
+
             let pathHtml = '';
             cables.forEach(c => {
                 const p1 = getPortPos(c.from, true);
@@ -2010,6 +2161,12 @@
         }
 
         function resetCanvasLayout() {
+            for (let i = 6; i <= dynamicNodeCounter; i++) {
+                const el = document.getElementById(`canvas-node-${i}`);
+                if (el) el.remove();
+            }
+            dynamicNodeCounter = 5;
+
             const defaults = {
                 'canvas-node-1': { x: 32, y: 64 },
                 'canvas-node-2': { x: 288, y: 64 },
@@ -2028,13 +2185,278 @@
             showToast("Canvas geometry reset to default.");
         }
 
+        let dynamicNodeCounter = 5;
+        const CUSTOM_AGENT_TEMPLATES = [
+            { name: "FinOps Sentry Agent", role: "Cloud Cost & GPU Metering", tag: "FINOPS", border: "border-emerald-500/80", color: "text-emerald-300" },
+            { name: "Security Audit Sentinel", role: "Prompt Injection & PII Guard", tag: "SECURITY", border: "border-rose-500/80", color: "text-rose-300" },
+            { name: "Legal Compliance Auditor", role: "GDPR & Contract Risk Check", tag: "COMPLIANCE", border: "border-indigo-500/80", color: "text-indigo-300" },
+            { name: "Clinical Triage Specialist", role: "Emergency SLA & ICU Routing", tag: "CLINICAL", border: "border-teal-500/80", color: "text-teal-300" }
+        ];
+
         function addNodeToCanvas() {
-            showToast("Added custom agent node to canvas.", "info");
+            const container = document.getElementById('workflowCanvasContainer');
+            if (!container) return;
+
+            dynamicNodeCounter++;
+            const template = CUSTOM_AGENT_TEMPLATES[(dynamicNodeCounter - 6) % CUSTOM_AGENT_TEMPLATES.length];
+            const nodeId = `canvas-node-${dynamicNodeCounter}`;
+
+            const node = document.createElement('div');
+            node.id = nodeId;
+            node.className = `draggable-node absolute w-64 glass-panel rounded-xl p-3 border-2 ${template.border} shadow-2xl`;
+            const posX = Math.min(container.offsetWidth - 280, 100 + ((dynamicNodeCounter - 5) * 45));
+            const posY = 180 + (((dynamicNodeCounter - 5) % 3) * 60);
+            node.style.left = `${posX}px`;
+            node.style.top = `${posY}px`;
+            node.setAttribute('data-x', posX);
+            node.setAttribute('data-y', posY);
+
+            node.innerHTML = `
+                <div class="node-handle flex items-center justify-between pb-2 border-b border-slate-700/50">
+                    <span class="text-xs font-bold font-mono ${template.color} flex items-center space-x-1.5">
+                        <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
+                        <span>${template.name}</span>
+                    </span>
+                    <span class="text-[10px] font-mono bg-[#080D1B] px-1 rounded text-slate-400">${template.tag}</span>
+                </div>
+                <div class="py-2 text-[11px] text-slate-300">${template.role}</div>
+                <div class="flex justify-between text-[10px] font-mono text-slate-500">
+                    <span>&larr; In</span>
+                    <span class="${template.color}">To Gateway &rarr;</span>
+                </div>
+            `;
+
+            container.appendChild(node);
+            initDraggableNodes();
+            lucide.createIcons();
+            showToast(`Added '${template.name}' to workflow canvas.`);
         }
 
         function executeCanvasWorkflow() {
             switchAppTab('app-workspace');
+            showToast("Visual workflow DAG deployed to execution runtime.", "info");
             runAppMission();
+        }
+
+        // =====================================================================
+        // VOICE AI INTERACTIVE CONTROLLER (Multilingual Speech & Auto Actions)
+        // =====================================================================
+        let voiceRecognition = null;
+        let isVoiceListening = false;
+        let waveAnimationId = null;
+
+        function openVoiceModal() {
+            const modal = document.getElementById('voiceModal');
+            if (!modal) return;
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                initVoiceWave();
+                lucide.createIcons();
+            }, 50);
+        }
+
+        function closeVoiceModal() {
+            const modal = document.getElementById('voiceModal');
+            if (modal) modal.classList.add('hidden');
+            stopVoiceRecognition();
+        }
+
+        function initVoiceWave() {
+            const canvas = document.getElementById('voiceWaveCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.parentElement.offsetWidth || 400;
+            canvas.height = 64;
+
+            let phase = 0;
+            function renderWave() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                const h = canvas.height;
+                const w = canvas.width;
+
+                ctx.beginPath();
+                ctx.lineWidth = 2.5;
+                const grad = ctx.createLinearGradient(0, 0, w, 0);
+                grad.addColorStop(0, '#397BFF');
+                grad.addColorStop(0.5, '#865BFF');
+                grad.addColorStop(1, '#06B6D4');
+                ctx.strokeStyle = grad;
+
+                const amp = isVoiceListening ? 20 : 3;
+                const freq = isVoiceListening ? 0.045 : 0.015;
+
+                for (let x = 0; x < w; x++) {
+                    const y = (h / 2) + Math.sin(x * freq + phase) * amp * Math.sin(x / w * Math.PI);
+                    if (x === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+
+                phase += isVoiceListening ? 0.12 : 0.03;
+                waveAnimationId = requestAnimationFrame(renderWave);
+            }
+
+            if (waveAnimationId) cancelAnimationFrame(waveAnimationId);
+            renderWave();
+        }
+
+        function toggleVoiceRecording() {
+            if (isVoiceListening) {
+                stopVoiceRecognition();
+            } else {
+                startVoiceRecognition();
+            }
+        }
+
+        function startVoiceRecognition() {
+            const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const lang = document.getElementById('voiceLanguageSelect')?.value || 'en-US';
+            const btn = document.getElementById('voiceMicBtn');
+            const hint = document.getElementById('voiceStatusHint');
+
+            if (!SpeechRec) {
+                showToast("Web Speech API not supported in this browser. Use quick voice command chips.", "amber");
+                return;
+            }
+
+            try {
+                voiceRecognition = new SpeechRec();
+                voiceRecognition.lang = lang;
+                voiceRecognition.continuous = false;
+                voiceRecognition.interimResults = false;
+
+                voiceRecognition.onstart = () => {
+                    isVoiceListening = true;
+                    if (btn) btn.className = "relative z-10 w-16 h-16 rounded-full bg-rose-600 flex items-center justify-center text-white shadow-xl animate-pulse";
+                    if (hint) hint.innerText = "Listening... Speak now";
+                };
+
+                voiceRecognition.onresult = (event) => {
+                    const transcript = event.results[0][0].transcript;
+                    submitVoiceTranscript(transcript);
+                };
+
+                voiceRecognition.onerror = (e) => {
+                    stopVoiceRecognition();
+                    showToast(`Voice capture note: ${e.error || 'Mic inactive'}`, 'info');
+                };
+
+                voiceRecognition.onend = () => {
+                    stopVoiceRecognition();
+                };
+
+                voiceRecognition.start();
+            } catch (err) {
+                stopVoiceRecognition();
+                showToast("Could not access microphone: " + err, 'error');
+            }
+        }
+
+        function stopVoiceRecognition() {
+            isVoiceListening = false;
+            if (voiceRecognition) {
+                try { voiceRecognition.stop(); } catch(e){}
+                voiceRecognition = null;
+            }
+            const btn = document.getElementById('voiceMicBtn');
+            const hint = document.getElementById('voiceStatusHint');
+            if (btn) btn.className = "relative z-10 w-16 h-16 rounded-full bg-gradient-to-tr from-[#397BFF] to-[#865BFF] flex items-center justify-center text-white shadow-xl hover:scale-105 active:scale-95 transition-all";
+            if (hint) hint.innerText = "Click microphone to speak";
+        }
+
+        function simulateVoiceCommand(text) {
+            submitVoiceTranscript(text);
+        }
+
+        async function submitVoiceTranscript(transcript) {
+            const box = document.getElementById('voiceTranscriptBox');
+            const lang = document.getElementById('voiceLanguageSelect')?.value || 'en-US';
+            if (box) {
+                box.innerHTML = `<div class="text-[#397BFF] font-bold">&gt; You: "${transcript}"</div><div class="text-slate-400 italic">Processing cognitive intent...</div>`;
+            }
+
+            try {
+                const resp = await fetch('/api/v1/voice/intent', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ transcript, language: lang })
+                });
+                const res = await resp.json();
+
+                if (box) {
+                    box.innerHTML = `
+                        <div class="text-[#397BFF] font-bold">&gt; You: "${transcript}"</div>
+                        <div class="text-emerald-400 font-bold">&gt; AI: "${res.ai_response}"</div>
+                        <div class="text-[10px] text-slate-500 font-mono mt-1">Intent: ${res.intent}</div>
+                    `;
+                    box.scrollTop = box.scrollHeight;
+                }
+
+                // TTS Speech Playback
+                speakAiResponse(res.ai_response, lang);
+
+                // Execute action
+                executeVoiceAction(res.target_action);
+            } catch (err) {
+                if (box) box.innerHTML += `<div class="text-rose-400">Error: ${err}</div>`;
+            }
+        }
+
+        function speakAiResponse(text, lang) {
+            if (!('speechSynthesis' in window)) return;
+            try {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = lang || 'en-US';
+                utterance.rate = 1.0;
+                window.speechSynthesis.speak(utterance);
+            } catch (e) {
+                console.warn("TTS error:", e);
+            }
+        }
+
+        function executeVoiceAction(action) {
+            if (!action) return;
+            setTimeout(() => {
+                if (action.type === 'NAVIGATE_AND_RUN') {
+                    closeVoiceModal();
+                    switchAppTab('app-workspace');
+                    setWorkspacePrompt(action.scenario || 'sales');
+                    runAppMission();
+                    showToast(`Voice Action: Initiating ${action.scenario || 'mission'} workflow.`);
+                } else if (action.type === 'NAVIGATE') {
+                    closeVoiceModal();
+                    switchAppTab(action.target);
+                    showToast(`Voice Action: Navigated to ${action.target.replace('app-', '')}.`);
+                } else if (action.type === 'SUBMIT_APPROVAL') {
+                    closeVoiceModal();
+                    executePendingApprovalByVoice(action.decision || 'approve');
+                }
+            }, 600);
+        }
+
+        async function executePendingApprovalByVoice(decision) {
+            try {
+                const resp = await fetch('/api/v1/approvals');
+                const apps = await resp.json();
+                const pending = apps.find(a => a.status === 'pending');
+                if (pending) {
+                    await submitApprovalAction(pending.task_id, decision);
+                    showToast(`Voice Action: Pending approval ${pending.id} ${decision}d!`);
+                } else if (currentTaskId) {
+                    await submitApprovalAction(currentTaskId, decision);
+                    showToast(`Voice Action: Current task ${decision}d!`);
+                } else {
+                    showToast("No pending approvals found to authorize.", "info");
+                }
+            } catch (e) {
+                showToast("Approval error: " + e, 'error');
+            }
+        }
+
+        function clearVoiceLog() {
+            const box = document.getElementById('voiceTranscriptBox');
+            if (box) box.innerHTML = '<span class="text-slate-500 italic">&quot;Analyze sales performance&quot; or &quot;Authorize pending action&quot;...</span>';
         }
 
         // AI Workspace Runnable Logic

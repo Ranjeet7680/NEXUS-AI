@@ -25,11 +25,21 @@ class OrchestratorEngine:
     def __init__(self):
         self.active_tasks: Dict[str, Dict[str, Any]] = {}
         self.event_queues: Dict[str, asyncio.Queue] = {}
+        self.subscribers: Dict[str, List[asyncio.Queue]] = {}
 
     def get_or_create_queue(self, task_id: str) -> asyncio.Queue:
         if task_id not in self.event_queues:
             self.event_queues[task_id] = asyncio.Queue()
         return self.event_queues[task_id]
+
+    def register_subscriber(self, task_id: str, queue: asyncio.Queue):
+        if task_id not in self.subscribers:
+            self.subscribers[task_id] = []
+        self.subscribers[task_id].append(queue)
+
+    def unregister_subscriber(self, task_id: str, queue: asyncio.Queue):
+        if task_id in self.subscribers and queue in self.subscribers[task_id]:
+            self.subscribers[task_id].remove(queue)
 
     async def emit_event(self, task_id: str, agent: str, phase: str, message: str, payload: Optional[Dict[str, Any]] = None, confidence: float = 1.0, tokens: int = 0, latency_ms: int = 0):
         event = {
@@ -44,9 +54,16 @@ class OrchestratorEngine:
             "timestamp": datetime.now(timezone.utc).isoformat()
         }
 
-        # Put on SSE queue
+        # Put on legacy queue for backwards compatibility
         queue = self.get_or_create_queue(task_id)
         await queue.put(event)
+
+        # Fan-out to active SSE subscribers
+        for sub_q in list(self.subscribers.get(task_id, [])):
+            try:
+                sub_q.put_nowait(event)
+            except Exception:
+                pass
 
         # Update in-memory state
         if task_id in self.active_tasks:
