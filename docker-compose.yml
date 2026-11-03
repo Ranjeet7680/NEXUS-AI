@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  nexus-api:
+    build: .
+    container_name: nexus-ai-platform
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://nexus_user:nexus_password@nexus-db:5432/nexus_db
+      - REDIS_URL=redis://nexus-redis:6379/0
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+    depends_on:
+      - nexus-db
+      - nexus-redis
+    restart: unless-stopped
+
+  nexus-db:
+    image: pgvector/pgvector:pg16
+    container_name: nexus-pgvector-db
+    environment:
+      POSTGRES_USER: nexus_user
+      POSTGRES_PASSWORD: nexus_password
+      POSTGRES_DB: nexus_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  nexus-redis:
+    image: redis:7-alpine
+    container_name: nexus-cache-redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+volumes:
+  pgdata:

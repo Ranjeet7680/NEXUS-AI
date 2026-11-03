@@ -1,0 +1,8 @@
+department,metric,target_sla,current_val,unit,status,risk_score,physician_lead
+Emergency,Average Triage Latency,15,28,minutes,BREACHED,0.88,Dr. Reynolds
+Cardiology,Bed Turnover Rate,4.0,3.1,hours,AT_RISK,0.64,Dr. Chen
+Oncology,Chemo Prep Turnaround,60,54,minutes,COMPLIANT,0.18,Dr. Patel
+Neurology,MRI Scheduling Wait,48,72,hours,BREACHED,0.92,Dr. Morrison
+Pediatrics,Discharge Protocol Delay,30,22,minutes,COMPLIANT,0.12,Dr. Gomez
+Radiology,Critical Findings Notification,20,18,minutes,COMPLIANT,0.15,Dr. Zhao
+ICU,Nurse to Patient Ratio,2.0,1.4,ratio,CRITICAL,0.95,Dr. Reynolds

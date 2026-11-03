@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 620" width="100%" height="100%">
+  <defs>
+    <linearGradient id="domBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080D1A" />
+      <stop offset="50%" stop-color="#0B1220" />
+      <stop offset="100%" stop-color="#070A12" />
+    </linearGradient>
+
+    <!-- Domain Card Gradients -->
+    <linearGradient id="finCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A8A" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.8" />
+    </linearGradient>
+    <linearGradient id="medCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#065F46" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.8" />
+    </linearGradient>
+
+    <!-- Stat Box Gradients -->
+    <linearGradient id="boxFin" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+
+    <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <style>
+    .txt-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-weight: 800; }
+    .txt-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-weight: 500; }
+    .txt-mono { font-family: "JetBrains Mono", Consolas, monospace; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1100" height="620" rx="14" fill="url(#domBg)" />
+  <rect x="1" y="1" width="1098" height="618" rx="13" fill="none" stroke="#334155" stroke-opacity="0.5" stroke-width="1.5" />
+
+  <!-- Diagram Title Header -->
+  <g transform="translate(50, 42)">
+    <circle cx="10" cy="0" r="6" fill="#10B981" />
+    <text x="26" y="5" fill="#F8FAFC" font-size="19" class="txt-title" letter-spacing="-0.5">DIAGRAM 4: DUAL MULTI-DOMAIN ORCHESTRATION BENCHMARK</text>
+    <text x="26" y="24" fill="#64748B" font-size="12" class="txt-sub">Seamless Dynamic Adaptation: Enterprise FinOps Analytics vs Clinical Healthcare Operations</text>
+  </g>
+
+  <!-- Domain Badge Top Right -->
+  <g transform="translate(930, 42)">
+    <rect x="-85" y="-14" width="170" height="28" rx="14" fill="#0F172A" stroke="#10B981" stroke-width="1" />
+    <circle cx="-67" cy="0" r="4" fill="#10B981" />
+    <text x="-54" y="4" fill="#10B981" font-size="10" class="txt-mono" font-weight="700">MULTI-TENANT SWARM</text>
+  </g>
+
+  <!-- ==================== COLUMN A: ENTERPRISE SALES BI ==================== -->
+  <g transform="translate(50, 85)" filter="url(#cardShadow)">
+    <rect width="485" height="460" rx="10" fill="url(#finCard)" stroke="#38BDF8" stroke-opacity="0.6" stroke-width="1.2" />
+    
+    <!-- Domain Header Pill -->
+    <g transform="translate(20, 20)">
+      <rect width="180" height="26" rx="13" fill="#1E3A8A" />
+      <text x="14" y="17" fill="#93C5FD" font-size="11" class="txt-mono" font-weight="700">DOMAIN A: FINTECH &amp; BI</text>
+      <text x="0" y="48" fill="#F8FAFC" font-size="16" class="txt-title">Enterprise Sales &amp; Revenue Risk</text>
+      <text x="0" y="68" fill="#94A3B8" font-size="11" class="txt-sub">Dataset: sample_sales_q3.csv ($2.46M Target)</text>
+    </g>
+
+    <!-- Step 1: Input & Ingest -->
+    <g transform="translate(20, 115)">
+      <rect width="445" height="60" rx="6" fill="url(#boxFin)" stroke="#1E293B" stroke-width="1" />
+      <text x="14" y="20" fill="#38BDF8" font-size="10" class="txt-mono" font-weight="700">1. DOCUMENT &amp; RESEARCH INGESTION</text>
+      <text x="14" y="38" fill="#E2E8F0" font-size="11" class="txt-sub">Parsed 5 product lines · Industry Benchmark: SaaS 8.2% max churn</text>
+      <text x="14" y="50" fill="#64748B" font-size="10" class="txt-mono">Quality audit verifies 100% record integrity without null values</text>
+    </g>
+
+    <!-- Step 2: Analyst Agent Computation -->
+    <g transform="translate(20, 185)">
+      <rect width="445" height="85" rx="6" fill="url(#boxFin)" stroke="#1E293B" stroke-width="1" />
+      <text x="14" y="20" fill="#10B981" font-size="10" class="txt-mono" font-weight="700">2. QUANTITATIVE ANALYSIS &amp; VARIANCE METRICS</text>
+      <text x="14" y="38" fill="#A7F3D0" font-size="11" class="txt-sub">Total Net Sales: $2,260,450 (99.3% Quota Attainment)</text>
+      <text x="14" y="54" fill="#E2E8F0" font-size="10" class="txt-mono">• Top Performer: Cloud Suite Pro ($1,150,000 / 115% target)</text>
+      <text x="14" y="70" fill="#F43F5E" font-size="10" class="txt-mono">• Critical Deficit: Legacy Bridge ERP (-$75,600 / 9.5% return rate)</text>
+    </g>
+
+    <!-- Step 3: Decision & Risk Diagnosis -->
+    <g transform="translate(20, 280)">
+      <rect width="445" height="75" rx="6" fill="url(#boxFin)" stroke="#1E293B" stroke-width="1" />
+      <text x="14" y="20" fill="#F43F5E" font-size="10" class="txt-mono" font-weight="700">3. STRATEGIC RISK SYNTHESIS (P0 CRITICAL)</text>
+      <text x="14" y="38" fill="#FECDD3" font-size="11" class="txt-sub">Diagnosed competitor cloud erosion &amp; legacy on-prem attrition</text>
+      <text x="14" y="54" fill="#94A3B8" font-size="10" class="txt-sub">Mitigation: Formulate 15% discount Cloud Migration Bridge incentive</text>
+    </g>
+
+    <!-- Step 4: HITL Deliverables -->
+    <g transform="translate(20, 365)">
+      <rect width="445" height="75" rx="6" fill="#0F172A" stroke="#F59E0B" stroke-width="1" />
+      <text x="14" y="20" fill="#F59E0B" font-size="10" class="txt-mono" font-weight="700">4. HITL GATEWAY &amp; MANAGEMENT ACTION</text>
+      <text x="14" y="38" fill="#FDE68A" font-size="11" class="txt-sub">Generated Q3 Executive Memo + Interactive Bar Chart Feed</text>
+      <text x="14" y="54" fill="#E2E8F0" font-size="10" class="txt-mono">Action Halted: Email to Board awaiting CFO Operator Approval ✓</text>
+    </g>
+  </g>
+
+  <!-- ==================== COLUMN B: CLINICAL HEALTHCARE OPS ==================== -->
+  <g transform="translate(565, 85)" filter="url(#cardShadow)">
+    <rect width="485" height="460" rx="10" fill="url(#medCard)" stroke="#10B981" stroke-opacity="0.6" stroke-width="1.2" />
+
+    <!-- Domain Header Pill -->
+    <g transform="translate(20, 20)">
+      <rect width="180" height="26" rx="13" fill="#064E3B" />
+      <text x="14" y="17" fill="#6EE7B7" font-size="11" class="txt-mono" font-weight="700">DOMAIN B: HEALTHCARE</text>
+      <text x="0" y="48" fill="#F8FAFC" font-size="16" class="txt-title">Clinical Operations &amp; SLA Triage</text>
+      <text x="0" y="68" fill="#94A3B8" font-size="11" class="txt-sub">Dataset: healthcare_patient_ops.csv (1,240 Admissions)</text>
+    </g>
+
+    <!-- Step 1: Input & Ingest -->
+    <g transform="translate(20, 115)">
+      <rect width="445" height="60" rx="6" fill="url(#boxFin)" stroke="#1E293B" stroke-width="1" />
+      <text x="14" y="20" fill="#10B981" font-size="10" class="txt-mono" font-weight="700">1. MEDICAL DATA &amp; SLA BENCHMARKS</text>
+      <text x="14" y="38" fill="#E2E8F0" font-size="11" class="txt-sub">Ingests 6 clinical wards · Hospital SLA target: &gt;92% timely care</text>
+      <text x="14" y="50" fill="#64748B" font-size="10" class="txt-mono">Cross-validation with triage acuity index (Emergency vs Outpatient)</text>
+    </g>
+
+    <!-- Step 2: Analyst Agent Computation -->
+    <g transform="translate(20, 185)">
+      <rect width="445" height="85" rx="6" fill="url(#boxFin)" stroke="#1E293B" stroke-width="1" />
+      <text x="14" y="20" fill="#F59E0B" font-size="10" class="txt-mono" font-weight="700">2. QUANTITATIVE ANALYSIS &amp; BOTTLENECK AUDIT</text>
+      <text x="14" y="38" fill="#FDE68A" font-size="11" class="txt-sub">Hospital Overall SLA Compliance: 78.4% (Critical Breach)</text>
+      <text x="14" y="54" fill="#F43F5E" font-size="10" class="txt-mono">• Emergency Triage: 42.4 min wait (vs 15 min SLA = +182% breach)</text>
+      <text x="14" y="70" fill="#F43F5E" font-size="10" class="txt-mono">• ICU Occupancy: 94.2% critical capacity limit</text>
+    </g>
+
+    <!-- Step 3: Decision & Risk Diagnosis -->
+    <g transform="translate(20, 280)">
+      <rect width="445" height="75" rx="6" fill="url(#boxFin)" stroke="#1E293B" stroke-width="1" />
+      <text x="14" y="20" fill="#F43F5E" font-size="10" class="txt-mono" font-weight="700">3. CLINICAL TRIAGE RISK SYNTHESIS (P0 RED)</text>
+      <text x="14" y="38" fill="#FECDD3" font-size="11" class="txt-sub">Diagnosed severe intake bottleneck causing clinical diversion</text>
+      <text x="14" y="54" fill="#94A3B8" font-size="10" class="txt-sub">Mitigation: Activate Rapid Assessment Clinic &amp; surge shift rotation</text>
+    </g>
+
+    <!-- Step 4: HITL Deliverables -->
+    <g transform="translate(20, 365)">
+      <rect width="445" height="75" rx="6" fill="#0F172A" stroke="#F59E0B" stroke-width="1" />
+      <text x="14" y="20" fill="#F59E0B" font-size="10" class="txt-mono" font-weight="700">4. HITL GATEWAY &amp; CLINICAL ESCALATION</text>
+      <text x="14" y="38" fill="#FDE68A" font-size="11" class="txt-sub">Drafted Chief Medical Officer Operational Directive</text>
+      <text x="14" y="54" fill="#E2E8F0" font-size="10" class="txt-mono">Action Halted: CMO Emergency Dispatch awaiting Doctor Approval ✓</text>
+    </g>
+  </g>
+
+  <!-- Bottom Common Bar -->
+  <g transform="translate(50, 560)">
+    <rect width="1000" height="40" rx="6" fill="#0F172A" stroke="#334155" stroke-width="1" />
+    <text x="20" y="25" fill="#94A3B8" font-size="11" class="txt-mono">
+      COMMON ORCHESTRATION ENGINE: LangGraph DAG · 7 Agents · SSE Telemetry · 0-Code Domain Taxonomy Switch
+    </text>
+    <text x="980" y="25" text-anchor="end" fill="#38BDF8" font-size="10" class="txt-mono">UNIFIED ARCHITECTURE</text>
+  </g>
+</svg>

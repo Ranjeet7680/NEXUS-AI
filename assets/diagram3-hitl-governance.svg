@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 620" width="100%" height="100%">
+  <defs>
+    <linearGradient id="secBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080D1A" />
+      <stop offset="50%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#090E17" />
+    </linearGradient>
+
+    <!-- State Gradients -->
+    <linearGradient id="gradPending" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#78350F" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="gradReview" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A8A" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="gradApprove" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#065F46" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="gradReject" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#881337" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+
+    <!-- Arrow Markers -->
+    <marker id="arrowAmber" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+      <polygon points="0 0, 7 3.5, 0 7" fill="#F59E0B" />
+    </marker>
+    <marker id="arrowEmerald" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+      <polygon points="0 0, 7 3.5, 0 7" fill="#10B981" />
+    </marker>
+    <marker id="arrowRose" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+      <polygon points="0 0, 7 3.5, 0 7" fill="#F43F5E" />
+    </marker>
+    <marker id="arrowBlue" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+      <polygon points="0 0, 7 3.5, 0 7" fill="#38BDF8" />
+    </marker>
+
+    <!-- Shadows -->
+    <filter id="boxShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+  </defs>
+
+  <style>
+    .txt-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-weight: 800; }
+    .txt-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-weight: 500; }
+    .txt-mono { font-family: "JetBrains Mono", Consolas, monospace; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1100" height="620" rx="14" fill="url(#secBg)" />
+  <rect x="1" y="1" width="1098" height="618" rx="13" fill="none" stroke="#334155" stroke-opacity="0.5" stroke-width="1.5" />
+
+  <!-- Diagram Title Header -->
+  <g transform="translate(50, 42)">
+    <circle cx="10" cy="0" r="6" fill="#F59E0B" />
+    <text x="26" y="5" fill="#F8FAFC" font-size="19" class="txt-title" letter-spacing="-0.5">DIAGRAM 3: HUMAN-IN-THE-LOOP (HITL) CRYPTOGRAPHIC GOVERNANCE</text>
+    <text x="26" y="24" fill="#64748B" font-size="12" class="txt-sub">Zero-Trust Action Gating · State Checkpoint Freezing · Cryptographic Operator Audit Trail</text>
+  </g>
+
+  <!-- Security Badge Top Right -->
+  <g transform="translate(930, 42)">
+    <rect x="-85" y="-14" width="170" height="28" rx="14" fill="#0F172A" stroke="#F59E0B" stroke-width="1" />
+    <circle cx="-67" cy="0" r="4" fill="#F59E0B" />
+    <text x="-54" y="4" fill="#F59E0B" font-size="10" class="txt-mono" font-weight="700">ZERO-TRUST GATEWAY</text>
+  </g>
+
+  <!-- ==================== STAGE 1: TRIGGER & SENSITIVITY CHECK ==================== -->
+  <g transform="translate(50, 100)" filter="url(#boxShadow)">
+    <rect width="250" height="180" rx="8" fill="#0F172A" stroke="#38BDF8" stroke-width="1" />
+    <rect x="16" y="16" width="30" height="30" rx="6" fill="#1E3A8A" />
+    <text x="31" y="36" text-anchor="middle" fill="#38BDF8" font-size="14">⚙</text>
+    <text x="56" y="36" fill="#F8FAFC" font-size="13" class="txt-title">1. Workflow Agent Trigger</text>
+    <text x="16" y="66" fill="#94A3B8" font-size="11" class="txt-sub">Assembles external payload:</text>
+    
+    <!-- Code snippet box -->
+    <rect x="16" y="78" width="218" height="66" rx="4" fill="#090D16" stroke="#1E293B" stroke-width="1" />
+    <text x="26" y="96" fill="#38BDF8" font-size="10" class="txt-mono">action: "dispatch_email"</text>
+    <text x="26" y="112" fill="#F59E0B" font-size="10" class="txt-mono">requires_approval: true</text>
+    <text x="26" y="128" fill="#94A3B8" font-size="10" class="txt-mono">recipient: "exec-team@"</text>
+
+    <text x="16" y="165" fill="#38BDF8" font-size="10" class="txt-mono">Policy: Sensitivity = HIGH</text>
+  </g>
+
+  <!-- Flow Arrow 1 -> 2 -->
+  <line x1="300" y1="190" x2="340" y2="190" stroke="#F59E0B" stroke-width="2" marker-end="url(#arrowAmber)" />
+
+  <!-- ==================== STAGE 2: STATE FREEZE & SSE BROADCAST ==================== -->
+  <g transform="translate(350, 100)" filter="url(#boxShadow)">
+    <rect width="260" height="180" rx="8" fill="url(#gradPending)" stroke="#F59E0B" stroke-width="1.5" />
+    <rect x="16" y="16" width="30" height="30" rx="6" fill="#78350F" />
+    <text x="31" y="36" text-anchor="middle" fill="#FDE68A" font-size="14">⏸</text>
+    <text x="56" y="36" fill="#FDE68A" font-size="13" class="txt-title">2. State Machine Freeze</text>
+    <text x="16" y="66" fill="#FEF3C7" font-size="11" class="txt-sub">Status: awaiting_approval</text>
+
+    <!-- Details Box -->
+    <rect x="16" y="78" width="228" height="66" rx="4" fill="#090D16" stroke="#78350F" stroke-width="1" />
+    <text x="26" y="96" fill="#FDE68A" font-size="10" class="txt-mono">• Checkpoint saved to DB</text>
+    <text x="26" y="112" fill="#FDE68A" font-size="10" class="txt-mono">• Lock acquisition on Task</text>
+    <text x="26" y="128" fill="#FDE68A" font-size="10" class="txt-mono">• SSE event push to UI</text>
+
+    <text x="16" y="165" fill="#FDE68A" font-size="10" class="txt-mono">Zero Unintended Dispatch</text>
+  </g>
+
+  <!-- Flow Arrow 2 -> 3 -->
+  <line x1="610" y1="190" x2="650" y2="190" stroke="#38BDF8" stroke-width="2" marker-end="url(#arrowBlue)" />
+
+  <!-- ==================== STAGE 3: OPERATOR REVIEW IN COMMAND CENTER ==================== -->
+  <g transform="translate(660, 100)" filter="url(#boxShadow)">
+    <rect width="390" height="180" rx="8" fill="url(#gradReview)" stroke="#38BDF8" stroke-width="1.5" />
+    <rect x="16" y="16" width="30" height="30" rx="6" fill="#1E3A8A" />
+    <text x="31" y="36" text-anchor="middle" fill="#38BDF8" font-size="14">👤</text>
+    <text x="56" y="36" fill="#F8FAFC" font-size="13" class="txt-title">3. Executive Operator Inspection</text>
+    <text x="16" y="66" fill="#93C5FD" font-size="11" class="txt-sub">UI Approvals Queue (/api/v1/approvals)</text>
+
+    <!-- Inspection Grid -->
+    <rect x="16" y="78" width="358" height="66" rx="4" fill="#090D16" stroke="#1E3A8A" stroke-width="1" />
+    <text x="26" y="95" fill="#E2E8F0" font-size="10" class="txt-mono">Inspect Draft: Sales Revenue Deficit Memo ($75.6K)</text>
+    <text x="26" y="110" fill="#10B981" font-size="10" class="txt-mono">Grounding Score: 97.4% Certified Grounded</text>
+    <text x="26" y="125" fill="#38BDF8" font-size="10" class="txt-mono">Target Recipient: board@enterprise.com</text>
+
+    <text x="16" y="165" fill="#38BDF8" font-size="10" class="txt-mono">Operator Token Authorized</text>
+  </g>
+
+  <!-- Branching Downward Paths from Stage 3 -->
+  <path d="M 780 280 C 780 340, 400 340, 400 380" fill="none" stroke="#10B981" stroke-width="2" marker-end="url(#arrowEmerald)" />
+  <path d="M 940 280 C 940 340, 850 340, 850 380" fill="none" stroke="#F43F5E" stroke-width="2" marker-end="url(#arrowRose)" />
+
+  <!-- ==================== DECISION PATH A: AUTHORIZED & RESUMED ==================== -->
+  <g transform="translate(180, 390)" filter="url(#boxShadow)">
+    <rect width="440" height="145" rx="8" fill="url(#gradApprove)" stroke="#10B981" stroke-width="1.5" />
+    <rect x="16" y="16" width="30" height="30" rx="6" fill="#064E3B" />
+    <text x="31" y="36" text-anchor="middle" fill="#34D399" font-size="14">✓</text>
+    <text x="56" y="36" fill="#A7F3D0" font-size="14" class="txt-title">Decision A: Operator Approves</text>
+    <text x="16" y="66" fill="#D1FAE5" font-size="11" class="txt-sub">POST /api/v1/approvals/{id} with decision="approve"</text>
+
+    <!-- Steps -->
+    <rect x="16" y="78" width="408" height="50" rx="4" fill="#090D16" stroke="#064E3B" stroke-width="1" />
+    <text x="26" y="96" fill="#34D399" font-size="10" class="txt-mono">1. Unfreeze state machine &amp; release payload to ToolSandbox</text>
+    <text x="26" y="112" fill="#A7F3D0" font-size="10" class="txt-mono">2. Dispatch simulated email &amp; record audit log (status: completed)</text>
+  </g>
+
+  <!-- ==================== DECISION PATH B: REJECTED & HALTED ==================== -->
+  <g transform="translate(660, 390)" filter="url(#boxShadow)">
+    <rect width="390" height="145" rx="8" fill="url(#gradReject)" stroke="#F43F5E" stroke-width="1.5" />
+    <rect x="16" y="16" width="30" height="30" rx="6" fill="#4C0519" />
+    <text x="31" y="36" text-anchor="middle" fill="#FDA4AF" font-size="14">✕</text>
+    <text x="56" y="36" fill="#FECDD3" font-size="14" class="txt-title">Decision B: Operator Rejects</text>
+    <text x="16" y="66" fill="#FFE4E6" font-size="11" class="txt-sub">POST /api/v1/approvals/{id} with decision="reject"</text>
+
+    <!-- Steps -->
+    <rect x="16" y="78" width="358" height="50" rx="4" fill="#090D16" stroke="#881337" stroke-width="1" />
+    <text x="26" y="96" fill="#F43F5E" font-size="10" class="txt-mono">1. Execution terminated permanently; sandbox blocked</text>
+    <text x="26" y="112" fill="#FECDD3" font-size="10" class="txt-mono">2. Audit log flags rejection reasons (status: rejected)</text>
+  </g>
+
+  <!-- Bottom Audit Bar -->
+  <g transform="translate(50, 555)">
+    <rect width="1000" height="40" rx="6" fill="#090D16" stroke="#334155" stroke-width="1" />
+    <text x="20" y="25" fill="#94A3B8" font-size="11" class="txt-mono">
+      <tspan fill="#F59E0B">AUDIT RECORD:</tspan> task_id | action_type | operator_notes | timestamp_utc | payload_hmac
+    </text>
+    <text x="980" y="25" text-anchor="end" fill="#10B981" font-size="10" class="txt-mono">100% AUDITABLE &amp; SOC2 COMPLIANT</text>
+  </g>
+</svg>

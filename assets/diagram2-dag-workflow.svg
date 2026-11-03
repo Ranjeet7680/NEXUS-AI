@@ -1,0 +1,222 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 620" width="100%" height="100%">
+  <defs>
+    <linearGradient id="dagBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080D1A" />
+      <stop offset="50%" stop-color="#0C1322" />
+      <stop offset="100%" stop-color="#070A14" />
+    </linearGradient>
+
+    <!-- Node Card Fill Gradients -->
+    <linearGradient id="nodeBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A8A" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="nodeCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E7490" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="nodePurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6B21A8" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="nodeGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#065F46" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="nodeRose" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9F1239" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="nodeAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#92400E" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="nodeIndigo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3730A3" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+
+    <!-- Marker Arrows -->
+    <marker id="arrowB" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+      <polygon points="0 0, 7 3.5, 0 7" fill="#38BDF8" />
+    </marker>
+    <marker id="arrowP" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+      <polygon points="0 0, 7 3.5, 0 7" fill="#A855F7" />
+    </marker>
+    <marker id="arrowG" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+      <polygon points="0 0, 7 3.5, 0 7" fill="#10B981" />
+    </marker>
+    <marker id="arrowA" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+      <polygon points="0 0, 7 3.5, 0 7" fill="#F59E0B" />
+    </marker>
+    <marker id="arrowR" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+      <polygon points="0 0, 7 3.5, 0 7" fill="#F43F5E" />
+    </marker>
+
+    <!-- Glow Filter -->
+    <filter id="shadowLight" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <style>
+    .txt-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-weight: 800; }
+    .txt-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-weight: 500; }
+    .txt-mono { font-family: "JetBrains Mono", Consolas, monospace; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1100" height="620" rx="14" fill="url(#dagBg)" />
+  <rect x="1" y="1" width="1098" height="618" rx="13" fill="none" stroke="#334155" stroke-opacity="0.5" stroke-width="1.5" />
+
+  <!-- Header -->
+  <g transform="translate(50, 42)">
+    <circle cx="10" cy="0" r="6" fill="#A855F7" />
+    <text x="26" y="5" fill="#F8FAFC" font-size="19" class="txt-title" letter-spacing="-0.5">DIAGRAM 2: STATEFUL MULTI-AGENT DAG EXECUTION FLOW</text>
+    <text x="26" y="24" fill="#64748B" font-size="12" class="txt-sub">Deterministic LangGraph Pattern · Parallel Ingestion · Grounding Check · State Checkpoints</text>
+  </g>
+
+  <!-- Live Telemetry Pill -->
+  <g transform="translate(930, 42)">
+    <rect x="-80" y="-14" width="160" height="28" rx="14" fill="#0F172A" stroke="#38BDF8" stroke-width="1" />
+    <circle cx="-62" cy="0" r="4" fill="#38BDF8">
+      <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite" />
+    </circle>
+    <text x="-50" y="4" fill="#38BDF8" font-size="11" class="txt-mono" font-weight="600">SSE STREAMING</text>
+  </g>
+
+  <!-- ==================== FLOWCHART NODES ==================== -->
+
+  <!-- STEP 0: Trigger & Input -->
+  <g transform="translate(50, 240)" filter="url(#shadowLight)">
+    <rect width="120" height="110" rx="8" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5" />
+    <text x="60" y="24" text-anchor="middle" fill="#38BDF8" font-size="10" class="txt-mono" font-weight="700">MISSION TRIGGER</text>
+    <text x="60" y="50" text-anchor="middle" fill="#F8FAFC" font-size="13" class="txt-title">POST /tasks</text>
+    <text x="60" y="72" text-anchor="middle" fill="#94A3B8" font-size="10" class="txt-sub">Raw Prompt</text>
+    <text x="60" y="88" text-anchor="middle" fill="#64748B" font-size="9" class="txt-mono">+ Dataset CSV</text>
+  </g>
+
+  <!-- Flow Line 0 -> 1 -->
+  <line x1="170" y1="295" x2="205" y2="295" stroke="#38BDF8" stroke-width="2" marker-end="url(#arrowB)" />
+
+  <!-- STEP 1: Planner Agent -->
+  <g transform="translate(210, 230)" filter="url(#shadowLight)">
+    <rect width="140" height="130" rx="8" fill="url(#nodeBlue)" stroke="#38BDF8" stroke-width="1.5" />
+    <rect x="10" y="10" width="22" height="22" rx="4" fill="#1E3A8A" />
+    <text x="21" y="25" text-anchor="middle" fill="#38BDF8" font-size="11" class="txt-mono" font-weight="700">1</text>
+    <text x="40" y="26" fill="#F8FAFC" font-size="13" class="txt-title">Planner Agent</text>
+    <text x="12" y="52" fill="#93C5FD" font-size="10" class="txt-sub">DAG Decomposition</text>
+    <text x="12" y="68" fill="#94A3B8" font-size="9" class="txt-sub">• Breaks mission into steps</text>
+    <text x="12" y="82" fill="#94A3B8" font-size="9" class="txt-sub">• Detects domain taxonomy</text>
+    <text x="12" y="96" fill="#94A3B8" font-size="9" class="txt-sub">• Allocates task resources</text>
+    <text x="12" y="114" fill="#38BDF8" font-size="9" class="txt-mono">Confidence: 96%</text>
+  </g>
+
+  <!-- Fork Lines 1 -> (2A & 2B) -->
+  <path d="M 350 270 C 375 270, 375 160, 395 160" fill="none" stroke="#38BDF8" stroke-width="1.8" marker-end="url(#arrowB)" />
+  <path d="M 350 320 C 375 320, 375 420, 395 420" fill="none" stroke="#A855F7" stroke-width="1.8" marker-end="url(#arrowP)" />
+
+  <!-- STEP 2A: Document Agent (Parallel Path A) -->
+  <g transform="translate(400, 100)" filter="url(#shadowLight)">
+    <rect width="140" height="120" rx="8" fill="url(#nodeCyan)" stroke="#06B6D4" stroke-width="1.5" />
+    <rect x="10" y="10" width="22" height="22" rx="4" fill="#164E63" />
+    <text x="21" y="25" text-anchor="middle" fill="#06B6D4" font-size="11" class="txt-mono" font-weight="700">2A</text>
+    <text x="40" y="26" fill="#F8FAFC" font-size="13" class="txt-title">Document Agent</text>
+    <text x="12" y="52" fill="#A5F3FC" font-size="10" class="txt-sub">Tabular Extraction</text>
+    <text x="12" y="68" fill="#94A3B8" font-size="9" class="txt-sub">• Ingests CSV / PDF data</text>
+    <text x="12" y="82" fill="#94A3B8" font-size="9" class="txt-sub">• Validates nulls &amp; types</text>
+    <text x="12" y="96" fill="#94A3B8" font-size="9" class="txt-sub">• Extracts records matrix</text>
+  </g>
+
+  <!-- STEP 2B: Research Agent (Parallel Path B) -->
+  <g transform="translate(400, 360)" filter="url(#shadowLight)">
+    <rect width="140" height="120" rx="8" fill="url(#nodePurple)" stroke="#A855F7" stroke-width="1.5" />
+    <rect x="10" y="10" width="22" height="22" rx="4" fill="#581C87" />
+    <text x="21" y="25" text-anchor="middle" fill="#C084FC" font-size="11" class="txt-mono" font-weight="700">2B</text>
+    <text x="40" y="26" fill="#F8FAFC" font-size="13" class="txt-title">Research Agent</text>
+    <text x="12" y="52" fill="#E9D5FF" font-size="10" class="txt-sub">RAG Vector Context</text>
+    <text x="12" y="68" fill="#94A3B8" font-size="9" class="txt-sub">• Cosine similarity query</text>
+    <text x="12" y="82" fill="#94A3B8" font-size="9" class="txt-sub">• Industry SLA standards</text>
+    <text x="12" y="96" fill="#94A3B8" font-size="9" class="txt-sub">• SaaS benchmarks lookup</text>
+  </g>
+
+  <!-- Join Lines (2A & 2B) -> 3 -->
+  <path d="M 540 160 C 565 160, 565 270, 585 270" fill="none" stroke="#06B6D4" stroke-width="1.8" marker-end="url(#arrowG)" />
+  <path d="M 540 420 C 565 420, 565 320, 585 320" fill="none" stroke="#A855F7" stroke-width="1.8" marker-end="url(#arrowG)" />
+
+  <!-- STEP 3: Data Analyst Agent -->
+  <g transform="translate(590, 230)" filter="url(#shadowLight)">
+    <rect width="140" height="130" rx="8" fill="url(#nodeGreen)" stroke="#10B981" stroke-width="1.5" />
+    <rect x="10" y="10" width="22" height="22" rx="4" fill="#064E3B" />
+    <text x="21" y="25" text-anchor="middle" fill="#10B981" font-size="11" class="txt-mono" font-weight="700">3</text>
+    <text x="40" y="26" fill="#F8FAFC" font-size="13" class="txt-title">Data Analyst</text>
+    <text x="12" y="52" fill="#A7F3D0" font-size="10" class="txt-sub">Quantitative Analysis</text>
+    <text x="12" y="68" fill="#94A3B8" font-size="9" class="txt-sub">• Calculates metrics &amp; gaps</text>
+    <text x="12" y="82" fill="#94A3B8" font-size="9" class="txt-sub">• Variance &amp; run-rates</text>
+    <text x="12" y="96" fill="#94A3B8" font-size="9" class="txt-sub">• Attainment % &amp; deltas</text>
+    <text x="12" y="114" fill="#10B981" font-size="9" class="txt-mono">Math: Deterministic</text>
+  </g>
+
+  <!-- Flow Line 3 -> 4 -->
+  <line x1="730" y1="295" x2="755" y2="295" stroke="#10B981" stroke-width="2" marker-end="url(#arrowR)" />
+
+  <!-- STEP 4: Decision Agent -->
+  <g transform="translate(760, 230)" filter="url(#shadowLight)">
+    <rect width="140" height="130" rx="8" fill="url(#nodeRose)" stroke="#F43F5E" stroke-width="1.5" />
+    <rect x="10" y="10" width="22" height="22" rx="4" fill="#4C0519" />
+    <text x="21" y="25" text-anchor="middle" fill="#F43F5E" font-size="11" class="txt-mono" font-weight="700">4</text>
+    <text x="40" y="26" fill="#F8FAFC" font-size="13" class="txt-title">Decision Agent</text>
+    <text x="12" y="52" fill="#FECDD3" font-size="10" class="txt-sub">Strategic Synthesis</text>
+    <text x="12" y="68" fill="#94A3B8" font-size="9" class="txt-sub">• Formulates Risk Matrix</text>
+    <text x="12" y="82" fill="#94A3B8" font-size="9" class="txt-sub">• P0 / P1 / P2 Priority</text>
+    <text x="12" y="96" fill="#94A3B8" font-size="9" class="txt-sub">• Actionable mitigations</text>
+    <text x="12" y="114" fill="#F43F5E" font-size="9" class="txt-mono">Diagnosis Engine</text>
+  </g>
+
+  <!-- Flow Line 4 -> 5 -->
+  <line x1="900" y1="270" x2="925" y2="200" stroke="#F43F5E" stroke-width="1.8" marker-end="url(#arrowA)" />
+  <line x1="900" y1="320" x2="925" y2="390" stroke="#F43F5E" stroke-width="1.8" marker-end="url(#arrowB)" />
+
+  <!-- STEP 5: Quality & Evaluator Agent -->
+  <g transform="translate(930, 110)" filter="url(#shadowLight)">
+    <rect width="135" height="130" rx="8" fill="url(#nodeAmber)" stroke="#F59E0B" stroke-width="1.5" />
+    <rect x="10" y="10" width="22" height="22" rx="4" fill="#451A03" />
+    <text x="21" y="25" text-anchor="middle" fill="#F59E0B" font-size="11" class="txt-mono" font-weight="700">5</text>
+    <text x="38" y="26" fill="#F8FAFC" font-size="12" class="txt-title">Quality Agent</text>
+    <text x="12" y="52" fill="#FDE68A" font-size="10" class="txt-sub">Grounding Audit</text>
+    <text x="12" y="68" fill="#94A3B8" font-size="9" class="txt-sub">• Hallucination Check</text>
+    <text x="12" y="82" fill="#94A3B8" font-size="9" class="txt-sub">• Formula Verification</text>
+    <text x="12" y="96" fill="#94A3B8" font-size="9" class="txt-sub">• Cross-data Validation</text>
+    <text x="12" y="114" fill="#F59E0B" font-size="9" class="txt-mono">Score: 97.4% Passed</text>
+  </g>
+
+  <!-- STEP 6: Workflow & Assembly Agent -->
+  <g transform="translate(930, 350)" filter="url(#shadowLight)">
+    <rect width="135" height="130" rx="8" fill="url(#nodeIndigo)" stroke="#818CF8" stroke-width="1.5" />
+    <rect x="10" y="10" width="22" height="22" rx="4" fill="#1E1B4B" />
+    <text x="21" y="25" text-anchor="middle" fill="#818CF8" font-size="11" class="txt-mono" font-weight="700">6</text>
+    <text x="38" y="26" fill="#F8FAFC" font-size="12" class="txt-title">Workflow Agent</text>
+    <text x="12" y="52" fill="#C7D2FE" font-size="10" class="txt-sub">Assembly &amp; HITL</text>
+    <text x="12" y="68" fill="#94A3B8" font-size="9" class="txt-sub">• Executive Memo JSON</text>
+    <text x="12" y="82" fill="#94A3B8" font-size="9" class="txt-sub">• Interactive Chart Feeds</text>
+    <text x="12" y="96" fill="#94A3B8" font-size="9" class="txt-sub">• Prepares Email Dispatch</text>
+    <text x="12" y="114" fill="#F59E0B" font-size="9" class="txt-mono">Triggers HITL Pause</text>
+  </g>
+
+  <!-- Connecting 5 and 6 -->
+  <line x1="995" y1="240" x2="995" y2="345" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#arrowB)" />
+
+  <!-- Bottom Telemetry Legend -->
+  <g transform="translate(50, 545)">
+    <rect width="1000" height="45" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1" />
+    <text x="20" y="28" fill="#94A3B8" font-size="11" class="txt-mono">
+      <tspan fill="#38BDF8">● PLANNER</tspan> ➔ 
+      <tspan fill="#06B6D4">● INGEST</tspan> &amp; <tspan fill="#A855F7">● RAG</tspan> ➔ 
+      <tspan fill="#10B981">● QUANT MATH</tspan> ➔ 
+      <tspan fill="#F43F5E">● RISK SYNTHESIS</tspan> ➔ 
+      <tspan fill="#F59E0B">● QUALITY AUDIT</tspan> ➔ 
+      <tspan fill="#818CF8">● HITL GATEWAY</tspan>
+    </text>
+    <text x="980" y="28" text-anchor="end" fill="#64748B" font-size="10" class="txt-mono">LATENCY: ~1.2s // 0.0% HALLUCINATION</text>
+  </g>
+</svg>

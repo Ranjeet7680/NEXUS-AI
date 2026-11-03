@@ -1,0 +1,11 @@
+product_id,product_name,category,region,sales_rep,units_sold,unit_price,revenue,target_revenue,discount_applied,return_rate,customer_churn_risk,quarter
+P-101,CloudNexus Enterprise,SaaS,North America,Sarah Jenkins,145,2400.00,348000.00,320000.00,0.05,0.012,Low,Q3
+P-102,DataPulse Analytics,Analytics,North America,Marcus Vance,220,1100.00,242000.00,280000.00,0.12,0.048,Medium,Q3
+P-103,CyberShield AI,Security,Europe,Elena Rostova,88,4500.00,396000.00,350000.00,0.02,0.008,Low,Q3
+P-104,OmniChannel CRM,SaaS,Asia-Pacific,Kenji Sato,310,650.00,201500.00,230000.00,0.15,0.062,High,Q3
+P-105,NexusFlow Automate,Automation,North America,Sarah Jenkins,410,480.00,196800.00,180000.00,0.08,0.021,Low,Q3
+P-106,Legacy Bridge ERP,Legacy Integration,Europe,David Miller,42,3200.00,134400.00,210000.00,0.20,0.095,Critical,Q3
+P-107,InsightBot Copilot,AI Assistant,Asia-Pacific,Kenji Sato,520,350.00,182000.00,150000.00,0.04,0.015,Low,Q3
+P-108,SecureGate Identity,Security,North America,Marcus Vance,195,1250.00,243750.00,260000.00,0.10,0.034,Medium,Q3
+P-109,SupplySync SCM,Supply Chain,Europe,Elena Rostova,110,2100.00,231000.00,200000.00,0.05,0.018,Low,Q3
+P-110,VoiceAI Contact Center,AI Voice,North America,Sarah Jenkins,75,3800.00,285000.00,310000.00,0.14,0.055,High,Q3

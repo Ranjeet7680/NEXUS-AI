@@ -1,0 +1,316 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 680" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="diagBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080D1A" />
+      <stop offset="50%" stop-color="#0C1322" />
+      <stop offset="100%" stop-color="#070A14" />
+    </linearGradient>
+
+    <!-- Layer Gradients -->
+    <linearGradient id="layerClient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.8" />
+    </linearGradient>
+    <linearGradient id="layerGateway" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#172554" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.7" />
+    </linearGradient>
+    <linearGradient id="layerSwarm" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E1B4B" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.7" />
+    </linearGradient>
+    <linearGradient id="layerSecurity" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2E1065" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.7" />
+    </linearGradient>
+    <linearGradient id="layerData" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#064E3B" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.7" />
+    </linearGradient>
+
+    <!-- Node Card Fill -->
+    <linearGradient id="cardFill" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+
+    <!-- Agent Card Glowing Gradients -->
+    <linearGradient id="agentPlanner" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A8A" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="agentData" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#065F46" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="agentRisk" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#831843" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="agentSecurity" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#78350F" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+
+    <!-- Drop Shadows -->
+    <filter id="glowBlue" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="6" flood-color="#38BDF8" flood-opacity="0.25" />
+    </filter>
+    <filter id="shadowBox" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+
+    <!-- Arrow Markers -->
+    <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#38BDF8" />
+    </marker>
+    <marker id="arrowPurple" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#A855F7" />
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#10B981" />
+    </marker>
+  </defs>
+
+  <style>
+    .txt-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-weight: 800; }
+    .txt-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-weight: 500; }
+    .txt-mono { font-family: "JetBrains Mono", Consolas, monospace; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1100" height="680" rx="14" fill="url(#diagBg)" />
+  <rect x="1" y="1" width="1098" height="678" rx="13" fill="none" stroke="#334155" stroke-opacity="0.5" stroke-width="1.5" />
+
+  <!-- Diagram Title Header -->
+  <g transform="translate(50, 42)">
+    <circle cx="10" cy="0" r="6" fill="#38BDF8" filter="url(#glowBlue)" />
+    <text x="26" y="5" fill="#F8FAFC" font-size="19" class="txt-title" letter-spacing="-0.5">DIAGRAM 1: END-TO-END SYSTEM ARCHITECTURE</text>
+    <text x="26" y="24" fill="#64748B" font-size="12" class="txt-sub">Full-Stack Enterprise Orchestration Engine · Stateful Agent Swarm · HITL Gateways</text>
+  </g>
+
+  <!-- Status pill top right -->
+  <g transform="translate(940, 42)">
+    <rect x="-80" y="-14" width="160" height="28" rx="14" fill="#0F172A" stroke="#10B981" stroke-width="1" />
+    <circle cx="-62" cy="0" r="4" fill="#10B981" />
+    <text x="-50" y="4" fill="#10B981" font-size="11" class="txt-mono" font-weight="600">PRODUCTION v2.0</text>
+  </g>
+
+  <!-- ==================== LAYER 1: CLIENT & INTERFACE LAYER ==================== -->
+  <g transform="translate(50, 85)">
+    <rect width="1000" height="85" rx="10" fill="url(#layerClient)" stroke="#334155" stroke-width="1" />
+    <text x="20" y="22" fill="#94A3B8" font-size="11" class="txt-mono" font-weight="700">LAYER 1: CLIENT &amp; OPERATOR COMMAND CENTER</text>
+    
+    <!-- Component 1: Enterprise Glassmorphic UI -->
+    <g transform="translate(20, 32)">
+      <rect width="225" height="42" rx="6" fill="url(#cardFill)" stroke="#38BDF8" stroke-opacity="0.6" stroke-width="1" />
+      <text x="12" y="18" fill="#F8FAFC" font-size="12" class="txt-title">Enterprise Web UI</text>
+      <text x="12" y="32" fill="#64748B" font-size="10" class="txt-sub">Glassmorphic Shell / Visual DAG</text>
+    </g>
+
+    <!-- Component 2: Approvals Center (HITL) -->
+    <g transform="translate(265, 32)">
+      <rect width="225" height="42" rx="6" fill="url(#cardFill)" stroke="#F59E0B" stroke-opacity="0.6" stroke-width="1" />
+      <text x="12" y="18" fill="#F8FAFC" font-size="12" class="txt-title">Approvals Center (HITL)</text>
+      <text x="12" y="32" fill="#64748B" font-size="10" class="txt-sub">Cryptographic Operator Review</text>
+    </g>
+
+    <!-- Component 3: Analytics & Observability -->
+    <g transform="translate(510, 32)">
+      <rect width="225" height="42" rx="6" fill="url(#cardFill)" stroke="#818CF8" stroke-opacity="0.6" stroke-width="1" />
+      <text x="12" y="18" fill="#F8FAFC" font-size="12" class="txt-title">Analytics &amp; Telemetry</text>
+      <text x="12" y="32" fill="#64748B" font-size="10" class="txt-sub">Throughput, Tokens, SLA Gauges</text>
+    </g>
+
+    <!-- Component 4: External API Clients / Webhooks -->
+    <g transform="translate(755, 32)">
+      <rect width="225" height="42" rx="6" fill="url(#cardFill)" stroke="#334155" stroke-width="1" />
+      <text x="12" y="18" fill="#F8FAFC" font-size="12" class="txt-title">External Clients &amp; SDK</text>
+      <text x="12" y="32" fill="#64748B" font-size="10" class="txt-sub">REST / SSE Stream Webhooks</text>
+    </g>
+  </g>
+
+  <!-- Connector Line L1 -> L2 -->
+  <line x1="550" y1="170" x2="550" y2="195" stroke="#38BDF8" stroke-width="1.8" stroke-dasharray="4,3" marker-end="url(#arrowCyan)" />
+
+  <!-- ==================== LAYER 2: API GATEWAY & TELEMETRY BROKER ==================== -->
+  <g transform="translate(50, 195)">
+    <rect width="1000" height="75" rx="10" fill="url(#layerGateway)" stroke="#1D4ED8" stroke-opacity="0.5" stroke-width="1" />
+    <text x="20" y="20" fill="#60A5FA" font-size="11" class="txt-mono" font-weight="700">LAYER 2: FASTAPI GATEWAY &amp; STREAMING TELEMETRY BROKER</text>
+
+    <!-- Box 1: FastAPI Core Engine -->
+    <g transform="translate(20, 28)">
+      <rect width="295" height="36" rx="5" fill="#0F172A" stroke="#38BDF8" stroke-width="0.8" />
+      <text x="12" y="16" fill="#E2E8F0" font-size="11" class="txt-title">FastAPI Router Engine</text>
+      <text x="12" y="28" fill="#64748B" font-size="9" class="txt-mono">/tasks /agents /approvals /memory</text>
+    </g>
+
+    <!-- Box 2: SSE Starlette Streamer -->
+    <g transform="translate(335, 28)">
+      <rect width="320" height="36" rx="5" fill="#0F172A" stroke="#38BDF8" stroke-width="0.8" />
+      <text x="12" y="16" fill="#E2E8F0" font-size="11" class="txt-title">SSE Event Stream Queues</text>
+      <text x="12" y="28" fill="#64748B" font-size="9" class="txt-mono">Real-time Thought Stream &amp; Checkpoints</text>
+    </g>
+
+    <!-- Box 3: Guardrails & Session Middleware -->
+    <g transform="translate(675, 28)">
+      <rect width="305" height="36" rx="5" fill="#0F172A" stroke="#38BDF8" stroke-width="0.8" />
+      <text x="12" y="16" fill="#E2E8F0" font-size="11" class="txt-title">Security &amp; Input Guardrails</text>
+      <text x="12" y="28" fill="#64748B" font-size="9" class="txt-mono">Prompt Injection &amp; Rate-Limiting</text>
+    </g>
+  </g>
+
+  <!-- Connector Line L2 -> L3 -->
+  <line x1="550" y1="270" x2="550" y2="295" stroke="#A855F7" stroke-width="1.8" stroke-dasharray="4,3" marker-end="url(#arrowPurple)" />
+
+  <!-- ==================== LAYER 3: 7-AGENT AUTONOMOUS SWARM ==================== -->
+  <g transform="translate(50, 295)">
+    <rect width="1000" height="150" rx="10" fill="url(#layerSwarm)" stroke="#7C3AED" stroke-opacity="0.5" stroke-width="1" />
+    <text x="20" y="20" fill="#C084FC" font-size="11" class="txt-mono" font-weight="700">LAYER 3: SPECIALIZED MULTI-AGENT SWARM (LANGGRAPH DAG PATTERN)</text>
+
+    <!-- Agent 1: Planner -->
+    <g transform="translate(20, 32)">
+      <rect width="125" height="100" rx="6" fill="url(#agentPlanner)" stroke="#38BDF8" stroke-width="1" />
+      <circle cx="20" cy="20" r="10" fill="#1E3A8A" />
+      <text x="20" y="24" text-anchor="middle" fill="#38BDF8" font-size="11">01</text>
+      <text x="12" y="46" fill="#F8FAFC" font-size="11" class="txt-title">Planner Agent</text>
+      <text x="12" y="62" fill="#94A3B8" font-size="9" class="txt-sub">Deconstructs Goal</text>
+      <text x="12" y="74" fill="#94A3B8" font-size="9" class="txt-sub">Infers Domain</text>
+      <text x="12" y="88" fill="#38BDF8" font-size="8" class="txt-mono">DAG Builder</text>
+    </g>
+
+    <!-- Agent 2: Document -->
+    <g transform="translate(160, 32)">
+      <rect width="125" height="100" rx="6" fill="#0F172A" stroke="#334155" stroke-width="1" />
+      <circle cx="20" cy="20" r="10" fill="#1E293B" />
+      <text x="20" y="24" text-anchor="middle" fill="#94A3B8" font-size="11">02</text>
+      <text x="12" y="46" fill="#F8FAFC" font-size="11" class="txt-title">Document Agent</text>
+      <text x="12" y="62" fill="#94A3B8" font-size="9" class="txt-sub">CSV / PDF Parsing</text>
+      <text x="12" y="74" fill="#94A3B8" font-size="9" class="txt-sub">Schema Verifier</text>
+      <text x="12" y="88" fill="#94A3B8" font-size="8" class="txt-mono">Data Ingest</text>
+    </g>
+
+    <!-- Agent 3: Research -->
+    <g transform="translate(300, 32)">
+      <rect width="125" height="100" rx="6" fill="#0F172A" stroke="#334155" stroke-width="1" />
+      <circle cx="20" cy="20" r="10" fill="#1E293B" />
+      <text x="20" y="24" text-anchor="middle" fill="#818CF8" font-size="11">03</text>
+      <text x="12" y="46" fill="#F8FAFC" font-size="11" class="txt-title">Research Agent</text>
+      <text x="12" y="62" fill="#94A3B8" font-size="9" class="txt-sub">Vector RAG</text>
+      <text x="12" y="74" fill="#94A3B8" font-size="9" class="txt-sub">Industry Baselines</text>
+      <text x="12" y="88" fill="#818CF8" font-size="8" class="txt-mono">Knowledge Base</text>
+    </g>
+
+    <!-- Agent 4: Data Analyst -->
+    <g transform="translate(440, 32)">
+      <rect width="125" height="100" rx="6" fill="url(#agentData)" stroke="#10B981" stroke-width="1" />
+      <circle cx="20" cy="20" r="10" fill="#064E3B" />
+      <text x="20" y="24" text-anchor="middle" fill="#10B981" font-size="11">04</text>
+      <text x="12" y="46" fill="#F8FAFC" font-size="11" class="txt-title">Data Analyst</text>
+      <text x="12" y="62" fill="#94A3B8" font-size="9" class="txt-sub">Math &amp; Variance</text>
+      <text x="12" y="74" fill="#94A3B8" font-size="9" class="txt-sub">KPI Computation</text>
+      <text x="12" y="88" fill="#10B981" font-size="8" class="txt-mono">Quant Engine</text>
+    </g>
+
+    <!-- Agent 5: Decision Agent -->
+    <g transform="translate(580, 32)">
+      <rect width="125" height="100" rx="6" fill="url(#agentRisk)" stroke="#F43F5E" stroke-width="1" />
+      <circle cx="20" cy="20" r="10" fill="#4C0519" />
+      <text x="20" y="24" text-anchor="middle" fill="#F43F5E" font-size="11">05</text>
+      <text x="12" y="46" fill="#F8FAFC" font-size="11" class="txt-title">Decision Agent</text>
+      <text x="12" y="62" fill="#94A3B8" font-size="9" class="txt-sub">Risk Matrix (P0/P1)</text>
+      <text x="12" y="74" fill="#94A3B8" font-size="9" class="txt-sub">Strategic Synthesis</text>
+      <text x="12" y="88" fill="#F43F5E" font-size="8" class="txt-mono">Reasoning</text>
+    </g>
+
+    <!-- Agent 6: Quality Agent -->
+    <g transform="translate(720, 32)">
+      <rect width="125" height="100" rx="6" fill="url(#agentSecurity)" stroke="#F59E0B" stroke-width="1" />
+      <circle cx="20" cy="20" r="10" fill="#451A03" />
+      <text x="20" y="24" text-anchor="middle" fill="#F59E0B" font-size="11">06</text>
+      <text x="12" y="46" fill="#F8FAFC" font-size="11" class="txt-title">Quality Agent</text>
+      <text x="12" y="62" fill="#94A3B8" font-size="9" class="txt-sub">Grounding Audit</text>
+      <text x="12" y="74" fill="#94A3B8" font-size="9" class="txt-sub">Math Verification</text>
+      <text x="12" y="88" fill="#F59E0B" font-size="8" class="txt-mono">Hallucination Gate</text>
+    </g>
+
+    <!-- Agent 7: Workflow Agent -->
+    <g transform="translate(860, 32)">
+      <rect width="120" height="100" rx="6" fill="#0F172A" stroke="#38BDF8" stroke-width="1" />
+      <circle cx="20" cy="20" r="10" fill="#1E293B" />
+      <text x="20" y="24" text-anchor="middle" fill="#38BDF8" font-size="11">07</text>
+      <text x="12" y="46" fill="#F8FAFC" font-size="11" class="txt-title">Workflow Agent</text>
+      <text x="12" y="62" fill="#94A3B8" font-size="9" class="txt-sub">Report Assembly</text>
+      <text x="12" y="74" fill="#94A3B8" font-size="9" class="txt-sub">Action Gating</text>
+      <text x="12" y="88" fill="#38BDF8" font-size="8" class="txt-mono">HITL Dispatch</text>
+    </g>
+  </g>
+
+  <!-- Connector Line L3 -> L4 -->
+  <line x1="550" y1="445" x2="550" y2="470" stroke="#F59E0B" stroke-width="1.8" stroke-dasharray="4,3" marker-end="url(#arrowCyan)" />
+
+  <!-- ==================== LAYER 4: HITL GATEWAY & TOOL SANDBOX ==================== -->
+  <g transform="translate(50, 470)">
+    <rect width="1000" height="85" rx="10" fill="url(#layerSecurity)" stroke="#D97706" stroke-opacity="0.5" stroke-width="1" />
+    <text x="20" y="20" fill="#FBBF24" font-size="11" class="txt-mono" font-weight="700">LAYER 4: HITL CRYPTOGRAPHIC GOVERNANCE &amp; TOOL SANDBOX</text>
+
+    <!-- Box 1: Sensitivity Evaluator -->
+    <g transform="translate(20, 30)">
+      <rect width="220" height="42" rx="6" fill="#0F172A" stroke="#F59E0B" stroke-width="0.8" />
+      <text x="12" y="18" fill="#FDE68A" font-size="11" class="txt-title">Policy Evaluator</text>
+      <text x="12" y="32" fill="#64748B" font-size="9" class="txt-mono">High Sensitivity Rule Trigger</text>
+    </g>
+
+    <!-- Box 2: Checkpointed State Pauser -->
+    <g transform="translate(260, 30)">
+      <rect width="225" height="42" rx="6" fill="#0F172A" stroke="#F59E0B" stroke-width="0.8" />
+      <text x="12" y="18" fill="#FDE68A" font-size="11" class="txt-title">HMAC Checkpoint Freeze</text>
+      <text x="12" y="32" fill="#64748B" font-size="9" class="txt-mono">Status: awaiting_approval</text>
+    </g>
+
+    <!-- Box 3: Operator Authorize/Reject -->
+    <g transform="translate(505, 30)">
+      <rect width="225" height="42" rx="6" fill="#0F172A" stroke="#10B981" stroke-width="0.8" />
+      <text x="12" y="18" fill="#A7F3D0" font-size="11" class="txt-title">Operator Cryptographic Key</text>
+      <text x="12" y="32" fill="#64748B" font-size="9" class="txt-mono">Approve / Reject + Audit Trail</text>
+    </g>
+
+    <!-- Box 4: Tool Sandbox & Dispatches -->
+    <g transform="translate(750, 30)">
+      <rect width="230" height="42" rx="6" fill="#0F172A" stroke="#38BDF8" stroke-width="0.8" />
+      <text x="12" y="18" fill="#BAE6FD" font-size="11" class="txt-title">Isolated Tool Sandbox</text>
+      <text x="12" y="32" fill="#64748B" font-size="9" class="txt-mono">Slack, Gmail, DB, Webhook</text>
+    </g>
+  </g>
+
+  <!-- Connector Line L4 -> L5 -->
+  <line x1="550" y1="555" x2="550" y2="580" stroke="#10B981" stroke-width="1.8" stroke-dasharray="4,3" marker-end="url(#arrowGreen)" />
+
+  <!-- ==================== LAYER 5: PERSISTENCE & INTELLIGENCE FOUNDATION ==================== -->
+  <g transform="translate(50, 580)">
+    <rect width="1000" height="75" rx="10" fill="url(#layerData)" stroke="#059669" stroke-opacity="0.5" stroke-width="1" />
+    <text x="20" y="20" fill="#34D399" font-size="11" class="txt-mono" font-weight="700">LAYER 5: DATA STORAGE, VECTOR MEMORY &amp; FOUNDATIONAL LLMS</text>
+
+    <!-- Box 1: Multi-Model LLM Foundation -->
+    <g transform="translate(20, 28)">
+      <rect width="295" height="36" rx="5" fill="#0F172A" stroke="#10B981" stroke-width="0.8" />
+      <text x="12" y="16" fill="#E2E8F0" font-size="11" class="txt-title">Foundational Models</text>
+      <text x="12" y="28" fill="#64748B" font-size="9" class="txt-mono">Gemini 2.0 Flash / OpenAI GPT-4o</text>
+    </g>
+
+    <!-- Box 2: RAG Vector Store & Corporate Policies -->
+    <g transform="translate(335, 28)">
+      <rect width="320" height="36" rx="5" fill="#0F172A" stroke="#10B981" stroke-width="0.8" />
+      <text x="12" y="16" fill="#E2E8F0" font-size="11" class="txt-title">Vector Memory &amp; RAG Store</text>
+      <text x="12" y="28" fill="#64748B" font-size="9" class="txt-mono">Cosine Similarity &amp; Knowledge Index</text>
+    </g>
+
+    <!-- Box 3: Relational Persistence -->
+    <g transform="translate(675, 28)">
+      <rect width="305" height="36" rx="5" fill="#0F172A" stroke="#10B981" stroke-width="0.8" />
+      <text x="12" y="16" fill="#E2E8F0" font-size="11" class="txt-title">State Database &amp; Audit Logs</text>
+      <text x="12" y="28" fill="#64748B" font-size="9" class="txt-mono">SQLAlchemy / SQLite / PostgreSQL</text>
+    </g>
+  </g>
+</svg>
