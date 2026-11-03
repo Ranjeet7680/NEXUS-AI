@@ -3,7 +3,12 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 from backend.models import Base
 
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./nexus_platform.db")
+if os.getenv("VERCEL"):
+    DEFAULT_DB = "sqlite:////tmp/nexus_platform.db"
+else:
+    DEFAULT_DB = "sqlite:///./nexus_platform.db"
+
+DATABASE_URL = os.getenv("DATABASE_URL", DEFAULT_DB)
 
 # For SQLite, check_same_thread=False allows async endpoints to access DB
 connect_args = {"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {}

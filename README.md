@@ -7,12 +7,17 @@
 </p>
 
 <p align="center">
+  <a href="https://nexus-ai-ten-gamma.vercel.app/"><img src="https://img.shields.io/badge/Vercel%20Live-nexus--ai.vercel.app-000000?style=for-the-badge&logo=vercel" alt="Vercel Live Deployment" /></a>
   <a href="https://github.com/Ranjeet7680/NEXUS-AI"><img src="https://img.shields.io/badge/Release-v2.0.0--Enterprise-38BDF8?style=for-the-badge&logo=rocket" alt="Release v2.0.0" /></a>
   <a href="https://fastapi.tiangolo.com/"><img src="https://img.shields.io/badge/FastAPI-0.111.0-009688?style=for-the-badge&logo=fastapi" alt="FastAPI" /></a>
   <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-3776AB?style=for-the-badge&logo=python" alt="Python 3.10+" /></a>
   <a href="#-diagram-3-human-in-the-loop-hitl-cryptographic-governance"><img src="https://img.shields.io/badge/HITL%20Security-Zero--Trust%20HMAC-F59E0B?style=for-the-badge&logo=shield" alt="HITL Security" /></a>
   <a href="#-specialized-agent-swarm-breakdown"><img src="https://img.shields.io/badge/Agent%20Swarm-7%20Specialized%20Agents-A855F7?style=for-the-badge&logo=probot" alt="7 Agents" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-10B981?style=for-the-badge" alt="License MIT" /></a>
+</p>
+
+<p align="center">
+  🌐 <strong>Live Cloud Deployment:</strong> <a href="https://nexus-ai-ten-gamma.vercel.app/">https://nexus-ai-ten-gamma.vercel.app/</a>
 </p>
 
 ---

@@ -118,6 +118,8 @@ class OrchestratorEngine:
 
             # 2. DOCUMENT AGENT (Data Ingestion)
             dataset_path = os.path.join(os.path.dirname(__file__), "..", "data", dataset_name)
+            if not os.path.exists(dataset_path) and os.path.exists(os.path.join("/tmp/data", dataset_name)):
+                dataset_path = os.path.join("/tmp/data", dataset_name)
             doc_res = await document_agent.execute(dataset_path, callback)
             self.active_tasks[task_id]["doc_data"] = doc_res
 

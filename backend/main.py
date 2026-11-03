@@ -41,6 +41,11 @@ if not os.path.exists(static_dir):
 
 app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
+# Assets serving
+assets_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
+if os.path.exists(assets_dir):
+    app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
+
 @app.api_route("/health", methods=["GET", "HEAD"])
 def health_check():
     return {
