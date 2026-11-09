@@ -45,6 +45,14 @@
         }
         body {
             background-color: #030712;
+            background-image: 
+                radial-gradient(circle at 50% 10%, rgba(59, 130, 246, 0.16) 0%, transparent 45%),
+                radial-gradient(circle at 80% 25%, rgba(139, 92, 246, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 20% 40%, rgba(6, 182, 212, 0.1) 0%, transparent 40%),
+                url('/static/nexus-quantum-bg.svg');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center top;
             color: #F8FAFC;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             overflow-x: hidden;
@@ -334,15 +342,22 @@
     <div id="toastContainer" class="fixed bottom-6 right-6 z-[120] flex flex-col space-y-2 pointer-events-none"></div>
 
     <!-- ========================================================================= -->
-    <!-- SCREEN 1: WELCOME & LOADING SCREEN (Hidden by default for instant load)    -->
+    <!-- SCREEN 1: WELCOME & LOADING SCREEN (Cinematic Apple Futuristic Canvas)     -->
     <!-- ========================================================================= -->
-    <div id="screen-welcome" class="hidden fixed inset-0 z-[100] bg-[#030712] flex flex-col items-center justify-center p-6 transition-opacity duration-700">
-        <canvas id="neuralCanvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-40"></canvas>
+    <div id="screen-welcome" class="hidden fixed inset-0 z-[100] bg-[#030712] flex flex-col items-center justify-center p-6 transition-opacity duration-700 overflow-hidden">
+        <!-- Cinematic Background Artwork Layers -->
+        <div class="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden">
+            <img src="/static/nexus-apple-bg.png" alt="NEXUS AI Background" class="w-full h-full object-cover object-center opacity-70 mix-blend-screen scale-105 filter blur-[0.5px]">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/50 to-[#030712] opacity-85"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#030712_90%)]"></div>
+        </div>
+
+        <canvas id="neuralCanvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-45"></canvas>
         
         <div class="relative z-10 flex flex-col items-center text-center max-w-md space-y-6">
             <!-- Animated Futuristic Glyph -->
             <div class="relative w-24 h-24 rounded-2xl bg-gradient-to-tr from-[#397BFF] to-[#865BFF] p-[2px] glow-blue animate-pulse">
-                <div class="w-full h-full bg-[#111A2E] rounded-2xl flex items-center justify-center">
+                <div class="w-full h-full bg-[#030712]/90 backdrop-blur-md rounded-2xl flex items-center justify-center">
                     <i data-lucide="layers" class="w-12 h-12 text-[#397BFF]"></i>
                 </div>
                 <div class="absolute -bottom-2 -right-2 w-6 h-6 rounded-full bg-[#865BFF] flex items-center justify-center text-white text-[10px] font-bold">
@@ -352,25 +367,25 @@
 
             <div class="space-y-2">
                 <h1 class="text-3xl font-extrabold tracking-wider font-sans">
-                    NEXUS <span class="text-gradient">AI</span>
+                    NEXUS <span class="apple-text-accent">AI</span>
                 </h1>
-                <p class="text-sm font-medium text-slate-400 tracking-widest uppercase font-mono">
+                <p class="text-sm font-medium text-slate-300 tracking-widest uppercase font-mono">
                     Intelligence Beyond Automation
                 </p>
             </div>
 
             <!-- Loading Progress Bar & Telemetry -->
             <div class="w-full space-y-3 pt-4">
-                <div class="w-full bg-[#111A2E] border border-[#1F2E4D] h-2 rounded-full overflow-hidden">
-                    <div id="welcomeProgressBar" class="h-full bg-gradient-to-r from-[#397BFF] to-[#865BFF] w-0 transition-all duration-300"></div>
+                <div class="w-full bg-[#111A2E]/80 backdrop-blur border border-[#1F2E4D] h-2 rounded-full overflow-hidden">
+                    <div id="welcomeProgressBar" class="h-full bg-gradient-to-r from-[#397BFF] via-[#865BFF] to-pink-500 w-0 transition-all duration-300"></div>
                 </div>
-                <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+                <div class="flex items-center justify-between text-xs font-mono text-slate-300">
                     <span id="welcomeStatusText">Initializing agent kernels...</span>
                     <span id="welcomePercent">0%</span>
                 </div>
             </div>
 
-            <button onclick="skipToLanding()" class="text-xs text-slate-500 hover:text-slate-300 transition underline underline-offset-4 pt-4">
+            <button onclick="skipToLanding()" class="text-xs text-slate-400 hover:text-white transition underline underline-offset-4 pt-4">
                 Skip Introduction &rarr;
             </button>
         </div>
@@ -380,8 +395,14 @@
     <!-- ========================================================================= -->
     <!-- SCREEN 2: APPLE-GRADE ENTERPRISE SAAS LANDING PAGE                         -->
     <!-- ========================================================================= -->
-    <div id="screen-landing" class="min-h-screen flex flex-col bg-[#030712] text-slate-100 selection:bg-blue-500 selection:text-white">
+    <div id="screen-landing" class="min-h-screen flex flex-col bg-[#030712] text-slate-100 selection:bg-blue-500 selection:text-white relative overflow-x-hidden">
         
+        <!-- Global Cinematic Background Image Layer -->
+        <div class="fixed inset-0 w-full h-full pointer-events-none z-0 overflow-hidden opacity-40 mix-blend-screen select-none">
+            <img src="/static/nexus-apple-bg.png" alt="Nexus AI Quantum Ribbon Background" class="w-full h-full object-cover object-center scale-105 filter blur-[0.5px]">
+            <div class="absolute inset-0 bg-gradient-to-b from-[#030712]/40 via-transparent to-[#030712]"></div>
+        </div>
+
         <!-- Apple Frosted Glass Sticky Header -->
         <header class="sticky top-0 z-50 apple-glass border-b border-white/[0.08] transition-all duration-300">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -440,12 +461,18 @@
         <!-- ========================================================================= -->
         <!-- HERO SECTION                                                              -->
         <!-- ========================================================================= -->
-        <section id="hero" class="relative pt-20 sm:pt-28 pb-20 overflow-hidden">
+        <section id="hero" class="relative pt-20 sm:pt-28 pb-20 overflow-hidden z-10">
+            <!-- Dedicated Hero Ambient Artwork -->
+            <div class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden opacity-55 mix-blend-screen -z-10 select-none">
+                <img src="/static/nexus-apple-bg.png" alt="Nexus Hero Aura" class="w-full h-full object-cover object-top filter contrast-125">
+                <div class="absolute inset-0 bg-gradient-to-b from-[#030712]/40 via-transparent to-[#030712]"></div>
+            </div>
+
             <!-- Dynamic Background Canvas & Ambient Gradients -->
-            <canvas id="heroNeuralCanvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-40"></canvas>
+            <canvas id="heroNeuralCanvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-45"></canvas>
             
-            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-gradient-to-tr from-blue-600/15 via-indigo-600/15 to-purple-600/15 rounded-full blur-[140px] pointer-events-none animate-ambient"></div>
-            <div class="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-gradient-to-tr from-blue-600/20 via-indigo-600/20 to-purple-600/20 rounded-full blur-[140px] pointer-events-none animate-ambient"></div>
+            <div class="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-cyan-500/15 rounded-full blur-[120px] pointer-events-none"></div>
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-8">
                 <!-- Eyebrow Pill -->
@@ -2793,13 +2820,18 @@
         function skipToLanding() {
             const welcome = document.getElementById('screen-welcome');
             const landing = document.getElementById('screen-landing');
-            welcome.classList.add('opacity-0');
+            if (welcome) welcome.classList.add('opacity-0');
             setTimeout(() => {
-                welcome.classList.add('hidden');
-                landing.classList.remove('hidden');
+                if (welcome) welcome.classList.add('hidden');
+                if (landing) landing.classList.remove('hidden');
                 currentScreen = 'landing';
+                initHeroNeuralCanvas();
+                initScrollReveal();
+                initCardSpotlights();
+                selectAgentSpotlight(0);
+                selectArchDiagram(0);
                 lucide.createIcons();
-            }, 700);
+            }, 600);
         }
 
         function launchAppDirectly() {
@@ -3995,11 +4027,17 @@
 
         // On Load
         window.addEventListener('DOMContentLoaded', () => {
-            initHeroNeuralCanvas();
-            initScrollReveal();
-            initCardSpotlights();
-            selectAgentSpotlight(0);
-            selectArchDiagram(0);
+            const welcome = document.getElementById('screen-welcome');
+            if (welcome && !welcome.classList.contains('hidden')) {
+                initNeuralCanvas();
+                runWelcomeSimulation();
+            } else {
+                initHeroNeuralCanvas();
+                initScrollReveal();
+                initCardSpotlights();
+                selectAgentSpotlight(0);
+                selectArchDiagram(0);
+            }
             lucide.createIcons();
         });
     </script>
