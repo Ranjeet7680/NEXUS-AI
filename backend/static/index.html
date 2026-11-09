@@ -407,15 +407,17 @@
         <header class="sticky top-0 z-50 apple-glass border-b border-white/[0.08] transition-all duration-300">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
                 <!-- Brand / Logo -->
-                <div class="flex items-center space-x-3 cursor-pointer group" onclick="switchView('landing')">
+                <div class="flex items-center space-x-3 cursor-pointer group select-none" onclick="switchView('landing')">
                     <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-blue-500 via-indigo-500 to-purple-500 p-[1.5px] shadow-[0_0_20px_rgba(59,130,246,0.35)] group-hover:scale-105 transition-transform duration-300">
                         <div class="w-full h-full bg-[#030712] rounded-2xl flex items-center justify-center">
-                            <i data-lucide="layers" class="w-5 h-5 text-blue-400 group-hover:text-white transition-colors"></i>
+                            <i data-lucide="layers" class="w-5 h-5 text-blue-400 group-hover:text-white transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                            </i>
                         </div>
                     </div>
                     <div class="flex items-center space-x-2">
                         <span class="text-xl font-bold tracking-tight font-sans text-white">NEXUS <span class="apple-text-accent">AI</span></span>
-                        <span class="px-2 py-0.5 text-[10px] font-mono uppercase bg-blue-500/10 text-blue-400 border border-blue-500/25 rounded-full">v2.0 Pro</span>
+                        <span class="px-2 py-0.5 text-[10px] font-mono uppercase bg-blue-500/10 text-blue-400 border border-blue-500/25 rounded-full whitespace-nowrap inline-block">v2.0 Pro</span>
                     </div>
                 </div>
 
@@ -437,12 +439,14 @@
                 <!-- Action Controls -->
                 <div class="flex items-center space-x-3 sm:space-x-4">
                     <!-- Multilingual Voice Launcher Pill -->
-                    <button onclick="openVoiceModal()" class="apple-pill-btn-secondary px-3.5 py-2 text-xs flex items-center space-x-2 border-blue-500/30 text-blue-300 hover:text-white hover:border-blue-400/50">
+                    <button onclick="openVoiceModal()" class="apple-pill-btn-secondary px-3.5 py-2 text-xs flex items-center space-x-2 border-blue-500/30 text-blue-300 hover:text-white hover:border-blue-400/50 whitespace-nowrap">
                         <span class="relative flex h-2 w-2">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
                         </span>
-                        <i data-lucide="mic" class="w-3.5 h-3.5 text-blue-400"></i>
+                        <i data-lucide="mic" class="w-3.5 h-3.5 text-blue-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" x2="12" y1="19" y2="22"></line></svg>
+                        </i>
                         <span class="hidden sm:inline font-mono">Voice AI</span>
                     </button>
 
@@ -450,9 +454,11 @@
                         Sign In
                     </button>
 
-                    <button onclick="launchAppDirectly()" class="apple-pill-btn-primary px-5 py-2.5 text-xs font-semibold flex items-center space-x-2">
+                    <button onclick="launchAppDirectly()" class="apple-pill-btn-primary px-5 py-2.5 text-xs font-semibold flex items-center space-x-2 whitespace-nowrap">
                         <span>Launch Platform</span>
-                        <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        <i data-lucide="arrow-right" class="w-3.5 h-3.5">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </i>
                     </button>
                 </div>
             </div>
@@ -476,40 +482,46 @@
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-8">
                 <!-- Eyebrow Pill -->
-                <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.1] backdrop-blur-xl text-xs font-mono text-blue-400 reveal shadow-[0_0_25px_rgba(59,130,246,0.15)]">
+                <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.1] backdrop-blur-xl text-xs font-mono text-blue-400 reveal is-visible shadow-[0_0_25px_rgba(59,130,246,0.15)]">
                     <span class="w-2 h-2 rounded-full bg-blue-400 animate-ping"></span>
                     <span class="tracking-widest uppercase font-semibold">NEXUS 2.0 · AUTONOMOUS AGENT ORCHESTRATION</span>
                 </div>
 
                 <!-- Giant Apple Headline -->
-                <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight max-w-5xl mx-auto leading-[1.06] apple-text-hero reveal">
+                <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight max-w-5xl mx-auto leading-[1.06] apple-text-hero reveal is-visible">
                     Seven Autonomous Minds. <br>
                     <span class="apple-text-accent">One Quantum Swarm.</span>
                 </h1>
 
                 <!-- Apple Subtitle -->
-                <p class="text-base sm:text-lg md:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed font-normal reveal reveal-delay-1">
+                <p class="text-base sm:text-lg md:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed font-normal reveal is-visible reveal-delay-1">
                     Orchestrate enterprise business intelligence, automated regulatory RAG, financial variance reconciliation, and strategic roadmaps into a deterministic LangGraph state machine — governed with cryptographic Human-in-the-Loop checkpoints.
                 </p>
 
                 <!-- Apple CTA Pill Buttons -->
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 reveal reveal-delay-2">
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 reveal is-visible reveal-delay-2">
                     <button onclick="launchAppDirectly()" class="apple-pill-btn-blue px-8 py-4 text-sm font-semibold flex items-center space-x-3 w-full sm:w-auto justify-center">
-                        <i data-lucide="rocket" class="w-4 h-4"></i>
+                        <i data-lucide="rocket" class="w-4 h-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path></svg>
+                        </i>
                         <span>Start Building Workflows</span>
                     </button>
                     <button onclick="scrollToSection('hero-studio')" class="apple-pill-btn-secondary px-8 py-4 text-sm font-semibold flex items-center space-x-3 w-full sm:w-auto justify-center">
-                        <i data-lucide="play-circle" class="w-4 h-4 text-blue-400"></i>
+                        <i data-lucide="play-circle" class="w-4 h-4 text-blue-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-blue-400"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+                        </i>
                         <span>Experience Live Simulation ↓</span>
                     </button>
                     <button onclick="openVoiceModal()" class="apple-pill-btn-secondary px-6 py-4 text-sm font-medium flex items-center space-x-2 w-full sm:w-auto justify-center border-blue-500/25">
-                        <i data-lucide="mic" class="w-4 h-4 text-blue-400"></i>
+                        <i data-lucide="mic" class="w-4 h-4 text-blue-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-blue-400"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" x2="12" y1="19" y2="22"></line></svg>
+                        </i>
                         <span>Try Multilingual Voice</span>
                     </button>
                 </div>
 
                 <!-- Live Metrics Counter Strip -->
-                <div class="pt-10 max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 text-center reveal reveal-delay-3">
+                <div class="pt-10 max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 text-center reveal is-visible reveal-delay-3">
                     <div class="apple-glass-card rounded-2xl p-4 space-y-1">
                         <div class="text-2xl sm:text-3xl font-black font-mono apple-text-hero">7</div>
                         <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider">Autonomous Agents</div>
@@ -2709,9 +2721,6 @@
                 icon.classList.remove('rotate-180');
             }
         }
-            { name: "Google Cloud Run", type: "Deployment Sandbox", status: "Connected", icon: "cloud", ping: "22ms" },
-            { name: "Salesforce CRM", type: "Customer Intelligence", status: "Standby", icon: "users", ping: "—" }
-        ];
 
         // Toast Helper
         function showToast(msg, type = "success") {
@@ -3196,9 +3205,6 @@
                 setWorkspacePrompt('sales');
             }
             showToast(`Loaded dataset '${filename}' into workspace.`);
-        }
-                console.error("Document list error:", err);
-            }
         }
 
         async function handleFileUpload(input) {
