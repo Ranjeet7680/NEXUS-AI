@@ -32,6 +32,31 @@ class MemoryStore:
                 "topic": "Approval Thresholds",
                 "content": "Actions communicating outside company boundary (client emails, board memos, automated external tool dispatches) mandate Tier-1 Human Approval.",
                 "tags": ["governance", "approval", "compliance"]
+            },
+            {
+                "topic": "FinTech AML & Fraud Velocity",
+                "content": "Transaction velocity exceeding 5 actions/hour with risk score > 0.70 triggers mandatory AML hold and Tier-2 HITL compliance review under FinCEN & BSA guidelines.",
+                "tags": ["fintech", "fraud", "aml", "compliance", "banking"]
+            },
+            {
+                "topic": "Supply Chain Port Dwell SLA",
+                "content": "Port container dwell time exceeding 72 hours triggers demurrage penalties and rail corridor rerouting to avoid supply chain cascade failures.",
+                "tags": ["supply_chain", "logistics", "freight", "port", "reroute"]
+            },
+            {
+                "topic": "Cyber Incident CVSS Severity",
+                "content": "CVSS scores >= 8.5 on production endpoints mandate automated session invalidation, pod isolation, and SOC Tier-3 incident response escalation within 15 minutes.",
+                "tags": ["cybersecurity", "threat", "mitre", "soc", "infosec"]
+            },
+            {
+                "topic": "Net Dollar Retention (NDR) Targets",
+                "content": "Best-in-class enterprise SaaS NDR exceeds 110%. NDR below 95% indicates scale contraction, requiring immediate customer success executive intervention.",
+                "tags": ["saas", "mrr", "ndr", "retention", "expansion"]
+            },
+            {
+                "topic": "Clinical Trial P-Value Significance",
+                "content": "FDA Phase III efficacy requires two-tailed p-value < 0.01 with retention rate > 90%. Severe adverse event rates > 5% require Data Safety Monitoring Board (DSMB) review.",
+                "tags": ["clinical", "pharma", "fda", "trials", "efficacy"]
             }
         ]
 

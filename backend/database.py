@@ -18,6 +18,15 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 def init_db():
     Base.metadata.create_all(bind=engine)
+    try:
+        from backend.seed_data import seed_database
+        db = SessionLocal()
+        try:
+            seed_database(db)
+        finally:
+            db.close()
+    except Exception as e:
+        print(f"[Seed Warning] Could not seed database: {e}")
 
 def get_db():
     db = SessionLocal()

@@ -1,0 +1,7 @@
+study_id,compound_code,therapeutic_area,phase,enrolled_patients,primary_endpoint_met_pct,adverse_events_count,p_value,dosage_mg,retention_rate_pct,fda_fast_track,audit_risk,clinical_director
+CT-801,NX-4109,Immuno-Oncology,Phase III,1240,84.2,18,0.0012,150,96.4,TRUE,LOW,Dr. Reynolds
+CT-802,NX-2204,Cardiovascular Rare,Phase IIb,420,72.6,34,0.0140,75,91.2,TRUE,MEDIUM,Dr. Chen
+CT-803,NX-7718,Neuro-Degenerative,Phase IIa,280,58.4,42,0.0480,200,83.5,FALSE,HIGH,Dr. Morrison
+CT-804,NX-9102,Gene Therapy Metabolic,Phase I,64,91.0,4,0.0004,25,98.0,TRUE,LOW,Dr. Patel
+CT-805,NX-3310,Pediatric Respiratory,Phase IIb,350,79.8,21,0.0080,50,94.2,FALSE,LOW,Dr. Gomez
+CT-806,NX-5501,Antibiotic Resistant Pathogen,Phase III,890,68.2,56,0.0320,500,87.6,TRUE,HIGH,Dr. Zhao

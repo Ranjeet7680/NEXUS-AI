@@ -19,18 +19,32 @@ def get_data_dir() -> str:
         return tmp_dir
     return BASE_DATA_DIR
 
+PRESET_DATASETS = {
+    "sample_sales_q3.csv": {"category": "Enterprise Sales & ARR", "rows": 10, "sector": "SaaS Enterprise"},
+    "healthcare_patient_ops.csv": {"category": "Clinical Operations & SLAs", "rows": 7, "sector": "Healthcare Systems"},
+    "financial_fraud_telemetry.csv": {"category": "FinTech Fraud & AML Flags", "rows": 10, "sector": "Banking & FinTech"},
+    "supply_chain_logistics.csv": {"category": "Global Port Logistics & Dwell", "rows": 10, "sector": "Supply Chain"},
+    "cybersecurity_incidents.csv": {"category": "MITRE Threat Telemetry & SOC", "rows": 7, "sector": "Cyber Defense"},
+    "saas_mrr_churn_analytics.csv": {"category": "Net Dollar Retention & Cohorts", "rows": 6, "sector": "SaaS Analytics"},
+    "clinical_trial_metrics.csv": {"category": "Biopharma FDA Clinical Trials", "rows": 6, "sector": "Life Sciences"}
+}
+
 @router.get("")
 def list_datasets() -> List[Dict[str, Any]]:
     datasets = []
     data_dir = get_data_dir()
     if os.path.exists(data_dir):
-        for f in os.listdir(data_dir):
+        for f in sorted(os.listdir(data_dir)):
             if f.endswith(".csv") or f.endswith(".json"):
                 fpath = os.path.join(data_dir, f)
+                preset_info = PRESET_DATASETS.get(f, {})
                 datasets.append({
                     "filename": f,
                     "size_bytes": os.path.getsize(fpath),
-                    "is_preset": f in ["sample_sales_q3.csv", "healthcare_patient_ops.csv"]
+                    "is_preset": f in PRESET_DATASETS,
+                    "category": preset_info.get("category", "Custom Dataset"),
+                    "sector": preset_info.get("sector", "Custom Ingestion"),
+                    "rows": preset_info.get("rows", 0)
                 })
     return datasets
 
