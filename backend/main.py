@@ -97,6 +97,27 @@ def serve_whitepaper():
         return FileResponse(file_path)
     return FileResponse(os.path.join(static_dir, "index.html"))
 
+@app.api_route("/presentation", methods=["GET", "HEAD"])
+@app.api_route("/pitch-deck", methods=["GET", "HEAD"])
+@app.api_route("/slides", methods=["GET", "HEAD"])
+def serve_presentation():
+    file_path = os.path.join(static_dir, "presentation.html")
+    if os.path.exists(file_path):
+        return FileResponse(file_path)
+    return FileResponse(os.path.join(static_dir, "index.html"))
+
+@app.api_route("/download/presentation", methods=["GET", "HEAD"])
+@app.api_route("/download/pitch-deck", methods=["GET", "HEAD"])
+def download_presentation():
+    file_path = os.path.join(static_dir, "NEXUS_AI_Platform_Presentation.pptx")
+    if os.path.exists(file_path):
+        return FileResponse(
+            file_path,
+            filename="NEXUS_AI_Platform_Presentation.pptx",
+            media_type="application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        )
+    return FileResponse(os.path.join(static_dir, "index.html"))
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("backend.main:app", host="0.0.0.0", port=8000, reload=True)
