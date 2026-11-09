@@ -65,6 +65,34 @@ def serve_index():
         "message": "NEXUS AI API Gateway is active. Visit /docs for Swagger API documentation or load the Command Center UI."
     }
 
+@app.api_route("/privacy", methods=["GET", "HEAD"])
+def serve_privacy():
+    file_path = os.path.join(static_dir, "privacy.html")
+    if os.path.exists(file_path):
+        return FileResponse(file_path)
+    return FileResponse(os.path.join(static_dir, "index.html"))
+
+@app.api_route("/terms", methods=["GET", "HEAD"])
+def serve_terms():
+    file_path = os.path.join(static_dir, "terms.html")
+    if os.path.exists(file_path):
+        return FileResponse(file_path)
+    return FileResponse(os.path.join(static_dir, "index.html"))
+
+@app.api_route("/security", methods=["GET", "HEAD"])
+def serve_security():
+    file_path = os.path.join(static_dir, "security.html")
+    if os.path.exists(file_path):
+        return FileResponse(file_path)
+    return FileResponse(os.path.join(static_dir, "index.html"))
+
+@app.api_route("/whitepaper", methods=["GET", "HEAD"])
+def serve_whitepaper():
+    file_path = os.path.join(static_dir, "whitepaper.html")
+    if os.path.exists(file_path):
+        return FileResponse(file_path)
+    return FileResponse(os.path.join(static_dir, "index.html"))
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("backend.main:app", host="0.0.0.0", port=8000, reload=True)

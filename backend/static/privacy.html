@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | NEXUS AI Enterprise Orchestration</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        nexus: {
+                            bg: '#030712',
+                            card: '#0a1024',
+                            border: 'rgba(255, 255, 255, 0.08)',
+                            primary: '#3b82f6',
+                            accent: '#8b5cf6'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background-color: #030712;
+            color: #F8FAFC;
+            font-family: 'Inter', -apple-system, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .apple-glass {
+            background: rgba(3, 7, 18, 0.75);
+            backdrop-filter: blur(28px) saturate(190%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .apple-glass-card {
+            background: radial-gradient(120% 120% at 50% 0%, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%), rgba(10, 15, 30, 0.65);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .apple-text-accent {
+            background: linear-gradient(135deg, #60A5FA 0%, #A855F7 50%, #EC4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .apple-pill-btn-primary {
+            background: #FFFFFF;
+            color: #030712;
+            border-radius: 9999px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s ease;
+        }
+        .apple-pill-btn-primary:hover {
+            background: #F1F5F9;
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-[#030712] text-slate-100 relative">
+        <!-- Global Cinematic Background Image Layer -->
+        <div class="fixed inset-0 w-full h-full pointer-events-none z-0 overflow-hidden opacity-25 mix-blend-screen select-none">
+            <img src="/static/nexus-apple-bg.png" alt="Nexus AI Background" class="w-full h-full object-cover object-center scale-105 filter blur-[0.5px]">
+            <div class="absolute inset-0 bg-gradient-to-b from-[#030712]/40 via-transparent to-[#030712]"></div>
+        </div>
+
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 apple-glass border-b border-white/[0.08]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="/" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-blue-500 to-purple-600 p-[1.5px] shadow-[0_0_20px_rgba(59,130,246,0.35)]">
+                    <div class="w-full h-full bg-[#030712] rounded-2xl flex items-center justify-center">
+                        <i data-lucide="layers" class="w-5 h-5 text-blue-400"></i>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="text-xl font-bold tracking-tight text-white">NEXUS <span class="apple-text-accent">AI</span></span>
+                    <span class="px-2 py-0.5 text-[10px] font-mono uppercase bg-blue-500/10 text-blue-400 border border-blue-500/25 rounded-full">Legal</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center space-x-7 text-xs font-medium text-slate-300">
+                <a href="/#hero" class="hover:text-white transition">Overview</a>
+                <a href="/#features" class="hover:text-white transition">Capabilities</a>
+                <a href="/#swarm-section" class="hover:text-white transition">7-Agent Swarm</a>
+                <a href="/#pricing" class="hover:text-white transition">Pricing</a>
+                <a href="/security" class="hover:text-white transition">Security</a>
+                <a href="/terms" class="hover:text-white transition">Terms</a>
+                <a href="/docs" target="_blank" class="hover:text-white transition flex items-center space-x-1 text-slate-400">
+                    <span>API Docs</span>
+                    <i data-lucide="external-link" class="w-3 h-3"></i>
+                </a>
+            </nav>
+
+            <a href="/" class="apple-pill-btn-primary px-5 py-2.5 text-xs font-semibold">
+                <span>Enter Platform</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-1.5"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 py-16 sm:py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <!-- Eyebrow & Page Header -->
+        <div class="space-y-4 text-center sm:text-left border-b border-white/[0.08] pb-10">
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/25 text-xs font-mono text-blue-400">
+                <span>EFFECTIVE: OCTOBER 2026 · VERSION 2.4</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl font-black tracking-tight text-white">Enterprise Privacy Policy</h1>
+            <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+                NEXUS AI is built upon the foundational principle of complete customer data sovereignty. This document outlines how data is ingested, processed, protected, and deleted across our autonomous multi-agent state graphs.
+            </p>
+        </div>
+
+        <!-- Privacy Guarantees Callout -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="apple-glass-card rounded-2xl p-5 space-y-2">
+                <div class="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+                    <i data-lucide="shield-check" class="w-4 h-4"></i>
+                </div>
+                <div class="text-sm font-bold text-white">Zero Model Training</div>
+                <div class="text-xs text-slate-400 leading-relaxed">Customer prompt inputs and RAG documents are never used to train or fine-tune public foundation models.</div>
+            </div>
+            <div class="apple-glass-card rounded-2xl p-5 space-y-2">
+                <div class="w-8 h-8 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center">
+                    <i data-lucide="lock" class="w-4 h-4"></i>
+                </div>
+                <div class="text-sm font-bold text-white">Full AES-256 Encryption</div>
+                <div class="text-xs text-slate-400 leading-relaxed">Episodic memory stores and pgvector embeddings are encrypted both in transit (TLS 1.3) and at rest (AES-256).</div>
+            </div>
+            <div class="apple-glass-card rounded-2xl p-5 space-y-2">
+                <div class="w-8 h-8 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center">
+                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                </div>
+                <div class="text-sm font-bold text-white">Right to Purge</div>
+                <div class="text-xs text-slate-400 leading-relaxed">Instant one-click cryptographic erasure removes workspace embeddings and task telemetry permanently.</div>
+            </div>
+        </div>
+
+        <!-- Document Sections -->
+        <div class="space-y-10 text-sm text-slate-300 leading-relaxed">
+            <!-- Section 1 -->
+            <section class="space-y-3">
+                <h2 class="text-xl font-bold text-white flex items-center space-x-2">
+                    <span class="text-blue-400 font-mono text-sm">01.</span>
+                    <span>Data Categories & Collection Scope</span>
+                </h2>
+                <p>When interacting with the NEXUS AI orchestration platform, we collect only the minimum telemetry necessary to execute autonomous multi-agent state graphs:</p>
+                <ul class="list-disc list-inside space-y-1.5 pl-2 text-slate-400 text-xs">
+                    <li><strong class="text-slate-200">Ingested Documents:</strong> CSV datasets, financial tables, and PDF reports provided for schema extraction and semantic chunking.</li>
+                    <li><strong class="text-slate-200">Execution Telemetry:</strong> Agent reasoning steps, tool invocation metrics, latency percentiles, and quality audit verification scores.</li>
+                    <li><strong class="text-slate-200">Human-in-the-Loop Signatures:</strong> Operator identifiers, decision timestamps, and approval rationale for governance logging.</li>
+                    <li><strong class="text-slate-200">Speech Audio:</strong> Sub-300ms ephemeral voice snippets for intent extraction (discarded immediately after text conversion).</li>
+                </ul>
+            </section>
+
+            <!-- Section 2 -->
+            <section class="space-y-3">
+                <h2 class="text-xl font-bold text-white flex items-center space-x-2">
+                    <span class="text-blue-400 font-mono text-sm">02.</span>
+                    <span>Zero Model Training & LLM Boundaries</span>
+                </h2>
+                <p>
+                    We maintain strict contractual and technical barriers prohibiting any customer mission data from entering model training corpora. When specialized agents invoke neural kernels (e.g. Gemini 1.5 Pro, Flash, or sandboxed math engines), requests are processed under enterprise zero-data-retention (ZDR) agreements.
+                </p>
+            </section>
+
+            <!-- Section 3 -->
+            <section class="space-y-3">
+                <h2 class="text-xl font-bold text-white flex items-center space-x-2">
+                    <span class="text-blue-400 font-mono text-sm">03.</span>
+                    <span>Vector Embeddings & Tenant Isolation</span>
+                </h2>
+                <p>
+                    All semantic RAG embeddings generated by the Research Agent are segregated using Row-Level Security (RLS) within PostgreSQL pgvector. Cross-tenant vector leakage is mathematically impossible through cryptographically separated search namespaces.
+                </p>
+            </section>
+
+            <!-- Section 4 -->
+            <section class="space-y-3">
+                <h2 class="text-xl font-bold text-white flex items-center space-x-2">
+                    <span class="text-blue-400 font-mono text-sm">04.</span>
+                    <span>PII & PHI Redaction Guardrails</span>
+                </h2>
+                <p>
+                    Before documents are vectorized or routed to external agent nodes, the Security Sentry automatically applies Named Entity Recognition (NER) tokenization to mask Social Security Numbers, credit cards, bank accounts, and protected healthcare health identifiers (HIPAA compliance).
+                </p>
+            </section>
+
+            <!-- Section 5 -->
+            <section class="space-y-3">
+                <h2 class="text-xl font-bold text-white flex items-center space-x-2">
+                    <span class="text-blue-400 font-mono text-sm">05.</span>
+                    <span>Data Protection Officer & Inquiries</span>
+                </h2>
+                <p>
+                    For Data Subject Access Requests (DSAR), GDPR compliance inquiries, or custom Data Processing Agreements (DPA), please contact our security team:
+                </p>
+                <div class="apple-glass-card rounded-2xl p-4 font-mono text-xs text-slate-300 space-y-1">
+                    <div>Data Protection Officer: <span class="text-blue-400 font-semibold">compliance@nexusai.enterprise</span></div>
+                    <div>Security Operations: <span class="text-slate-400">pgp-key-id: 0x8F9B4E7A2B91C0D4</span></div>
+                    <div>Address: NEXUS AI Technologies Inc., 100 Montgomery St, San Francisco, CA 94104</div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/[0.08] py-12 bg-[#020617] text-slate-400 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex items-center space-x-3">
+                <div class="w-6 h-6 rounded-lg bg-gradient-to-tr from-blue-500 to-purple-600 flex items-center justify-center text-white">
+                    <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+                </div>
+                <span class="font-bold text-white">NEXUS AI Enterprise Governance</span>
+            </div>
+            <div class="flex items-center space-x-6 text-slate-400">
+                <a href="/privacy" class="text-white font-semibold">Privacy Policy</a>
+                <a href="/terms" class="hover:text-white transition">Terms of Service</a>
+                <a href="/security" class="hover:text-white transition">Security &amp; Compliance</a>
+                <a href="/whitepaper" class="hover:text-white transition">Security Whitepaper</a>
+            </div>
+            <div class="font-mono text-slate-500 text-[11px]">&copy; 2026 NEXUS AI Platform. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

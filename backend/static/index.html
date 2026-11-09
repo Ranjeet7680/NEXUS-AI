@@ -276,21 +276,20 @@
             letter-spacing: 0.05em;
         }
 
-        /* Scroll Reveal System */
+        /* Scroll Reveal System (Default visible with smooth transitions) */
         .reveal {
-            opacity: 0;
-            transform: translateY(28px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: opacity, transform;
-        }
-        .reveal.is-visible {
             opacity: 1;
             transform: translateY(0);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .reveal-delay-1 { transition-delay: 100ms; }
-        .reveal-delay-2 { transition-delay: 200ms; }
-        .reveal-delay-3 { transition-delay: 300ms; }
-        .reveal-delay-4 { transition-delay: 400ms; }
+        .reveal.is-visible {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+        .reveal-delay-1 { transition-delay: 80ms; }
+        .reveal-delay-2 { transition-delay: 150ms; }
+        .reveal-delay-3 { transition-delay: 220ms; }
+        .reveal-delay-4 { transition-delay: 300ms; }
 
         /* Keyframes */
         @keyframes floatSlow {
@@ -1259,13 +1258,13 @@
                     </div>
 
                     <div class="flex flex-wrap items-center justify-center gap-6 text-slate-400">
-                        <a href="#hero" class="hover:text-white transition">Overview</a>
-                        <a href="#features" class="hover:text-white transition">Capabilities</a>
-                        <a href="#swarm-section" class="hover:text-white transition">7-Agent Swarm</a>
-                        <a href="#architecture-blueprints" class="hover:text-white transition">Blueprints</a>
-                        <a href="#pricing" class="hover:text-white transition">Pricing</a>
+                        <a href="/#hero" class="hover:text-white transition">Overview</a>
+                        <a href="/#features" class="hover:text-white transition">Capabilities</a>
+                        <a href="/#swarm-section" class="hover:text-white transition">7-Agent Swarm</a>
+                        <a href="/#architecture-blueprints" class="hover:text-white transition">Blueprints</a>
+                        <a href="/#pricing" class="hover:text-white transition">Pricing</a>
                         <a href="/docs" target="_blank" class="hover:text-white transition">API Docs</a>
-                        <a href="#" class="hover:text-white transition">Security &amp; Compliance</a>
+                        <a href="/security" class="hover:text-white transition">Security &amp; Compliance</a>
                     </div>
 
                     <div class="flex items-center space-x-2 text-emerald-400 font-mono text-[11px]">
@@ -1277,9 +1276,10 @@
                 <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-white/[0.06] text-slate-500 text-[11px] font-mono">
                     <div>&copy; 2026 NEXUS AI Platform. All rights reserved. Deterministic Multi-Agent Governance.</div>
                     <div class="flex items-center space-x-4">
-                        <a href="#" class="hover:text-slate-300 transition">Privacy Policy</a>
-                        <a href="#" class="hover:text-slate-300 transition">Terms of Service</a>
-                        <a href="#" class="hover:text-slate-300 transition">Security Whitepaper</a>
+                        <a href="/privacy" class="hover:text-slate-300 transition">Privacy Policy</a>
+                        <a href="/terms" class="hover:text-slate-300 transition">Terms of Service</a>
+                        <a href="/security" class="hover:text-slate-300 transition">Security &amp; Compliance</a>
+                        <a href="/whitepaper" class="hover:text-slate-300 transition">Security Whitepaper</a>
                     </div>
                 </div>
             </div>
