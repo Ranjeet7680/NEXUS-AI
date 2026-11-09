@@ -66,6 +66,7 @@ def serve_index():
     }
 
 @app.api_route("/privacy", methods=["GET", "HEAD"])
+@app.api_route("/privacy-policy", methods=["GET", "HEAD"])
 def serve_privacy():
     file_path = os.path.join(static_dir, "privacy.html")
     if os.path.exists(file_path):
@@ -73,6 +74,7 @@ def serve_privacy():
     return FileResponse(os.path.join(static_dir, "index.html"))
 
 @app.api_route("/terms", methods=["GET", "HEAD"])
+@app.api_route("/terms-of-service", methods=["GET", "HEAD"])
 def serve_terms():
     file_path = os.path.join(static_dir, "terms.html")
     if os.path.exists(file_path):
@@ -80,6 +82,7 @@ def serve_terms():
     return FileResponse(os.path.join(static_dir, "index.html"))
 
 @app.api_route("/security", methods=["GET", "HEAD"])
+@app.api_route("/security-compliance", methods=["GET", "HEAD"])
 def serve_security():
     file_path = os.path.join(static_dir, "security.html")
     if os.path.exists(file_path):
@@ -87,6 +90,7 @@ def serve_security():
     return FileResponse(os.path.join(static_dir, "index.html"))
 
 @app.api_route("/whitepaper", methods=["GET", "HEAD"])
+@app.api_route("/security-whitepaper", methods=["GET", "HEAD"])
 def serve_whitepaper():
     file_path = os.path.join(static_dir, "whitepaper.html")
     if os.path.exists(file_path):
