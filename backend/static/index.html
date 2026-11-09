@@ -40,11 +40,16 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
-            background-color: #080D1B;
+            background-color: #030712;
             color: #F8FAFC;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         .font-mono { font-family: 'JetBrains Mono', monospace; }
         .glass-panel {
@@ -101,17 +106,237 @@
         .draggable-node:active {
             cursor: grabbing;
         }
+
+        /* ========================================================================= */
+        /* APPLE-GRADE DESIGN SYSTEM & CINEMATIC MICRO-INTERACTIONS                  */
+        /* ========================================================================= */
+        .apple-text-hero {
+            background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 55%, #94A3B8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .apple-text-accent {
+            background: linear-gradient(135deg, #60A5FA 0%, #A855F7 50%, #EC4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .apple-text-cyan {
+            background: linear-gradient(135deg, #38BDF8 0%, #818CF8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .apple-text-gold {
+            background: linear-gradient(135deg, #FCD34D 0%, #F59E0B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .apple-glass {
+            background: rgba(3, 7, 18, 0.75);
+            backdrop-filter: blur(28px) saturate(190%);
+            -webkit-backdrop-filter: blur(28px) saturate(190%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .apple-glass-card {
+            background: radial-gradient(120% 120% at 50% 0%, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%), rgba(10, 15, 30, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .apple-glass-card:hover {
+            border-color: rgba(96, 165, 250, 0.35);
+            transform: translateY(-4px);
+            box-shadow: 0 30px 60px -15px rgba(56, 189, 248, 0.15), 0 0 25px rgba(96, 165, 250, 0.1);
+        }
+
+        .apple-glass-card-static {
+            background: radial-gradient(120% 120% at 50% 0%, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%), rgba(10, 15, 30, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Cursor Spotlight on Bento & Hero Cards */
+        .card-spotlight {
+            position: relative;
+            overflow: hidden;
+        }
+        .card-spotlight::before {
+            content: '';
+            position: absolute;
+            top: var(--mouse-y, -1000px);
+            left: var(--mouse-x, -1000px);
+            width: 480px;
+            height: 480px;
+            background: radial-gradient(circle, rgba(96, 165, 250, 0.12) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+            z-index: 1;
+        }
+        .card-spotlight:hover::before {
+            opacity: 1;
+        }
+
+        /* Apple-Grade Pill Buttons */
+        .apple-pill-btn-primary {
+            background: #FFFFFF;
+            color: #030712;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.25);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .apple-pill-btn-primary:hover {
+            background: #F8FAFC;
+            transform: scale(1.025);
+            box-shadow: 0 0 35px rgba(255, 255, 255, 0.4);
+        }
+
+        .apple-pill-btn-blue {
+            background: linear-gradient(135deg, #2563EB 0%, #4F46E5 100%);
+            color: #FFFFFF;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .apple-pill-btn-blue:hover {
+            background: linear-gradient(135deg, #1D4ED8 0%, #4338CA 100%);
+            transform: scale(1.025);
+            box-shadow: 0 16px 35px -5px rgba(37, 99, 235, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .apple-pill-btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: #F8FAFC;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-radius: 9999px;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .apple-pill-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: scale(1.02);
+            color: #FFFFFF;
+        }
+
+        .apple-pill-btn-outline {
+            background: transparent;
+            color: #94A3B8;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 9999px;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .apple-pill-btn-outline:hover {
+            border-color: #60A5FA;
+            color: #FFFFFF;
+            background: rgba(96, 165, 250, 0.08);
+        }
+
+        /* Apple Tag Pill */
+        .apple-tag-pill {
+            display: inline-flex;
+            align-items: center;
+            space-x: 0.5rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 0.05em;
+        }
+
+        /* Scroll Reveal System */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 100ms; }
+        .reveal-delay-2 { transition-delay: 200ms; }
+        .reveal-delay-3 { transition-delay: 300ms; }
+        .reveal-delay-4 { transition-delay: 400ms; }
+
+        /* Keyframes */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float {
+            animation: floatSlow 6s ease-in-out infinite;
+        }
+
+        @keyframes ambientPulse {
+            0%, 100% { opacity: 0.25; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.08); }
+        }
+        .animate-ambient {
+            animation: ambientPulse 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes shimmerLine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .shimmer-active {
+            position: relative;
+            overflow: hidden;
+        }
+        .shimmer-active::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+            animation: shimmerLine 3s infinite;
+        }
+
+        @keyframes activeNodePulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.6); }
+            50% { box-shadow: 0 0 0 10px rgba(56, 189, 248, 0); }
+        }
+        .node-active {
+            animation: activeNodePulse 2s infinite;
+            border-color: #38BDF8 !important;
+            background: rgba(56, 189, 248, 0.15) !important;
+        }
     </style>
 </head>
-<body class="min-h-screen flex flex-col bg-[#080D1B] text-slate-100 selection:bg-nexus-primary selection:text-white">
+<body class="min-h-screen flex flex-col bg-[#030712] text-slate-100 selection:bg-blue-500 selection:text-white">
 
     <!-- Global Floating Toast Container -->
     <div id="toastContainer" class="fixed bottom-6 right-6 z-[120] flex flex-col space-y-2 pointer-events-none"></div>
 
     <!-- ========================================================================= -->
-    <!-- SCREEN 1: WELCOME & LOADING SCREEN (Canvas Neural Mesh & Initialization)   -->
+    <!-- SCREEN 1: WELCOME & LOADING SCREEN (Hidden by default for instant load)    -->
     <!-- ========================================================================= -->
-    <div id="screen-welcome" class="fixed inset-0 z-[100] bg-[#080D1B] flex flex-col items-center justify-center p-6 transition-opacity duration-700">
+    <div id="screen-welcome" class="hidden fixed inset-0 z-[100] bg-[#030712] flex flex-col items-center justify-center p-6 transition-opacity duration-700">
         <canvas id="neuralCanvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-40"></canvas>
         
         <div class="relative z-10 flex flex-col items-center text-center max-w-md space-y-6">
@@ -153,128 +378,276 @@
 
 
     <!-- ========================================================================= -->
-    <!-- SCREEN 2: ENTERPRISE SAAS LANDING PAGE                                    -->
+    <!-- SCREEN 2: APPLE-GRADE ENTERPRISE SAAS LANDING PAGE                         -->
     <!-- ========================================================================= -->
-    <div id="screen-landing" class="hidden min-h-screen flex flex-col">
-        <!-- Floating Glass Header -->
-        <header class="sticky top-0 z-50 glass-panel border-b border-[#1F2E4D]/80">
+    <div id="screen-landing" class="min-h-screen flex flex-col bg-[#030712] text-slate-100 selection:bg-blue-500 selection:text-white">
+        
+        <!-- Apple Frosted Glass Sticky Header -->
+        <header class="sticky top-0 z-50 apple-glass border-b border-white/[0.08] transition-all duration-300">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-                <!-- Logo -->
-                <div class="flex items-center space-x-3 cursor-pointer" onclick="switchView('landing')">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#397BFF] to-[#865BFF] p-[1.5px] glow-blue">
-                        <div class="w-full h-full bg-[#111A2E] rounded-xl flex items-center justify-center">
-                            <i data-lucide="layers" class="w-5 h-5 text-[#397BFF]"></i>
+                <!-- Brand / Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer group" onclick="switchView('landing')">
+                    <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-blue-500 via-indigo-500 to-purple-500 p-[1.5px] shadow-[0_0_20px_rgba(59,130,246,0.35)] group-hover:scale-105 transition-transform duration-300">
+                        <div class="w-full h-full bg-[#030712] rounded-2xl flex items-center justify-center">
+                            <i data-lucide="layers" class="w-5 h-5 text-blue-400 group-hover:text-white transition-colors"></i>
                         </div>
                     </div>
-                    <div>
-                        <span class="text-xl font-black tracking-wide font-sans">NEXUS <span class="text-gradient">AI</span></span>
-                        <span class="ml-2 px-2 py-0.5 text-[10px] font-mono uppercase bg-[#397BFF]/10 text-[#397BFF] border border-[#397BFF]/30 rounded">v2.0</span>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-xl font-bold tracking-tight font-sans text-white">NEXUS <span class="apple-text-accent">AI</span></span>
+                        <span class="px-2 py-0.5 text-[10px] font-mono uppercase bg-blue-500/10 text-blue-400 border border-blue-500/25 rounded-full">v2.0 Pro</span>
                     </div>
                 </div>
 
                 <!-- Navigation Links -->
-                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
-                    <a href="#features" class="hover:text-[#397BFF] transition">Features</a>
-                    <a href="#architecture" class="hover:text-[#397BFF] transition">Architecture</a>
-                    <a href="#integrations" class="hover:text-[#397BFF] transition">Integrations</a>
-                    <a href="#pricing" class="hover:text-[#397BFF] transition">Pricing</a>
-                    <a href="/docs" target="_blank" class="hover:text-[#397BFF] transition flex items-center space-x-1">
-                        <span>API</span>
-                        <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-500"></i>
+                <nav class="hidden lg:flex items-center space-x-7 text-xs font-medium tracking-wide text-slate-300">
+                    <a href="#hero" class="hover:text-white transition">Overview</a>
+                    <a href="#hero-studio" class="hover:text-white transition">Live Studio</a>
+                    <a href="#features" class="hover:text-white transition">Capabilities</a>
+                    <a href="#swarm-section" class="hover:text-white transition">7-Agent Swarm</a>
+                    <a href="#architecture-blueprints" class="hover:text-white transition">Architecture</a>
+                    <a href="#comparison" class="hover:text-white transition">Why NEXUS</a>
+                    <a href="#pricing" class="hover:text-white transition">Pricing</a>
+                    <a href="/docs" target="_blank" class="hover:text-white transition flex items-center space-x-1 text-slate-400">
+                        <span>API Docs</span>
+                        <i data-lucide="external-link" class="w-3 h-3"></i>
                     </a>
                 </nav>
 
-                <!-- Auth / CTA Buttons -->
-                <div class="flex items-center space-x-4">
-                    <button onclick="openAuthModal('login')" class="text-sm font-semibold text-slate-300 hover:text-white transition px-3 py-2">
+                <!-- Action Controls -->
+                <div class="flex items-center space-x-3 sm:space-x-4">
+                    <!-- Multilingual Voice Launcher Pill -->
+                    <button onclick="openVoiceModal()" class="apple-pill-btn-secondary px-3.5 py-2 text-xs flex items-center space-x-2 border-blue-500/30 text-blue-300 hover:text-white hover:border-blue-400/50">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                        </span>
+                        <i data-lucide="mic" class="w-3.5 h-3.5 text-blue-400"></i>
+                        <span class="hidden sm:inline font-mono">Voice AI</span>
+                    </button>
+
+                    <button onclick="openAuthModal('login')" class="text-xs font-medium text-slate-300 hover:text-white transition px-3 py-2">
                         Sign In
                     </button>
-                    <button onclick="launchAppDirectly()" class="btn-gradient px-5 py-2.5 rounded-xl font-semibold text-sm text-white flex items-center space-x-2 shadow-lg">
-                        <i data-lucide="rocket" class="w-4 h-4"></i>
+
+                    <button onclick="launchAppDirectly()" class="apple-pill-btn-primary px-5 py-2.5 text-xs font-semibold flex items-center space-x-2">
                         <span>Launch Platform</span>
+                        <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
                     </button>
                 </div>
             </div>
         </header>
 
-        <!-- Hero Section -->
-        <section class="relative pt-20 pb-24 overflow-hidden">
-            <!-- Background Radial Glows -->
-            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-[#397BFF]/15 to-[#865BFF]/15 rounded-full blur-[120px] pointer-events-none"></div>
+        <!-- ========================================================================= -->
+        <!-- HERO SECTION                                                              -->
+        <!-- ========================================================================= -->
+        <section id="hero" class="relative pt-20 sm:pt-28 pb-20 overflow-hidden">
+            <!-- Dynamic Background Canvas & Ambient Gradients -->
+            <canvas id="heroNeuralCanvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-40"></canvas>
+            
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-gradient-to-tr from-blue-600/15 via-indigo-600/15 to-purple-600/15 rounded-full blur-[140px] pointer-events-none animate-ambient"></div>
+            <div class="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-8">
                 <!-- Eyebrow Pill -->
-                <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-[#111A2E] border border-[#1F2E4D] text-xs font-mono text-[#397BFF]">
-                    <span class="w-2 h-2 rounded-full bg-[#397BFF] animate-ping"></span>
-                    <span>ENTERPRISE MULTI-AGENT STATE GRAPH ORCHESTRATION</span>
+                <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.1] backdrop-blur-xl text-xs font-mono text-blue-400 reveal shadow-[0_0_25px_rgba(59,130,246,0.15)]">
+                    <span class="w-2 h-2 rounded-full bg-blue-400 animate-ping"></span>
+                    <span class="tracking-widest uppercase font-semibold">NEXUS 2.0 · AUTONOMOUS AGENT ORCHESTRATION</span>
                 </div>
 
-                <!-- Main Headline -->
-                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight">
-                    One Intelligent Platform. <br>
-                    <span class="text-gradient">Multiple AI Agents.</span> <br>
-                    Real-World Impact.
+                <!-- Giant Apple Headline -->
+                <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight max-w-5xl mx-auto leading-[1.06] apple-text-hero reveal">
+                    Seven Autonomous Minds. <br>
+                    <span class="apple-text-accent">One Quantum Swarm.</span>
                 </h1>
 
-                <!-- Subheadline -->
-                <p class="text-base sm:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                    Unify business intelligence, data science, document extraction, and workflow automation into a collaborative network of autonomous agents—governed with Human-in-the-Loop checkpoints.
+                <!-- Apple Subtitle -->
+                <p class="text-base sm:text-lg md:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed font-normal reveal reveal-delay-1">
+                    Orchestrate enterprise business intelligence, automated regulatory RAG, financial variance reconciliation, and strategic roadmaps into a deterministic LangGraph state machine — governed with cryptographic Human-in-the-Loop checkpoints.
                 </p>
 
-                <!-- Hero Action Buttons -->
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                    <button onclick="launchAppDirectly()" class="btn-gradient px-8 py-4 rounded-xl font-bold text-base text-white flex items-center space-x-3 w-full sm:w-auto justify-center glow-blue">
-                        <i data-lucide="terminal" class="w-5 h-5"></i>
+                <!-- Apple CTA Pill Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 reveal reveal-delay-2">
+                    <button onclick="launchAppDirectly()" class="apple-pill-btn-blue px-8 py-4 text-sm font-semibold flex items-center space-x-3 w-full sm:w-auto justify-center">
+                        <i data-lucide="rocket" class="w-4 h-4"></i>
                         <span>Start Building Workflows</span>
                     </button>
-                    <button onclick="scrollToSection('features')" class="glass-panel px-8 py-4 rounded-xl font-semibold text-base text-slate-200 hover:border-[#397BFF]/50 transition flex items-center space-x-3 w-full sm:w-auto justify-center">
-                        <i data-lucide="git-merge" class="w-5 h-5 text-[#865BFF]"></i>
-                        <span>Explore Capabilities</span>
+                    <button onclick="scrollToSection('hero-studio')" class="apple-pill-btn-secondary px-8 py-4 text-sm font-semibold flex items-center space-x-3 w-full sm:w-auto justify-center">
+                        <i data-lucide="play-circle" class="w-4 h-4 text-blue-400"></i>
+                        <span>Experience Live Simulation ↓</span>
+                    </button>
+                    <button onclick="openVoiceModal()" class="apple-pill-btn-secondary px-6 py-4 text-sm font-medium flex items-center space-x-2 w-full sm:w-auto justify-center border-blue-500/25">
+                        <i data-lucide="mic" class="w-4 h-4 text-blue-400"></i>
+                        <span>Try Multilingual Voice</span>
                     </button>
                 </div>
 
-                <!-- Live Agent Pulse Preview Card -->
-                <div class="pt-12 max-w-5xl mx-auto">
-                    <div class="glass-panel rounded-2xl p-6 sm:p-8 shadow-2xl border border-[#1F2E4D] text-left relative overflow-hidden">
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#1F2E4D] pb-4 mb-6">
-                            <div class="flex items-center space-x-3">
-                                <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
-                                <h3 class="font-mono text-sm font-bold text-slate-200">ACTIVE MULTI-AGENT ORCHESTRATION DAG (LANGGRAPH KERNEL)</h3>
+                <!-- Live Metrics Counter Strip -->
+                <div class="pt-10 max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 text-center reveal reveal-delay-3">
+                    <div class="apple-glass-card rounded-2xl p-4 space-y-1">
+                        <div class="text-2xl sm:text-3xl font-black font-mono apple-text-hero">7</div>
+                        <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider">Autonomous Agents</div>
+                    </div>
+                    <div class="apple-glass-card rounded-2xl p-4 space-y-1">
+                        <div class="text-2xl sm:text-3xl font-black font-mono text-emerald-400">0.0%</div>
+                        <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider">Math Hallucinations</div>
+                    </div>
+                    <div class="apple-glass-card rounded-2xl p-4 space-y-1">
+                        <div class="text-2xl sm:text-3xl font-black font-mono text-blue-400">97.4%</div>
+                        <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider">Grounding Cert.</div>
+                    </div>
+                    <div class="apple-glass-card rounded-2xl p-4 space-y-1">
+                        <div class="text-2xl sm:text-3xl font-black font-mono text-purple-400">&lt; 1.2s</div>
+                        <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider">SSE Stream Latency</div>
+                    </div>
+                    <div class="apple-glass-card rounded-2xl p-4 space-y-1 col-span-2 sm:col-span-1">
+                        <div class="text-2xl sm:text-3xl font-black font-mono text-amber-400">100%</div>
+                        <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider">Cryptographic HITL</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ========================================================================= -->
+        <!-- INTERACTIVE STUDIO CONSOLE (Live Simulation Showcase)                     -->
+        <!-- ========================================================================= -->
+        <section id="hero-studio" class="py-16 sm:py-24 relative overflow-hidden border-t border-white/[0.06] bg-[#020617]/70">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 relative z-10">
+                <div class="text-center max-w-3xl mx-auto space-y-3 reveal">
+                    <span class="apple-tag-pill text-blue-400 border-blue-500/20">INTERACTIVE HARDWARE-GRADE STUDIO</span>
+                    <h2 class="text-3xl sm:text-5xl font-black tracking-tight text-white">Experience the Swarm in Real-Time</h2>
+                    <p class="text-slate-400 text-sm sm:text-base">Witness how 7 autonomous agents collaborate sequentially across a state graph to solve mission-critical tasks with zero hallucination.</p>
+                </div>
+
+                <!-- macOS Style Studio Frame -->
+                <div class="max-w-5xl mx-auto apple-glass-card rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/[0.1] relative card-spotlight reveal reveal-delay-1">
+                    <!-- Top Window Bar -->
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-6 border-b border-white/[0.08] gap-4">
+                        <div class="flex items-center space-x-3">
+                            <!-- macOS Traffic Light Dots -->
+                            <div class="flex items-center space-x-2">
+                                <span class="w-3 h-3 rounded-full bg-[#FF5F56] shadow-sm"></span>
+                                <span class="w-3 h-3 rounded-full bg-[#FFBD2E] shadow-sm"></span>
+                                <span class="w-3 h-3 rounded-full bg-[#27C93F] shadow-sm"></span>
                             </div>
-                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-[#397BFF]/10 text-[#397BFF] border border-[#397BFF]/30">
-                                8 Active Agents Ready
+                            <span class="font-mono text-xs text-slate-400 pl-2">nexus-kernel-v2.0 :: langgraph-engine :: live_interactive_session</span>
+                        </div>
+
+                        <!-- Scenario Selector & Play Simulation -->
+                        <div class="flex items-center space-x-3">
+                            <div class="flex p-1 bg-white/[0.04] rounded-full border border-white/[0.08] text-xs font-mono">
+                                <button id="btnScenarioSales" onclick="selectLandingScenario('sales')" class="px-3.5 py-1.5 rounded-full bg-blue-600 text-white font-medium transition">Enterprise Sales BI</button>
+                                <button id="btnScenarioHealth" onclick="selectLandingScenario('healthcare')" class="px-3.5 py-1.5 rounded-full text-slate-400 hover:text-white transition">Clinical SLA Triage</button>
+                            </div>
+                            <button id="btnRunLandingSim" onclick="runLandingSimulation()" class="apple-pill-btn-blue px-4 py-2 text-xs font-semibold flex items-center space-x-2">
+                                <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+                                <span>Run Live Swarm</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Visual 7-Node State DAG Pipeline -->
+                    <div class="space-y-3 mb-8">
+                        <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+                            <span class="flex items-center space-x-2">
+                                <span id="landingDagStatusDot" class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span id="landingDagStatusText">STATE GRAPH: STANDBY (READY FOR DISPATCH)</span>
                             </span>
+                            <span class="text-blue-400 font-semibold" id="landingStepIndicator">Step 0/7</span>
                         </div>
 
-                        <!-- Mini DAG preview -->
-                        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 font-mono text-xs text-center">
-                            <div class="p-3 rounded-xl bg-[#080D1B] border border-[#1F2E4D] space-y-1">
-                                <div class="text-[#397BFF] font-bold">1. Planner</div>
-                                <div class="text-[10px] text-slate-500">Decomposition</div>
+                        <!-- 7 DAG Node Pills -->
+                        <div id="landingDagNodes" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5 font-mono text-xs text-center">
+                            <div id="dagNode-0" class="p-3 rounded-2xl bg-white/[0.03] border border-white/[0.08] transition-all duration-300 space-y-1">
+                                <div class="text-blue-400 font-bold flex items-center justify-center space-x-1">
+                                    <i data-lucide="brain" class="w-3.5 h-3.5"></i>
+                                    <span>Planner</span>
+                                </div>
+                                <div class="text-[10px] text-slate-400">Decomposition</div>
                             </div>
-                            <div class="p-3 rounded-xl bg-[#080D1B] border border-[#1F2E4D] space-y-1">
-                                <div class="text-[#397BFF] font-bold">2. Document</div>
-                                <div class="text-[10px] text-slate-500">Extraction</div>
+                            <div id="dagNode-1" class="p-3 rounded-2xl bg-white/[0.03] border border-white/[0.08] transition-all duration-300 space-y-1">
+                                <div class="text-blue-400 font-bold flex items-center justify-center space-x-1">
+                                    <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+                                    <span>Document</span>
+                                </div>
+                                <div class="text-[10px] text-slate-400">ETL Ingestion</div>
                             </div>
-                            <div class="p-3 rounded-xl bg-[#080D1B] border border-[#1F2E4D] space-y-1">
-                                <div class="text-[#865BFF] font-bold">3. Research</div>
-                                <div class="text-[10px] text-slate-500">Vector RAG</div>
+                            <div id="dagNode-2" class="p-3 rounded-2xl bg-white/[0.03] border border-white/[0.08] transition-all duration-300 space-y-1">
+                                <div class="text-indigo-400 font-bold flex items-center justify-center space-x-1">
+                                    <i data-lucide="search" class="w-3.5 h-3.5"></i>
+                                    <span>Research</span>
+                                </div>
+                                <div class="text-[10px] text-slate-400">pgvector RAG</div>
                             </div>
-                            <div class="p-3 rounded-xl bg-[#080D1B] border border-[#1F2E4D] space-y-1">
-                                <div class="text-[#397BFF] font-bold">4. Analyst</div>
-                                <div class="text-[10px] text-slate-500">Math & KPIs</div>
+                            <div id="dagNode-3" class="p-3 rounded-2xl bg-white/[0.03] border border-white/[0.08] transition-all duration-300 space-y-1">
+                                <div class="text-blue-400 font-bold flex items-center justify-center space-x-1">
+                                    <i data-lucide="bar-chart-2" class="w-3.5 h-3.5"></i>
+                                    <span>Analyst</span>
+                                </div>
+                                <div class="text-[10px] text-slate-400">Deterministic Math</div>
                             </div>
-                            <div class="p-3 rounded-xl bg-[#080D1B] border border-[#1F2E4D] space-y-1">
-                                <div class="text-[#865BFF] font-bold">5. Decision</div>
-                                <div class="text-[10px] text-slate-500">Risk Matrix</div>
+                            <div id="dagNode-4" class="p-3 rounded-2xl bg-white/[0.03] border border-white/[0.08] transition-all duration-300 space-y-1">
+                                <div class="text-purple-400 font-bold flex items-center justify-center space-x-1">
+                                    <i data-lucide="compass" class="w-3.5 h-3.5"></i>
+                                    <span>Decision</span>
+                                </div>
+                                <div class="text-[10px] text-slate-400">Risk Matrix</div>
                             </div>
-                            <div class="p-3 rounded-xl bg-[#080D1B] border border-[#1F2E4D] space-y-1">
-                                <div class="text-emerald-400 font-bold">6. Quality</div>
-                                <div class="text-[10px] text-slate-500">Audit (97%)</div>
+                            <div id="dagNode-5" class="p-3 rounded-2xl bg-white/[0.03] border border-white/[0.08] transition-all duration-300 space-y-1">
+                                <div class="text-emerald-400 font-bold flex items-center justify-center space-x-1">
+                                    <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
+                                    <span>Quality</span>
+                                </div>
+                                <div class="text-[10px] text-slate-400">Audit & Safety</div>
                             </div>
-                            <div class="p-3 rounded-xl bg-[#080D1B] border border-amber-500/40 space-y-1">
-                                <div class="text-amber-400 font-bold">7. Workflow</div>
-                                <div class="text-[10px] text-amber-500/80">HITL Gate</div>
+                            <div id="dagNode-6" class="p-3 rounded-2xl bg-white/[0.03] border border-amber-500/30 transition-all duration-300 space-y-1">
+                                <div class="text-amber-400 font-bold flex items-center justify-center space-x-1">
+                                    <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i>
+                                    <span>Workflow</span>
+                                </div>
+                                <div class="text-[10px] text-amber-300/80">HITL Gate</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Terminal Output & KPI Cards -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <!-- Terminal Log Stream -->
+                        <div class="lg:col-span-2 rounded-2xl bg-[#030712] border border-white/[0.08] p-4 font-mono text-xs flex flex-col justify-between h-64">
+                            <div class="flex items-center justify-between text-[11px] text-slate-500 border-b border-white/[0.06] pb-2 mb-2">
+                                <span class="flex items-center space-x-2">
+                                    <i data-lucide="terminal" class="w-3.5 h-3.5 text-blue-400"></i>
+                                    <span>SWARM REASONING TRACE (SSE STREAM)</span>
+                                </span>
+                                <span class="text-slate-600">utf-8 :: verified</span>
+                            </div>
+                            <div id="landingTerminalLogs" class="space-y-1.5 overflow-y-auto stream-scroll flex-1 pr-2 text-slate-300 text-[11px] leading-relaxed">
+                                <div class="text-slate-500">[SYSTEM] Multi-Agent Orchestrator initialized. Ready for simulation dispatch.</div>
+                                <div class="text-slate-500">[HINT] Click "Run Live Swarm" above to trigger deterministic execution pipeline.</div>
+                            </div>
+                        </div>
+
+                        <!-- Live Telemetry KPI Cards -->
+                        <div class="space-y-3 flex flex-col justify-between">
+                            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] space-y-1">
+                                <div class="text-[10px] font-mono text-slate-400 uppercase">Calculated Metric</div>
+                                <div id="landingSimKpi1" class="text-xl font-bold font-mono text-white">$1,421,500</div>
+                                <div id="landingSimSub1" class="text-[11px] text-slate-400">Net YoY ARR Variance (100% Math Audit)</div>
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] space-y-1">
+                                <div class="text-[10px] font-mono text-slate-400 uppercase">Grounding SLA</div>
+                                <div id="landingSimKpi2" class="text-xl font-bold font-mono text-emerald-400">98.4%</div>
+                                <div id="landingSimSub2" class="text-[11px] text-slate-400">Zero Hallucination Grounding Score</div>
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 space-y-1">
+                                <div class="text-[10px] font-mono text-amber-300 uppercase flex items-center justify-between">
+                                    <span>Governance Gate</span>
+                                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+                                </div>
+                                <div id="landingSimKpi3" class="text-base font-bold font-mono text-amber-200">INTERCEPTED</div>
+                                <div id="landingSimSub3" class="text-[11px] text-amber-300/80">Pending Authorized Executive Sign-Off</div>
                             </div>
                         </div>
                     </div>
@@ -282,158 +655,464 @@
             </div>
         </section>
 
-        <!-- Feature Grid Section -->
-        <section id="features" class="py-20 border-t border-[#1F2E4D] bg-[#0B1224]">
+
+        <!-- ========================================================================= -->
+        <!-- BENTO GRID CAPABILITIES ("ENGINEERED FOR PERFECTION")                     -->
+        <!-- ========================================================================= -->
+        <section id="features" class="py-20 sm:py-28 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+                <div class="text-center max-w-3xl mx-auto space-y-4 reveal">
+                    <span class="apple-tag-pill text-blue-400 border-blue-500/20">ENGINEERED FOR PERFECTION</span>
+                    <h2 class="text-3xl sm:text-5xl font-black tracking-tight">Every Component Calibrated for Absolute Rigor</h2>
+                    <p class="text-slate-400 text-sm sm:text-base">Move beyond basic single-turn chatbots into deterministic, verifiable agentic execution built on production-grade standards.</p>
+                </div>
+
+                <!-- Bento Grid Layout -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Bento 1: LangGraph Stateful Orchestration (Col Span 2) -->
+                    <div class="lg:col-span-2 apple-glass-card rounded-3xl p-8 sm:p-10 space-y-6 card-spotlight reveal">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/25 text-blue-400 flex items-center justify-center">
+                                <i data-lucide="git-merge" class="w-6 h-6"></i>
+                            </div>
+                            <span class="apple-tag-pill text-blue-400">STATEFUL DAG ENGINE</span>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="text-2xl font-bold text-white">LangGraph Multi-Agent Directed Acyclic Graph</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed max-w-2xl">
+                                Stateful checkpoints preserve working context across all parallel agent steps. Loopback error correction automatically re-routes tasks if a step fails quality audit thresholds.
+                            </p>
+                        </div>
+                        <!-- Mini Interactive Code/Flow Graphic -->
+                        <div class="p-4 rounded-2xl bg-[#030712] border border-white/[0.08] font-mono text-xs text-slate-300 space-y-2">
+                            <div class="text-slate-500 flex items-center justify-between border-b border-white/[0.06] pb-2">
+                                <span>orchestrator/langgraph_kernel.py</span>
+                                <span class="text-emerald-400">Compiled · Ready</span>
+                            </div>
+                            <div class="text-blue-300">workflow = StateGraph(SwarmState)</div>
+                            <div class="text-slate-400 pl-4">workflow.add_node("planner", run_planner_agent)</div>
+                            <div class="text-slate-400 pl-4">workflow.add_node("analyst", run_sandboxed_math)</div>
+                            <div class="text-slate-400 pl-4">workflow.add_conditional_edges("quality", should_escalate_to_hitl)</div>
+                        </div>
+                    </div>
+
+                    <!-- Bento 2: Zero-Trust Human-in-the-Loop Gateway (Interactive) -->
+                    <div class="apple-glass-card rounded-3xl p-8 space-y-6 card-spotlight reveal reveal-delay-1">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/25 text-amber-400 flex items-center justify-center">
+                                <i data-lucide="shield-check" class="w-6 h-6"></i>
+                            </div>
+                            <span class="apple-tag-pill text-amber-400">ZERO-TRUST HITL</span>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="text-xl font-bold text-white">Cryptographic Human Gate</h3>
+                            <p class="text-slate-400 text-xs leading-relaxed">
+                                Irreversible actions (external transfers, email dispatches, database schema updates) are paused until an authorized officer signs off.
+                            </p>
+                        </div>
+                        <!-- Interactive Toggle Demonstration -->
+                        <div class="p-4 rounded-2xl bg-[#030712] border border-amber-500/20 space-y-3 font-mono text-xs">
+                            <div class="flex items-center justify-between text-slate-300">
+                                <span>Interception Demo:</span>
+                                <span id="hitlDemoBadge" class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 text-[10px]">AWAITING SIGN-OFF</span>
+                            </div>
+                            <div class="text-[11px] text-slate-400">Simulated Action: Wire \$2.4M to AP Account</div>
+                            <div class="flex space-x-2 pt-1">
+                                <button onclick="toggleHitlDemo(true)" class="flex-1 py-1.5 rounded-lg bg-emerald-600/20 text-emerald-300 hover:bg-emerald-600/40 border border-emerald-500/30 text-center transition">Sign &amp; Approve</button>
+                                <button onclick="toggleHitlDemo(false)" class="flex-1 py-1.5 rounded-lg bg-rose-600/20 text-rose-300 hover:bg-rose-600/40 border border-rose-500/30 text-center transition">Reject Transfer</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bento 3: Realtime Multilingual Voice Intelligence -->
+                    <div class="apple-glass-card rounded-3xl p-8 space-y-6 card-spotlight reveal">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/25 text-indigo-400 flex items-center justify-center">
+                                <i data-lucide="mic" class="w-6 h-6"></i>
+                            </div>
+                            <span class="apple-tag-pill text-indigo-400">SUB-300MS SPEECH</span>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="text-xl font-bold text-white">Multilingual Voice AI</h3>
+                            <p class="text-slate-400 text-xs leading-relaxed">
+                                Command the entire Swarm with natural speech in 40+ languages. Automatic speech recognition maps intents directly to DAG nodes.
+                            </p>
+                        </div>
+                        <button onclick="openVoiceModal()" class="w-full py-2.5 rounded-xl apple-pill-btn-blue text-xs font-semibold flex items-center justify-center space-x-2">
+                            <i data-lucide="radio" class="w-3.5 h-3.5"></i>
+                            <span>Test Live Speech Interface</span>
+                        </button>
+                    </div>
+
+                    <!-- Bento 4: 0.0% Hallucination Mathematical Engine -->
+                    <div class="apple-glass-card rounded-3xl p-8 space-y-6 card-spotlight reveal reveal-delay-1">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 flex items-center justify-center">
+                                <i data-lucide="calculator" class="w-6 h-6"></i>
+                            </div>
+                            <span class="apple-tag-pill text-emerald-400">0.0% MATH ERROR</span>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="text-xl font-bold text-white">Sandboxed Python Math Core</h3>
+                            <p class="text-slate-400 text-xs leading-relaxed">
+                                Generative models are never allowed to hallucinate arithmetic. Calculations run in an isolated Python kernel with SHA-256 integrity checksums.
+                            </p>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-[#030712] border border-white/[0.08] font-mono text-[11px] text-slate-300">
+                            <div class="text-emerald-400 font-bold">&#10003; SHA256: 8f9b4e...d2</div>
+                            <div class="text-slate-400">Audited: Variance formula verified against GAAP standard.</div>
+                        </div>
+                    </div>
+
+                    <!-- Bento 5: 3-Tier pgvector Memory Architecture -->
+                    <div class="apple-glass-card rounded-3xl p-8 space-y-6 card-spotlight reveal reveal-delay-2">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/25 text-purple-400 flex items-center justify-center">
+                                <i data-lucide="database" class="w-6 h-6"></i>
+                            </div>
+                            <span class="apple-tag-pill text-purple-400">TIERED MEMORY</span>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="text-xl font-bold text-white">Tiered pgvector Memory</h3>
+                            <p class="text-slate-400 text-xs leading-relaxed">
+                                Seamlessly combines active session scratchpads, episodic DAG logs, and semantic pgvector embeddings with sub-second vector similarity lookup.
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between font-mono text-xs text-slate-300 p-3 rounded-xl bg-[#030712] border border-white/[0.08]">
+                            <span>Vector Similarity: cosine</span>
+                            <span class="text-purple-400 font-bold">0.962 HNSW</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ========================================================================= -->
+        <!-- MEET THE 7-AGENT SWARM (Apple Showcase Carousel / Spotlight)              -->
+        <!-- ========================================================================= -->
+        <section id="swarm-section" class="py-20 sm:py-28 border-t border-white/[0.06] bg-[#020617]/50 relative overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-                <div class="text-center max-w-3xl mx-auto space-y-4">
-                    <span class="text-xs font-mono uppercase tracking-widest text-[#397BFF]">Engine Capabilities</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold">Autonomous Intelligence Built for Enterprise Rigor</h2>
-                    <p class="text-slate-400 text-sm sm:text-base">Move beyond basic single-turn chatbots into deterministic, verifiable agentic execution.</p>
+                <div class="text-center max-w-3xl mx-auto space-y-3 reveal">
+                    <span class="apple-tag-pill text-blue-400 border-blue-500/20">MEET THE QUANTUM SWARM</span>
+                    <h2 class="text-3xl sm:text-5xl font-black tracking-tight">Seven Specialists. Zero Compromise.</h2>
+                    <p class="text-slate-400 text-sm sm:text-base">Every agent operates with a discrete neural kernel, customized guardrails, and deterministic tool sets.</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="glass-panel glass-panel-hover rounded-2xl p-6 space-y-4 transition">
-                        <div class="w-12 h-12 rounded-xl bg-[#397BFF]/10 text-[#397BFF] flex items-center justify-center">
-                            <i data-lucide="git-merge" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-lg font-bold">Multi-Agent State Graph</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">
-                            LangGraph-inspired orchestration coordinates specialized agents in dynamic DAGs with loopbacks and dependency branches.
-                        </p>
-                    </div>
+                <!-- Agent Selector Tabs -->
+                <div class="flex items-center justify-start sm:justify-center space-x-2 overflow-x-auto pb-4 stream-scroll reveal">
+                    <button onclick="selectAgentSpotlight(0)" id="agentTab-0" class="px-4 py-2 rounded-full text-xs font-mono font-semibold bg-white text-black shadow-lg transition">1. Planner</button>
+                    <button onclick="selectAgentSpotlight(1)" id="agentTab-1" class="px-4 py-2 rounded-full text-xs font-mono font-semibold bg-white/[0.05] text-slate-400 hover:text-white border border-white/[0.08] transition">2. Document</button>
+                    <button onclick="selectAgentSpotlight(2)" id="agentTab-2" class="px-4 py-2 rounded-full text-xs font-mono font-semibold bg-white/[0.05] text-slate-400 hover:text-white border border-white/[0.08] transition">3. Research</button>
+                    <button onclick="selectAgentSpotlight(3)" id="agentTab-3" class="px-4 py-2 rounded-full text-xs font-mono font-semibold bg-white/[0.05] text-slate-400 hover:text-white border border-white/[0.08] transition">4. Analyst</button>
+                    <button onclick="selectAgentSpotlight(4)" id="agentTab-4" class="px-4 py-2 rounded-full text-xs font-mono font-semibold bg-white/[0.05] text-slate-400 hover:text-white border border-white/[0.08] transition">5. Decision</button>
+                    <button onclick="selectAgentSpotlight(5)" id="agentTab-5" class="px-4 py-2 rounded-full text-xs font-mono font-semibold bg-white/[0.05] text-slate-400 hover:text-white border border-white/[0.08] transition">6. Quality</button>
+                    <button onclick="selectAgentSpotlight(6)" id="agentTab-6" class="px-4 py-2 rounded-full text-xs font-mono font-semibold bg-white/[0.05] text-slate-400 hover:text-white border border-white/[0.08] transition">7. Workflow</button>
+                </div>
 
-                    <div class="glass-panel glass-panel-hover rounded-2xl p-6 space-y-4 transition">
-                        <div class="w-12 h-12 rounded-xl bg-[#865BFF]/10 text-[#865BFF] flex items-center justify-center">
-                            <i data-lucide="shield-check" class="w-6 h-6"></i>
+                <!-- Spotlight Presentation Card -->
+                <div class="max-w-4xl mx-auto apple-glass-card rounded-3xl p-8 sm:p-12 border border-white/[0.1] relative card-spotlight reveal reveal-delay-1">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                        <!-- Left: Agent Icon & Core Identity -->
+                        <div class="space-y-4 text-center md:text-left">
+                            <div class="w-20 h-20 rounded-3xl bg-gradient-to-tr from-blue-500 to-indigo-600 p-[2px] mx-auto md:mx-0 shadow-[0_0_30px_rgba(59,130,246,0.3)]">
+                                <div class="w-full h-full bg-[#030712] rounded-3xl flex items-center justify-center">
+                                    <i id="spotlightAgentIcon" data-lucide="brain" class="w-10 h-10 text-blue-400"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 id="spotlightAgentName" class="text-2xl font-bold text-white">Planner Agent</h3>
+                                <div id="spotlightAgentModel" class="text-xs font-mono text-blue-400">gemini-1.5-flash / nexus-hybrid</div>
+                            </div>
+                            <div class="space-y-2 pt-2 border-t border-white/[0.08] text-xs font-mono text-slate-400">
+                                <div class="flex justify-between">
+                                    <span>P95 Latency:</span>
+                                    <span id="spotlightAgentLatency" class="text-white font-bold">142ms</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Grounding SLA:</span>
+                                    <span id="spotlightAgentScore" class="text-emerald-400 font-bold">99.1%</span>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="text-lg font-bold">Human-in-the-Loop Gateway</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">
-                            Critical operational actions (emails, database updates, external webhooks) are intercepted until an authorized operator signs off.
-                        </p>
-                    </div>
 
-                    <div class="glass-panel glass-panel-hover rounded-2xl p-6 space-y-4 transition">
-                        <div class="w-12 h-12 rounded-xl bg-[#397BFF]/10 text-[#397BFF] flex items-center justify-center">
-                            <i data-lucide="database" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-lg font-bold">Vector RAG & Memory</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">
-                            Tiered memory architecture seamlessly connects working task context, past episodic execution logs, and pgvector knowledge bases.
-                        </p>
-                    </div>
+                        <!-- Right: Deep Description & Sample Output Trace -->
+                        <div class="md:col-span-2 space-y-6">
+                            <div class="space-y-2">
+                                <span class="text-xs font-mono text-slate-400 uppercase tracking-widest">Specialized Role</span>
+                                <p id="spotlightAgentDesc" class="text-slate-300 text-sm leading-relaxed">
+                                    Deconstructs high-level user missions into a deterministic directed acyclic graph. Evaluates dependencies between data sources and schedules parallel agent execution.
+                                </p>
+                            </div>
 
-                    <div class="glass-panel glass-panel-hover rounded-2xl p-6 space-y-4 transition">
-                        <div class="w-12 h-12 rounded-xl bg-emerald-400/10 text-emerald-400 flex items-center justify-center">
-                            <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+                            <div class="p-4 rounded-2xl bg-[#030712] border border-white/[0.08] font-mono text-xs space-y-2">
+                                <div class="flex items-center justify-between text-slate-500 text-[11px] border-b border-white/[0.06] pb-2">
+                                    <span>Sample Agent Execution Artifact</span>
+                                    <span class="text-blue-400">JSON Schema 2026</span>
+                                </div>
+                                <pre id="spotlightAgentCode" class="text-slate-300 overflow-x-auto stream-scroll text-[11px] leading-relaxed">
+{
+  "mission_id": "exec_rev_2026",
+  "dag_plan": ["ingest_excel", "rag_vector_search", "variance_math", "hitl_gate"],
+  "parallel_branches": 3,
+  "confidence": 0.992
+}</pre>
+                            </div>
+
+                            <button onclick="launchAppDirectly()" class="apple-pill-btn-blue px-6 py-2.5 text-xs font-semibold flex items-center space-x-2">
+                                <span>Deploy Agent in Command Center &rarr;</span>
+                            </button>
                         </div>
-                        <h3 class="text-lg font-bold">Quality & Audit Engine</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">
-                            Independent evaluator agents mathematically reconcile results, eliminate hallucinations, and enforce strict PII redacting guardrails.
-                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Integrations Section -->
-        <section id="integrations" class="py-20 border-t border-[#1F2E4D]">
+
+        <!-- ========================================================================= -->
+        <!-- ARCHITECTURE BLUEPRINT LIGHTBOX (Showcasing 4 Custom SVG Blueprints)      -->
+        <!-- ========================================================================= -->
+        <section id="architecture-blueprints" class="py-20 sm:py-28 relative overflow-hidden border-t border-white/[0.06]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+                <div class="text-center max-w-3xl mx-auto space-y-3 reveal">
+                    <span class="apple-tag-pill text-indigo-400 border-indigo-500/20">VERIFIED SYSTEM DESIGNS</span>
+                    <h2 class="text-3xl sm:text-5xl font-black tracking-tight">Enterprise Architecture Blueprints</h2>
+                    <p class="text-slate-400 text-sm sm:text-base">Explore the end-to-end architectural blueprints underpinning the NEXUS AI state machine, governance gates, and multi-domain workflows.</p>
+                </div>
+
+                <!-- Diagram Switcher Tabs -->
+                <div class="flex items-center justify-start sm:justify-center space-x-3 overflow-x-auto pb-4 stream-scroll reveal">
+                    <button onclick="selectArchDiagram(0)" id="archTab-0" class="px-5 py-2.5 rounded-full text-xs font-mono font-semibold bg-white text-black shadow-lg transition">System Architecture</button>
+                    <button onclick="selectArchDiagram(1)" id="archTab-1" class="px-5 py-2.5 rounded-full text-xs font-mono font-semibold bg-white/[0.05] text-slate-400 hover:text-white border border-white/[0.08] transition">LangGraph State DAG</button>
+                    <button onclick="selectArchDiagram(2)" id="archTab-2" class="px-5 py-2.5 rounded-full text-xs font-mono font-semibold bg-white/[0.05] text-slate-400 hover:text-white border border-white/[0.08] transition">HITL Governance</button>
+                    <button onclick="selectArchDiagram(3)" id="archTab-3" class="px-5 py-2.5 rounded-full text-xs font-mono font-semibold bg-white/[0.05] text-slate-400 hover:text-white border border-white/[0.08] transition">Multi-Domain Lifecycle</button>
+                </div>
+
+                <!-- High-Res Diagram Canvas Frame -->
+                <div class="apple-glass-card rounded-3xl p-6 sm:p-10 border border-white/[0.1] relative reveal reveal-delay-1 space-y-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-white/[0.08] gap-4">
+                        <div>
+                            <h3 id="archDiagramTitle" class="text-xl font-bold text-white">Full-Stack Enterprise System Architecture</h3>
+                            <p id="archDiagramSubtitle" class="text-xs text-slate-400">Client layers, FastAPI orchestration, LangGraph state engine, and sandboxed execution nodes.</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <a id="archDiagramDownload" href="/assets/diagram1-system-architecture.svg" target="_blank" download class="apple-pill-btn-secondary px-4 py-2 text-xs flex items-center space-x-2">
+                                <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                                <span>Download SVG</span>
+                            </a>
+                            <a id="archDiagramFull" href="/assets/diagram1-system-architecture.svg" target="_blank" class="apple-pill-btn-blue px-4 py-2 text-xs flex items-center space-x-2">
+                                <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                                <span>Full Resolution</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Diagram Container -->
+                    <div class="w-full bg-[#030712] rounded-2xl p-4 sm:p-8 border border-white/[0.08] flex items-center justify-center overflow-hidden min-h-[360px] sm:min-h-[480px]">
+                        <img id="archDiagramImage" src="/assets/diagram1-system-architecture.svg" alt="NEXUS AI Architecture Blueprint" class="w-full h-auto max-h-[580px] object-contain transition-all duration-500">
+                    </div>
+
+                    <!-- Key Technical Highlights -->
+                    <div id="archDiagramHighlights" class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 text-xs font-mono">
+                        <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-1">
+                            <div class="text-blue-400 font-bold">ASGI Streaming Core</div>
+                            <div class="text-slate-400 text-[11px]">Server-Sent Events deliver realtime multi-agent thought streams with zero blocking delay.</div>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-1">
+                            <div class="text-indigo-400 font-bold">Hybrid Retrieval (RAG)</div>
+                            <div class="text-slate-400 text-[11px]">Sub-second cosine vector search combines PostgreSQL pgvector with dynamic BM25 keyword rerank.</div>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-1">
+                            <div class="text-emerald-400 font-bold">Zero-Trust Audit Gate</div>
+                            <div class="text-slate-400 text-[11px]">Immutable cryptographic audit logging protects sensitive financial and clinical operations.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ========================================================================= -->
+        <!-- WHY NEXUS: COMPARISON MATRIX                                              -->
+        <!-- ========================================================================= -->
+        <section id="comparison" class="py-20 sm:py-28 border-t border-white/[0.06] bg-[#020617]/50 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+                <div class="text-center max-w-3xl mx-auto space-y-3 reveal">
+                    <span class="apple-tag-pill text-blue-400 border-blue-500/20">WHY ENTERPRISE LEADERS CHOOSE NEXUS</span>
+                    <h2 class="text-3xl sm:text-5xl font-black tracking-tight">Chatbots vs. NEXUS AI Swarm</h2>
+                    <p class="text-slate-400 text-sm sm:text-base">Why prompt wrappers fail at serious enterprise operations, and how a deterministic state graph guarantees success.</p>
+                </div>
+
+                <!-- Frosted Apple Comparison Table -->
+                <div class="max-w-4xl mx-auto apple-glass-card rounded-3xl overflow-hidden border border-white/[0.1] reveal reveal-delay-1">
+                    <div class="overflow-x-auto stream-scroll">
+                        <table class="w-full text-left text-xs sm:text-sm">
+                            <thead>
+                                <tr class="border-b border-white/[0.08] bg-white/[0.02] text-slate-400 font-mono text-xs">
+                                    <th class="p-5 sm:p-6 font-semibold">Capability</th>
+                                    <th class="p-5 sm:p-6 font-semibold text-slate-500">Standard AI Chatbots</th>
+                                    <th class="p-5 sm:p-6 font-semibold text-blue-400 bg-blue-500/5 border-l border-white/[0.08]">NEXUS AI Enterprise Swarm</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-white/[0.06] text-slate-300">
+                                <tr class="hover:bg-white/[0.02] transition">
+                                    <td class="p-5 sm:p-6 font-medium text-white">Execution Architecture</td>
+                                    <td class="p-5 sm:p-6 text-slate-500">Single-turn stochastic guesses</td>
+                                    <td class="p-5 sm:p-6 text-blue-300 font-semibold bg-blue-500/5 border-l border-white/[0.08] flex items-center space-x-2">
+                                        <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+                                        <span>Deterministic LangGraph State Machine (DAG)</span>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-white/[0.02] transition">
+                                    <td class="p-5 sm:p-6 font-medium text-white">Mathematical Accuracy</td>
+                                    <td class="p-5 sm:p-6 text-slate-500">Frequent hallucinations (~18.4% error)</td>
+                                    <td class="p-5 sm:p-6 text-blue-300 font-semibold bg-blue-500/5 border-l border-white/[0.08] flex items-center space-x-2">
+                                        <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+                                        <span>0.0% Hallucination Sandboxed Python Core</span>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-white/[0.02] transition">
+                                    <td class="p-5 sm:p-6 font-medium text-white">Safety &amp; Governance</td>
+                                    <td class="p-5 sm:p-6 text-slate-500">Unmonitored blind tool calling</td>
+                                    <td class="p-5 sm:p-6 text-blue-300 font-semibold bg-blue-500/5 border-l border-white/[0.08] flex items-center space-x-2">
+                                        <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+                                        <span>Zero-Trust Human-in-the-Loop Sign-Off Gates</span>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-white/[0.02] transition">
+                                    <td class="p-5 sm:p-6 font-medium text-white">Enterprise Memory</td>
+                                    <td class="p-5 sm:p-6 text-slate-500">Lost when context window overflows</td>
+                                    <td class="p-5 sm:p-6 text-blue-300 font-semibold bg-blue-500/5 border-l border-white/[0.08] flex items-center space-x-2">
+                                        <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+                                        <span>3-Tier Episodic &amp; pgvector Knowledge Base</span>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-white/[0.02] transition">
+                                    <td class="p-5 sm:p-6 font-medium text-white">Multimodal Control</td>
+                                    <td class="p-5 sm:p-6 text-slate-500">Text-only chat prompts</td>
+                                    <td class="p-5 sm:p-6 text-blue-300 font-semibold bg-blue-500/5 border-l border-white/[0.08] flex items-center space-x-2">
+                                        <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+                                        <span>Sub-300ms Multilingual Voice + Live SSE</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ========================================================================= -->
+        <!-- ENTERPRISE INTEGRATIONS                                                   -->
+        <!-- ========================================================================= -->
+        <section id="integrations" class="py-20 sm:py-24 border-t border-white/[0.06] relative overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-10">
-                <div class="space-y-3">
-                    <span class="text-xs font-mono uppercase tracking-widest text-[#865BFF]">Integration Ecosystem</span>
-                    <h2 class="text-3xl font-extrabold">Seamless Connectivity to Your Enterprise Stack</h2>
-                    <p class="text-slate-400 text-sm max-w-xl mx-auto">Agents securely interact through OAuth 2.0, REST APIs, and sandboxed Model Context Protocol (MCP) gateways.</p>
+                <div class="space-y-3 reveal">
+                    <span class="apple-tag-pill text-indigo-400 border-indigo-500/20">CONNECTED ECOSYSTEM</span>
+                    <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-white">Seamless Connectivity to Your Tech Stack</h2>
+                    <p class="text-slate-400 text-sm max-w-xl mx-auto">Agents authenticate securely through OAuth 2.0, REST APIs, and sandboxed Model Context Protocol (MCP) gateways.</p>
                 </div>
 
-                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 font-mono text-xs">
-                    <div class="p-4 glass-panel rounded-xl flex items-center justify-center space-x-2 text-slate-300">
-                        <i data-lucide="mail" class="w-4 h-4 text-[#397BFF]"></i>
-                        <span>Gmail / Workspace</span>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 font-mono text-xs reveal reveal-delay-1">
+                    <div class="apple-glass-card rounded-2xl p-5 flex flex-col items-center justify-center space-y-2 text-slate-300 hover:border-blue-400/50 transition">
+                        <i data-lucide="mail" class="w-6 h-6 text-blue-400"></i>
+                        <span class="font-semibold text-white">Gmail / Workspace</span>
                     </div>
-                    <div class="p-4 glass-panel rounded-xl flex items-center justify-center space-x-2 text-slate-300">
-                        <i data-lucide="message-square" class="w-4 h-4 text-emerald-400"></i>
-                        <span>Slack / Teams</span>
+                    <div class="apple-glass-card rounded-2xl p-5 flex flex-col items-center justify-center space-y-2 text-slate-300 hover:border-emerald-400/50 transition">
+                        <i data-lucide="message-square" class="w-6 h-6 text-emerald-400"></i>
+                        <span class="font-semibold text-white">Slack &amp; Teams</span>
                     </div>
-                    <div class="p-4 glass-panel rounded-xl flex items-center justify-center space-x-2 text-slate-300">
-                        <i data-lucide="github" class="w-4 h-4 text-slate-200"></i>
-                        <span>GitHub / GitLab</span>
+                    <div class="apple-glass-card rounded-2xl p-5 flex flex-col items-center justify-center space-y-2 text-slate-300 hover:border-purple-400/50 transition">
+                        <i data-lucide="github" class="w-6 h-6 text-purple-400"></i>
+                        <span class="font-semibold text-white">GitHub Enterprise</span>
                     </div>
-                    <div class="p-4 glass-panel rounded-xl flex items-center justify-center space-x-2 text-slate-300">
-                        <i data-lucide="database" class="w-4 h-4 text-[#865BFF]"></i>
-                        <span>PostgreSQL / pgvector</span>
+                    <div class="apple-glass-card rounded-2xl p-5 flex flex-col items-center justify-center space-y-2 text-slate-300 hover:border-blue-400/50 transition">
+                        <i data-lucide="database" class="w-6 h-6 text-blue-400"></i>
+                        <span class="font-semibold text-white">PostgreSQL pgvector</span>
                     </div>
-                    <div class="p-4 glass-panel rounded-xl flex items-center justify-center space-x-2 text-slate-300">
-                        <i data-lucide="cloud" class="w-4 h-4 text-amber-400"></i>
-                        <span>Google Cloud Run</span>
+                    <div class="apple-glass-card rounded-2xl p-5 flex flex-col items-center justify-center space-y-2 text-slate-300 hover:border-amber-400/50 transition">
+                        <i data-lucide="cloud" class="w-6 h-6 text-amber-400"></i>
+                        <span class="font-semibold text-white">Google Cloud Run</span>
                     </div>
-                    <div class="p-4 glass-panel rounded-xl flex items-center justify-center space-x-2 text-slate-300">
-                        <i data-lucide="cpu" class="w-4 h-4 text-[#397BFF]"></i>
-                        <span>Gemini & OpenAI</span>
+                    <div class="apple-glass-card rounded-2xl p-5 flex flex-col items-center justify-center space-y-2 text-slate-300 hover:border-indigo-400/50 transition">
+                        <i data-lucide="cpu" class="w-6 h-6 text-indigo-400"></i>
+                        <span class="font-semibold text-white">Gemini &amp; OpenAI</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Pricing Tiers -->
-        <section id="pricing" class="py-20 border-t border-[#1F2E4D] bg-[#0B1224]">
+
+        <!-- ========================================================================= -->
+        <!-- PRICING TIERS                                                             -->
+        <!-- ========================================================================= -->
+        <section id="pricing" class="py-20 sm:py-28 border-t border-white/[0.06] bg-[#020617]/50 relative overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-                <div class="text-center max-w-3xl mx-auto space-y-3">
-                    <span class="text-xs font-mono uppercase tracking-widest text-[#397BFF]">Pricing Models</span>
-                    <h2 class="text-3xl font-extrabold">Predictable Token & Multi-Agent Pricing</h2>
-                    <p class="text-slate-400 text-sm">Scale from developer prototyping to global air-gapped sovereign deployment.</p>
+                <div class="text-center max-w-3xl mx-auto space-y-3 reveal">
+                    <span class="apple-tag-pill text-blue-400 border-blue-500/20">PREDICTABLE TOKEN-AGNOSTIC PRICING</span>
+                    <h2 class="text-3xl sm:text-5xl font-black tracking-tight">Transparent Scalability for Every Team</h2>
+                    <p class="text-slate-400 text-sm sm:text-base">Scale from local developer experimentation to global sovereign air-gapped clusters.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Starter -->
-                    <div class="glass-panel rounded-2xl p-8 space-y-6 flex flex-col justify-between">
+                    <!-- Starter Developer -->
+                    <div class="apple-glass-card rounded-3xl p-8 space-y-6 flex flex-col justify-between reveal">
                         <div class="space-y-4">
-                            <h3 class="text-xl font-bold">Starter Developer</h3>
-                            <div class="text-3xl font-black font-mono">$0 <span class="text-xs text-slate-400 font-sans font-normal">/ month</span></div>
-                            <p class="text-xs text-slate-400">Perfect for exploring multi-agent architectures and local prototypes.</p>
-                            <ul class="text-xs space-y-2.5 text-slate-300 pt-4 border-t border-[#1F2E4D]">
+                            <span class="text-xs font-mono uppercase tracking-wider text-slate-400">Community &amp; Dev</span>
+                            <h3 class="text-2xl font-bold text-white">Starter Developer</h3>
+                            <div class="text-4xl font-black font-mono text-white">$0 <span class="text-xs text-slate-400 font-sans font-normal">/ month</span></div>
+                            <p class="text-xs text-slate-400">Full local LangGraph multi-agent orchestration for individual engineers.</p>
+                            <ul class="text-xs space-y-3 text-slate-300 pt-4 border-t border-white/[0.08]">
                                 <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i><span>Up to 4 collaborative agents</span></li>
                                 <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i><span>Local Reasoning Engine included</span></li>
-                                <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i><span>Human-in-the-Loop Gateway</span></li>
+                                <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i><span>Zero-Trust HITL Gateway</span></li>
+                                <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i><span>Full REST &amp; Voice API access</span></li>
                             </ul>
                         </div>
-                        <button onclick="launchAppDirectly()" class="w-full py-3 rounded-xl border border-[#397BFF] text-[#397BFF] hover:bg-[#397BFF]/10 font-bold text-sm transition">
+                        <button onclick="launchAppDirectly()" class="apple-pill-btn-secondary w-full py-3 text-xs font-semibold">
                             Get Started Free
                         </button>
                     </div>
 
-                    <!-- Enterprise Pro (Featured) -->
-                    <div class="glass-panel rounded-2xl p-8 space-y-6 flex flex-col justify-between border-2 border-[#397BFF] glow-blue relative">
-                        <div class="absolute -top-3 right-6 px-3 py-0.5 rounded-full text-[10px] font-mono font-bold bg-[#397BFF] text-white uppercase tracking-wider">
+                    <!-- Enterprise Business (Featured Glow) -->
+                    <div class="apple-glass-card rounded-3xl p-8 space-y-6 flex flex-col justify-between border-2 border-blue-500/60 shadow-[0_0_50px_rgba(59,130,246,0.2)] relative reveal reveal-delay-1">
+                        <div class="absolute -top-3.5 right-8 px-4 py-1 rounded-full text-[10px] font-mono font-bold bg-blue-600 text-white uppercase tracking-wider shadow-lg">
                             Most Popular
                         </div>
                         <div class="space-y-4">
-                            <h3 class="text-xl font-bold text-white">Enterprise Business</h3>
-                            <div class="text-3xl font-black font-mono">$490 <span class="text-xs text-slate-400 font-sans font-normal">/ month</span></div>
-                            <p class="text-xs text-slate-400">Full autonomy, visual node builder, and unlimited agent parallel execution.</p>
-                            <ul class="text-xs space-y-2.5 text-slate-300 pt-4 border-t border-[#1F2E4D]">
+                            <span class="text-xs font-mono uppercase tracking-wider text-blue-400 font-semibold">Production Swarm</span>
+                            <h3 class="text-2xl font-bold text-white">Enterprise Business</h3>
+                            <div class="text-4xl font-black font-mono text-white">$490 <span class="text-xs text-slate-400 font-sans font-normal">/ month</span></div>
+                            <p class="text-xs text-slate-400">Full autonomy, visual node graph studio, and unlimited parallel agent dispatch.</p>
+                            <ul class="text-xs space-y-3 text-slate-300 pt-4 border-t border-white/[0.08]">
                                 <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i><span>Unlimited specialized agents</span></li>
-                                <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i><span>Visual Drag & Drop Workflow Builder</span></li>
-                                <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i><span>Full pgvector RAG memory</span></li>
-                                <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i><span>SLA audit logs with cryptographic hashes</span></li>
+                                <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i><span>Visual Drag &amp; Drop Workflow Studio</span></li>
+                                <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i><span>PostgreSQL pgvector long-term store</span></li>
+                                <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i><span>Cryptographic audit logs &amp; SLA guarantee</span></li>
+                                <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i><span>Dedicated account engineering support</span></li>
                             </ul>
                         </div>
-                        <button onclick="launchAppDirectly()" class="btn-gradient w-full py-3 rounded-xl font-bold text-sm text-white shadow-lg">
-                            Deploy Enterprise
+                        <button onclick="launchAppDirectly()" class="apple-pill-btn-blue w-full py-3.5 text-xs font-semibold">
+                            Deploy Enterprise Swarm &rarr;
                         </button>
                     </div>
 
-                    <!-- Sovereign Cloud -->
-                    <div class="glass-panel rounded-2xl p-8 space-y-6 flex flex-col justify-between">
+                    <!-- Sovereign & Defense -->
+                    <div class="apple-glass-card rounded-3xl p-8 space-y-6 flex flex-col justify-between reveal reveal-delay-2">
                         <div class="space-y-4">
-                            <h3 class="text-xl font-bold">Sovereign & On-Prem</h3>
-                            <div class="text-3xl font-black font-mono">Custom</div>
-                            <p class="text-xs text-slate-400">Air-gapped deployment for defense, banking, and clinical healthcare systems.</p>
-                            <ul class="text-xs space-y-2.5 text-slate-300 pt-4 border-t border-[#1F2E4D]">
-                                <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i><span>100% on-premises Docker / K8s</span></li>
-                                <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i><span>Custom LLM weights & local models</span></li>
-                                <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i><span>HIPAA & SOC2 compliant auditing</span></li>
+                            <span class="text-xs font-mono uppercase tracking-wider text-slate-400">Air-Gapped &amp; On-Prem</span>
+                            <h3 class="text-2xl font-bold text-white">Sovereign &amp; On-Prem</h3>
+                            <div class="text-4xl font-black font-mono text-white">Custom</div>
+                            <p class="text-xs text-slate-400">Air-gapped deployment for defense, tier-1 banking, and clinical healthcare systems.</p>
+                            <ul class="text-xs space-y-3 text-slate-300 pt-4 border-t border-white/[0.08]">
+                                <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i><span>100% on-premises Kubernetes / Docker</span></li>
+                                <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i><span>Local LLM weights (vLLM / Ollama)</span></li>
+                                <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i><span>HIPAA, SOC2 Type II, FedRAMP auditing</span></li>
+                                <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i><span>Custom fine-tuned agent heuristics</span></li>
                             </ul>
                         </div>
-                        <button onclick="openAuthModal('signup')" class="w-full py-3 rounded-xl border border-slate-700 text-slate-300 hover:bg-slate-800 font-bold text-sm transition">
+                        <button onclick="openAuthModal('signup')" class="apple-pill-btn-secondary w-full py-3 text-xs font-semibold">
                             Contact Architecture Team
                         </button>
                     </div>
@@ -441,22 +1120,128 @@
             </div>
         </section>
 
-        <!-- Footer -->
-        <footer class="border-t border-[#1F2E4D] py-12 bg-[#080D1B] text-slate-400 text-xs">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-                <div class="flex items-center space-x-3">
-                    <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-[#397BFF] to-[#865BFF] flex items-center justify-center text-white">
-                        <i data-lucide="layers" class="w-4 h-4"></i>
+
+        <!-- ========================================================================= -->
+        <!-- INTERACTIVE FAQ ACCORDION                                                 -->
+        <!-- ========================================================================= -->
+        <section id="faq" class="py-20 sm:py-28 border-t border-white/[0.06] relative overflow-hidden">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+                <div class="text-center space-y-3 reveal">
+                    <span class="apple-tag-pill text-blue-400 border-blue-500/20">FREQUENTLY ASKED QUESTIONS</span>
+                    <h2 class="text-3xl sm:text-5xl font-black tracking-tight text-white">Common Inquiries</h2>
+                    <p class="text-slate-400 text-sm">Everything you need to know about NEXUS AI multi-agent orchestration.</p>
+                </div>
+
+                <div class="space-y-4 reveal reveal-delay-1">
+                    <!-- FAQ 1 -->
+                    <div class="apple-glass-card rounded-2xl p-6 cursor-pointer" onclick="toggleFaq(0)">
+                        <div class="flex items-center justify-between text-base font-bold text-white">
+                            <span>How does NEXUS AI eliminate mathematical hallucinations?</span>
+                            <i id="faqIcon-0" data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-300"></i>
+                        </div>
+                        <div id="faqContent-0" class="hidden pt-4 text-xs text-slate-400 leading-relaxed border-t border-white/[0.06] mt-4">
+                            NEXUS isolates arithmetic away from generative LLMs. Financial calculations, percentages, and variance metrics are executed inside deterministic sandboxed Python kernels with SHA-256 cryptographic audit logs, guaranteeing 0.0% calculation error.
+                        </div>
                     </div>
-                    <span class="font-bold text-white font-sans">NEXUS AI Enterprise</span>
+
+                    <!-- FAQ 2 -->
+                    <div class="apple-glass-card rounded-2xl p-6 cursor-pointer" onclick="toggleFaq(1)">
+                        <div class="flex items-center justify-between text-base font-bold text-white">
+                            <span>What is the Human-in-the-Loop (HITL) Gateway?</span>
+                            <i id="faqIcon-1" data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-300"></i>
+                        </div>
+                        <div id="faqContent-1" class="hidden pt-4 text-xs text-slate-400 leading-relaxed border-t border-white/[0.06] mt-4">
+                            The HITL Gateway is a zero-trust interception checkpoint. Any action that alters critical state (sending emails, modifying customer databases, executing financial wires) is halted until an authorized human officer signs off with a timestamped cryptographic signature.
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="apple-glass-card rounded-2xl p-6 cursor-pointer" onclick="toggleFaq(2)">
+                        <div class="flex items-center justify-between text-base font-bold text-white">
+                            <span>Can NEXUS run entirely on-premises without cloud dependencies?</span>
+                            <i id="faqIcon-2" data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-300"></i>
+                        </div>
+                        <div id="faqContent-2" class="hidden pt-4 text-xs text-slate-400 leading-relaxed border-t border-white/[0.06] mt-4">
+                            Yes. The Sovereign deployment package can be installed on private Kubernetes clusters or air-gapped Docker instances utilizing local open-weights LLMs via vLLM, Ollama, or local embedding engines, ensuring zero telemetry leaves your private network.
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="apple-glass-card rounded-2xl p-6 cursor-pointer" onclick="toggleFaq(3)">
+                        <div class="flex items-center justify-between text-base font-bold text-white">
+                            <span>How does the multilingual voice assistant function?</span>
+                            <i id="faqIcon-3" data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-300"></i>
+                        </div>
+                        <div id="faqContent-3" class="hidden pt-4 text-xs text-slate-400 leading-relaxed border-t border-white/[0.06] mt-4">
+                            The voice interface connects directly over WebSockets and Web Speech APIs with sub-300ms speech-to-intent latency. Spoken directives in English, Spanish, French, Hindi, Japanese, or German are parsed into structured DAG operations and dispatched across the Swarm.
+                        </div>
+                    </div>
                 </div>
-                <div class="flex items-center space-x-6">
-                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition">Security Architecture</a>
-                    <a href="/docs" target="_blank" class="hover:text-white transition">API Specification</a>
+            </div>
+        </section>
+
+
+        <!-- ========================================================================= -->
+        <!-- FINAL CALL TO ACTION                                                      -->
+        <!-- ========================================================================= -->
+        <section class="py-20 sm:py-24 border-t border-white/[0.06] relative overflow-hidden bg-gradient-to-b from-[#030712] via-[#050D24] to-[#030712]">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 relative z-10 reveal">
+                <h2 class="text-3xl sm:text-6xl font-black tracking-tight apple-text-hero">
+                    Ready to Orchestrate <br>
+                    <span class="apple-text-accent">Autonomous Intelligence?</span>
+                </h2>
+                <p class="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                    Deploy your first multi-agent state graph in under 60 seconds with full Human-in-the-Loop governance and verified 0.0% math error guarantee.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+                    <button onclick="launchAppDirectly()" class="apple-pill-btn-blue px-10 py-4 text-sm font-semibold flex items-center space-x-3 w-full sm:w-auto justify-center">
+                        <i data-lucide="rocket" class="w-4 h-4"></i>
+                        <span>Launch Command Center</span>
+                    </button>
+                    <button onclick="scrollToSection('hero-studio')" class="apple-pill-btn-secondary px-8 py-4 text-sm font-semibold flex items-center space-x-2 w-full sm:w-auto justify-center">
+                        <span>Replay Interactive Demo</span>
+                    </button>
                 </div>
-                <div class="font-mono text-slate-500">
-                    &copy; 2026 NEXUS AI Platform. All rights reserved.
+            </div>
+        </section>
+
+
+        <!-- ========================================================================= -->
+        <!-- MINIMALIST APPLE FOOTER                                                   -->
+        <!-- ========================================================================= -->
+        <footer class="border-t border-white/[0.08] py-12 bg-[#020617] text-slate-400 text-xs">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-7 h-7 rounded-xl bg-gradient-to-tr from-blue-500 to-indigo-600 flex items-center justify-center text-white">
+                            <i data-lucide="layers" class="w-4 h-4"></i>
+                        </div>
+                        <span class="font-bold text-white text-sm">NEXUS AI Enterprise Orchestration</span>
+                    </div>
+
+                    <div class="flex flex-wrap items-center justify-center gap-6 text-slate-400">
+                        <a href="#hero" class="hover:text-white transition">Overview</a>
+                        <a href="#features" class="hover:text-white transition">Capabilities</a>
+                        <a href="#swarm-section" class="hover:text-white transition">7-Agent Swarm</a>
+                        <a href="#architecture-blueprints" class="hover:text-white transition">Blueprints</a>
+                        <a href="#pricing" class="hover:text-white transition">Pricing</a>
+                        <a href="/docs" target="_blank" class="hover:text-white transition">API Docs</a>
+                        <a href="#" class="hover:text-white transition">Security &amp; Compliance</a>
+                    </div>
+
+                    <div class="flex items-center space-x-2 text-emerald-400 font-mono text-[11px]">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                        <span>All Systems Operational</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-white/[0.06] text-slate-500 text-[11px] font-mono">
+                    <div>&copy; 2026 NEXUS AI Platform. All rights reserved. Deterministic Multi-Agent Governance.</div>
+                    <div class="flex items-center space-x-4">
+                        <a href="#" class="hover:text-slate-300 transition">Privacy Policy</a>
+                        <a href="#" class="hover:text-slate-300 transition">Terms of Service</a>
+                        <a href="#" class="hover:text-slate-300 transition">Security Whitepaper</a>
+                    </div>
                 </div>
             </div>
         </footer>
@@ -1405,7 +2190,7 @@
     <!-- ========================================================================= -->
     <script>
         // Global State
-        let currentScreen = 'welcome';
+        let currentScreen = 'landing';
         let currentAppTab = 'app-overview';
         let currentAuthMode = 'login';
         let currentTaskId = null;
@@ -1414,6 +2199,8 @@
         let appChart2 = null;
         let throughputChart = null;
         let distributionChart = null;
+        let activeLandingScenario = 'sales';
+        let isSimulatingLanding = false;
 
         // Specialized Agents Metadata
         const AGENTS_LIST = [
@@ -1425,6 +2212,117 @@
             { id: "Quality Agent", icon: "check-circle", role: "Independent Math & Safety Audit", model: "nexus-guardrail-v1", cpu: "9%", status: "Active" },
             { id: "Workflow Agent", icon: "zap", role: "Deliverable Synthesis & HITL Gate", model: "nexus-orchestrator", cpu: "12%", status: "Active" },
             { id: "Security Sentry", icon: "shield-alert", role: "Prompt Injection & PII Guard", model: "nexus-sec-core", cpu: "5%", status: "Active" }
+        ];
+
+        // Apple 7-Agent Spotlight Data
+        const SPOTLIGHT_AGENTS = [
+            {
+                name: "Planner Agent",
+                icon: "brain",
+                model: "gemini-1.5-flash / nexus-hybrid",
+                latency: "142ms",
+                score: "99.1%",
+                desc: "Deconstructs high-level enterprise goals into a deterministic LangGraph directed acyclic graph. Evaluates dependencies between data sources and schedules parallel agent execution branches.",
+                code: `{\n  "mission_id": "exec_rev_2026",\n  "dag_plan": ["ingest_excel", "rag_vector_search", "variance_math", "hitl_gate"],\n  "parallel_branches": 3,\n  "confidence": 0.992\n}`
+            },
+            {
+                name: "Document Agent",
+                icon: "file-text",
+                model: "nexus-parser-v2",
+                latency: "86ms",
+                score: "98.9%",
+                desc: "Ingests and parses unformatted CSVs, PDFs, JSON feeds, and financial filings into strongly typed Pydantic schemas with automated PII masking and header reconciliation.",
+                code: `{\n  "extracted_records": 1480,\n  "schema_status": "VALIDATED",\n  "pii_redacted": ["ssn", "cc_number"],\n  "null_variance": 0.00\n}`
+            },
+            {
+                name: "Research Agent",
+                icon: "search",
+                model: "text-embedding-004",
+                latency: "115ms",
+                score: "97.8%",
+                desc: "Executes hybrid BM25 and cosine vector similarity searches against PostgreSQL pgvector databases and regulatory compliance frameworks with sub-second retrieval latency.",
+                code: `{\n  "semantic_query": "q3_churn_benchmark",\n  "vector_store": "pgvector_hsnw",\n  "top_k": 5,\n  "cosine_similarity": 0.962\n}`
+            },
+            {
+                name: "Data Analyst Agent",
+                icon: "bar-chart-2",
+                model: "nexus-math-core",
+                latency: "64ms",
+                score: "100.0%",
+                desc: "Executes pure Python calculations in an isolated sandbox runtime. Computes YoY variances, EBITDA reconciliations, and statistical percentiles with zero LLM math hallucination.",
+                code: `{\n  "formula": "YoY_Variance = (Q3_2026 - Q3_2025) / Q3_2025",\n  "actual_yoy": 0.3621,\n  "hallucination_rate": 0.000,\n  "sha256": "8f9b4e7a2b91c0d4..."\n}`
+            },
+            {
+                name: "Decision Agent",
+                icon: "compass",
+                model: "gemini-1.5-pro / gpt-4o",
+                latency: "310ms",
+                score: "96.9%",
+                desc: "Synthesizes mathematical findings into prioritized strategic risk matrices. Categorizes threats by severity and drafts actionable mitigation roadmaps with verifiable citations.",
+                code: `{\n  "identified_risks": [\n    {"risk": "APAC Quota Deficit", "severity": "HIGH", "delta": "-$287,000"},\n    {"risk": "Tier-2 SLA Drift", "severity": "MEDIUM", "delta": "+1.2h"}\n  ]\n}`
+            },
+            {
+                name: "Quality Auditor",
+                icon: "check-circle",
+                model: "nexus-guardrail-v1",
+                latency: "92ms",
+                score: "99.5%",
+                desc: "Conducts an adversarial mathematical and safety audit. Re-verifies every numerical calculation against raw document tables and ensures 0% generative hallucination before output delivery.",
+                code: `{\n  "math_audit": "PASSED",\n  "citations_verified": 42,\n  "grounding_confidence": 0.984,\n  "hallucination_detected": false\n}`
+            },
+            {
+                name: "Workflow & HITL Agent",
+                icon: "shield-alert",
+                model: "nexus-orchestrator",
+                latency: "78ms",
+                score: "100.0%",
+                desc: "Compiles final executive deliverables and enforces the Human-in-the-Loop Gateway. Halts irreversible actions (wire transfers, email dispatches) until an authorized human officer signs off.",
+                code: `{\n  "hitl_status": "INTERCEPTED",\n  "action": "reallocate_q4_regional_budget",\n  "amount": 2400000,\n  "sign_off_required": "CFO_ROLE"\n}`
+            }
+        ];
+
+        // Apple Architecture Blueprints Data
+        const ARCH_BLUEPRINTS = [
+            {
+                title: "Full-Stack Enterprise System Architecture",
+                subtitle: "Client layers, FastAPI orchestration, LangGraph state engine, and sandboxed execution nodes.",
+                src: "/assets/diagram1-system-architecture.svg",
+                highlights: [
+                    { title: "ASGI Streaming Core", desc: "Server-Sent Events deliver realtime multi-agent thought streams with zero blocking delay." },
+                    { title: "Hybrid Retrieval (RAG)", desc: "Sub-second cosine vector search combines PostgreSQL pgvector with dynamic BM25 keyword rerank." },
+                    { title: "Zero-Trust Audit Gate", desc: "Immutable cryptographic audit logging protects sensitive financial and clinical operations." }
+                ]
+            },
+            {
+                title: "LangGraph State Graph & DAG Execution Flow",
+                subtitle: "State initialization, dynamic branch routing, loopback error recovery, and consensus checkpoints.",
+                src: "/assets/diagram2-dag-workflow.svg",
+                highlights: [
+                    { title: "Stateful Graph Checkpoints", desc: "SwarmState preserves active scratchpads and episodic logs across all parallel steps." },
+                    { title: "Loopback Error Recovery", desc: "Automated retry cycles with parameter adjustment if an agent fails quality audit thresholds." },
+                    { title: "Deterministic Dispatch", desc: "Zero race conditions through sequential dependency resolution and thread-safe channels." }
+                ]
+            },
+            {
+                title: "Zero-Trust Human-in-the-Loop (HITL) Governance",
+                subtitle: "Risk policy evaluation, cryptographic state freezing, audit ledger, and multi-factor approval gateway.",
+                src: "/assets/diagram3-hitl-governance.svg",
+                highlights: [
+                    { title: "Cryptographic Interception", desc: "Freezes execution graph when sensitive threshold operations are triggered." },
+                    { title: "Multi-Factor Signature", desc: "Authorized operator signs with timestamped SHA-256 cryptographic audit record." },
+                    { title: "Immutable Ledger", desc: "All approval decisions, rejections, and rationale logged for SOC2 & HIPAA audits." }
+                ]
+            },
+            {
+                title: "Multi-Domain Lifecycle & Production Deployment",
+                subtitle: "Ingestion, vector embedding, deterministic execution, and sovereign cloud container deployment.",
+                src: "/assets/diagram4-multi-domain-lifecycle.svg",
+                highlights: [
+                    { title: "Domain Adapters", desc: "Pre-tuned prompt architectures and guardrails for Finance, Healthcare, and DevOps." },
+                    { title: "Air-Gapped Deployment", desc: "Deploy on private Kubernetes clusters with local weights and zero external telemetry." },
+                    { title: "Automated Regression Audit", desc: "Continuous mathematical reconciliation against gold standard ground-truth datasets." }
+                ]
+            }
         ];
 
         // Marketplace Catalog
@@ -1443,6 +2341,347 @@
             { name: "Slack & Microsoft Teams", type: "Notifications", status: "Connected", icon: "message-square", ping: "38ms" },
             { name: "GitHub Enterprise", type: "Code & CI/CD", status: "Connected", icon: "github", ping: "65ms" },
             { name: "PostgreSQL + pgvector", type: "Database & Vectors", status: "Connected", icon: "database", ping: "8ms" },
+            { name: "Google Cloud Run", type: "Deployment Sandbox", status: "Connected", icon: "cloud", ping: "22ms" },
+            { name: "Salesforce CRM", type: "Customer Intelligence", status: "Standby", icon: "users", ping: "—" }
+        ];
+
+        // Toast Helper
+        function showToast(msg, type = "success") {
+            const container = document.getElementById('toastContainer');
+            if (!container) return;
+            const toast = document.createElement('div');
+            const color = type === 'error' ? 'border-rose-500/80 bg-rose-950/90 text-rose-200' : (type === 'amber' ? 'border-amber-500/80 bg-amber-950/90 text-amber-200' : 'border-[#397BFF]/80 bg-[#111A2E]/90 text-slate-100');
+            toast.className = `p-3 rounded-xl border ${color} shadow-2xl backdrop-blur font-mono text-xs flex items-center space-x-2 pointer-events-auto transition-all duration-300`;
+            toast.innerHTML = `<span>${msg}</span>`;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        }
+
+        // =========================================================================
+        // APPLE-GRADE LANDING PAGE INTERACTIVE CONTROLLERS
+        // =========================================================================
+
+        // 1. Ambient Hero Neural Canvas
+        let heroCanvasAnimId = null;
+        function initHeroNeuralCanvas() {
+            const canvas = document.getElementById('heroNeuralCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let w = canvas.width = canvas.parentElement.offsetWidth || window.innerWidth;
+            let h = canvas.height = canvas.parentElement.offsetHeight || 600;
+
+            window.addEventListener('resize', () => {
+                if (!canvas.parentElement) return;
+                w = canvas.width = canvas.parentElement.offsetWidth;
+                h = canvas.height = canvas.parentElement.offsetHeight;
+            });
+
+            const particles = [];
+            const count = Math.min(Math.floor(w / 22), 65);
+
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: Math.random() * w,
+                    y: Math.random() * h,
+                    vx: (Math.random() - 0.5) * 0.45,
+                    vy: (Math.random() - 0.5) * 0.45,
+                    radius: Math.random() * 2 + 1
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, w, h);
+                ctx.fillStyle = '#60A5FA';
+                ctx.strokeStyle = 'rgba(96, 165, 250, 0.12)';
+
+                for (let i = 0; i < particles.length; i++) {
+                    const p = particles[i];
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    if (p.x < 0 || p.x > w) p.vx *= -1;
+                    if (p.y < 0 || p.y > h) p.vy *= -1;
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const p2 = particles[j];
+                        const dx = p.x - p2.x;
+                        const dy = p.y - p2.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 130) {
+                            ctx.beginPath();
+                            ctx.moveTo(p.x, p.y);
+                            ctx.lineTo(p2.x, p2.y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+                if (currentScreen === 'landing') {
+                    heroCanvasAnimId = requestAnimationFrame(animate);
+                }
+            }
+            if (heroCanvasAnimId) cancelAnimationFrame(heroCanvasAnimId);
+            animate();
+        }
+
+        // 2. Scroll Reveal Observer
+        function initScrollReveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+                reveals.forEach(r => r.classList.add('is-visible'));
+                return;
+            }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+            reveals.forEach(r => observer.observe(r));
+        }
+
+        // 3. Card Spotlight Cursor Tracking
+        function initCardSpotlights() {
+            const cards = document.querySelectorAll('.card-spotlight');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+                });
+            });
+        }
+
+        // 4. Interactive Swarm Studio Simulation
+        function selectLandingScenario(key) {
+            if (isSimulatingLanding) return;
+            activeLandingScenario = key;
+            const btnSales = document.getElementById('btnScenarioSales');
+            const btnHealth = document.getElementById('btnScenarioHealth');
+            if (key === 'sales') {
+                btnSales.className = "px-3.5 py-1.5 rounded-full bg-blue-600 text-white font-medium transition";
+                btnHealth.className = "px-3.5 py-1.5 rounded-full text-slate-400 hover:text-white transition";
+                document.getElementById('landingSimKpi1').innerText = "$1,421,500";
+                document.getElementById('landingSimSub1').innerText = "Net YoY ARR Variance (100% Math Audit)";
+                document.getElementById('landingSimKpi2').innerText = "98.4%";
+                document.getElementById('landingSimSub2').innerText = "Zero Hallucination Grounding Score";
+                document.getElementById('landingSimKpi3').innerText = "INTERCEPTED";
+                document.getElementById('landingSimSub3').innerText = "Pending Authorized Executive Sign-Off";
+            } else {
+                btnHealth.className = "px-3.5 py-1.5 rounded-full bg-blue-600 text-white font-medium transition";
+                btnSales.className = "px-3.5 py-1.5 rounded-full text-slate-400 hover:text-white transition";
+                document.getElementById('landingSimKpi1').innerText = "-18.4%";
+                document.getElementById('landingSimSub1').innerText = "Emergency Triage Latency Reduction";
+                document.getElementById('landingSimKpi2').innerText = "99.2%";
+                document.getElementById('landingSimSub2').innerText = "Clinical Grounding SLA (Zero Hallucination)";
+                document.getElementById('landingSimKpi3').innerText = "CMO GATE";
+                document.getElementById('landingSimSub3').innerText = "Pending Chief Medical Officer Approval";
+            }
+            const logs = document.getElementById('landingTerminalLogs');
+            if (logs) {
+                logs.innerHTML = `<div class="text-blue-400">[SCENARIO SWITCH] Loaded ${key === 'sales' ? 'Enterprise Sales BI & ARR Variance' : 'Clinical Emergency SLA Triage'}. Click "Run Live Swarm" to execute.</div>`;
+            }
+        }
+
+        function runLandingSimulation() {
+            if (isSimulatingLanding) return;
+            isSimulatingLanding = true;
+
+            const btn = document.getElementById('btnRunLandingSim');
+            if (btn) {
+                btn.innerHTML = `<span class="animate-spin mr-2">&#9696;</span><span>Simulating Swarm...</span>`;
+                btn.classList.add('opacity-75', 'pointer-events-none');
+            }
+
+            const logs = document.getElementById('landingTerminalLogs');
+            const statusText = document.getElementById('landingDagStatusText');
+            const stepIndicator = document.getElementById('landingStepIndicator');
+            if (logs) logs.innerHTML = '';
+
+            // Reset nodes
+            for (let i = 0; i < 7; i++) {
+                const node = document.getElementById(`dagNode-${i}`);
+                if (node) {
+                    node.classList.remove('node-active');
+                    node.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+                    node.style.backgroundColor = 'rgba(255, 255, 255, 0.03)';
+                }
+            }
+
+            const isSales = activeLandingScenario === 'sales';
+            const simSteps = isSales ? [
+                { agent: "PLANNER", node: 0, text: "Decomposing Enterprise Q3 mission: 4 data streams detected. Spawning parallel DAG branches.", delay: 400 },
+                { agent: "DOCUMENT", node: 1, text: "Extracting 'q3_sales_performance.csv': 1,480 rows parsed, zero schema violations.", delay: 900 },
+                { agent: "RESEARCH", node: 2, text: "pgvector similarity search: Matched historical ARR benchmarks (cosine: 0.942).", delay: 1400 },
+                { agent: "ANALYST", node: 3, text: "Executing sandboxed Python math: YoY ARR variance = +$1,421,500 (+36.2%). SHA256 verified.", delay: 1900 },
+                { agent: "DECISION", node: 4, text: "Risk matrix evaluated: APAC regional shortfall detected (-$287K). Formulating mitigation roadmap.", delay: 2400 },
+                { agent: "QUALITY", node: 5, text: "Mathematical audit passed (100% calculation accuracy). Grounding SLA: 98.4% across 42 citations.", delay: 2900 },
+                { agent: "WORKFLOW", node: 6, text: "Intercepted by HITL Gate: Dispersal of $2.4M Q4 quota adjustments requires executive sign-off.", delay: 3400 }
+            ] : [
+                { agent: "PLANNER", node: 0, text: "Parsing Clinical Emergency SLA mission: Ingesting HL7/FHIR telemetry streams across 3 triage wards.", delay: 400 },
+                { agent: "DOCUMENT", node: 1, text: "Ingesting 'clinical_sla_october.json': 8,920 bed-hours normalized, HIPAA PII redacted.", delay: 900 },
+                { agent: "RESEARCH", node: 2, text: "pgvector query: Joint Commission emergency wait-time thresholds retrieved (score: 0.981).", delay: 1400 },
+                { agent: "ANALYST", node: 3, text: "Deterministic statistical variance: ICU bed turnover latency = 4.2h vs 3.0h standard.", delay: 1900 },
+                { agent: "DECISION", node: 4, text: "Risk triage: Critical nurse-to-patient bottleneck in Oncology Ward 4. Drafting staffing rebalance.", delay: 2400 },
+                { agent: "QUALITY", node: 5, text: "Safety audit passed: Zero clinical terminology hallucinations. Grounding score: 99.2%.", delay: 2900 },
+                { agent: "WORKFLOW", node: 6, text: "HITL Interception: Critical clinical department staffing adjustment requires CMO signature.", delay: 3400 }
+            ];
+
+            simSteps.forEach((step, idx) => {
+                setTimeout(() => {
+                    // Update previous node to completed state
+                    if (idx > 0) {
+                        const prevNode = document.getElementById(`dagNode-${idx - 1}`);
+                        if (prevNode) {
+                            prevNode.classList.remove('node-active');
+                            prevNode.style.borderColor = '#10B981';
+                            prevNode.style.backgroundColor = 'rgba(16, 185, 129, 0.1)';
+                        }
+                    }
+
+                    // Highlight current active node
+                    const currNode = document.getElementById(`dagNode-${step.node}`);
+                    if (currNode) {
+                        currNode.classList.add('node-active');
+                    }
+
+                    // Append log entry
+                    if (logs) {
+                        const time = new Date().toTimeString().split(' ')[0];
+                        const logRow = document.createElement('div');
+                        const agentColor = step.node === 6 ? 'text-amber-400 font-bold' : (step.node === 5 ? 'text-emerald-400 font-bold' : 'text-blue-400 font-bold');
+                        logRow.innerHTML = `<span class="text-slate-600">[${time}]</span> <span class="${agentColor}">[${step.agent}]</span> <span>${step.text}</span>`;
+                        logs.appendChild(logRow);
+                        logs.scrollTop = logs.scrollHeight;
+                    }
+
+                    if (stepIndicator) stepIndicator.innerText = `Step ${idx + 1}/7`;
+                    if (statusText) statusText.innerText = `STATE GRAPH: EXECUTING [${step.agent}]`;
+
+                    // On final step
+                    if (idx === simSteps.length - 1) {
+                        setTimeout(() => {
+                            isSimulatingLanding = false;
+                            if (btn) {
+                                btn.innerHTML = `<i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i><span>Re-run Swarm</span>`;
+                                btn.classList.remove('opacity-75', 'pointer-events-none');
+                                lucide.createIcons();
+                            }
+                            if (statusText) statusText.innerText = "STATE GRAPH: HITL GATE INTERCEPTED (PAUSED)";
+                            showToast("Live Swarm Simulation Complete: Zero Hallucination Verified", "success");
+                        }, 500);
+                    }
+                }, step.delay);
+            });
+        }
+
+        // 5. Interactive HITL Bento Demo
+        function toggleHitlDemo(approved) {
+            const badge = document.getElementById('hitlDemoBadge');
+            if (!badge) return;
+            if (approved) {
+                badge.className = "px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-bold";
+                badge.innerText = "APPROVED & SIGNED (SHA256)";
+                showToast("Cryptographic signature verified: Wire $2,400,000 authorized.", "success");
+            } else {
+                badge.className = "px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 text-[10px] font-bold";
+                badge.innerText = "REJECTED & INTERCEPTED";
+                showToast("Action rejected: Transfer halted and logged to security audit ledger.", "amber");
+            }
+        }
+
+        // 6. Interactive 7-Agent Spotlight
+        function selectAgentSpotlight(idx) {
+            const agent = SPOTLIGHT_AGENTS[idx];
+            if (!agent) return;
+
+            // Highlight tab button
+            for (let i = 0; i < SPOTLIGHT_AGENTS.length; i++) {
+                const tab = document.getElementById(`agentTab-${i}`);
+                if (tab) {
+                    if (i === idx) {
+                        tab.className = "px-4 py-2 rounded-full text-xs font-mono font-semibold bg-white text-black shadow-lg transition";
+                    } else {
+                        tab.className = "px-4 py-2 rounded-full text-xs font-mono font-semibold bg-white/[0.05] text-slate-400 hover:text-white border border-white/[0.08] transition";
+                    }
+                }
+            }
+
+            // Update spotlight details
+            document.getElementById('spotlightAgentName').innerText = agent.name;
+            document.getElementById('spotlightAgentModel').innerText = agent.model;
+            document.getElementById('spotlightAgentLatency').innerText = agent.latency;
+            document.getElementById('spotlightAgentScore').innerText = agent.score;
+            document.getElementById('spotlightAgentDesc').innerText = agent.desc;
+            document.getElementById('spotlightAgentCode').innerText = agent.code;
+
+            const iconEl = document.getElementById('spotlightAgentIcon');
+            if (iconEl) {
+                iconEl.setAttribute('data-lucide', agent.icon);
+                lucide.createIcons();
+            }
+        }
+
+        // 7. Interactive Architecture Diagram Lightbox
+        function selectArchDiagram(idx) {
+            const arch = ARCH_BLUEPRINTS[idx];
+            if (!arch) return;
+
+            // Update tab styles
+            for (let i = 0; i < ARCH_BLUEPRINTS.length; i++) {
+                const tab = document.getElementById(`archTab-${i}`);
+                if (tab) {
+                    if (i === idx) {
+                        tab.className = "px-5 py-2.5 rounded-full text-xs font-mono font-semibold bg-white text-black shadow-lg transition";
+                    } else {
+                        tab.className = "px-5 py-2.5 rounded-full text-xs font-mono font-semibold bg-white/[0.05] text-slate-400 hover:text-white border border-white/[0.08] transition";
+                    }
+                }
+            }
+
+            document.getElementById('archDiagramTitle').innerText = arch.title;
+            document.getElementById('archDiagramSubtitle').innerText = arch.subtitle;
+            const img = document.getElementById('archDiagramImage');
+            if (img) img.src = arch.src;
+            const dl = document.getElementById('archDiagramDownload');
+            if (dl) dl.href = arch.src;
+            const full = document.getElementById('archDiagramFull');
+            if (full) full.href = arch.src;
+
+            const highlightsEl = document.getElementById('archDiagramHighlights');
+            if (highlightsEl && arch.highlights) {
+                highlightsEl.innerHTML = arch.highlights.map(h => `
+                    <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-1">
+                        <div class="text-blue-400 font-bold">${h.title}</div>
+                        <div class="text-slate-400 text-[11px]">${h.desc}</div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // 8. FAQ Accordion Toggle
+        function toggleFaq(idx) {
+            const content = document.getElementById(`faqContent-${idx}`);
+            const icon = document.getElementById(`faqIcon-${idx}`);
+            if (!content || !icon) return;
+            const isHidden = content.classList.contains('hidden');
+            if (isHidden) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
             { name: "Google Cloud Run", type: "Deployment Sandbox", status: "Connected", icon: "cloud", ping: "22ms" },
             { name: "Salesforce CRM", type: "Customer Intelligence", status: "Standby", icon: "users", ping: "—" }
         ];
@@ -1577,6 +2816,9 @@
                 document.getElementById('screen-app').classList.add('hidden');
                 document.getElementById('screen-landing').classList.remove('hidden');
                 currentScreen = 'landing';
+                initHeroNeuralCanvas();
+                initScrollReveal();
+                initCardSpotlights();
             }
             lucide.createIcons();
         }
@@ -2753,8 +3995,11 @@
 
         // On Load
         window.addEventListener('DOMContentLoaded', () => {
-            initNeuralCanvas();
-            runWelcomeSimulation();
+            initHeroNeuralCanvas();
+            initScrollReveal();
+            initCardSpotlights();
+            selectAgentSpotlight(0);
+            selectArchDiagram(0);
             lucide.createIcons();
         });
     </script>
